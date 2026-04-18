@@ -213,13 +213,21 @@
       font-family: 'Outfit', sans-serif;
       font-size: clamp(2.5rem, 5.8vw, 5.8rem);
       font-weight: 900; line-height: 1.07;
-      letter-spacing: -2.5px; color: #fff;
+      letter-spacing: -2.5px; color: rgba(255,255,255,0.68);
       margin-bottom: 1.7rem;
       max-width: 960px;
     }
-    .hero h1 em {
-      font-style: normal;
-      background: linear-gradient(90deg, var(--gold) 0%, var(--rose) 100%);
+    .hero h1 em { font-style: normal; }
+    .word-iran {
+      /* Iranian flag: green → white → red */
+      background: linear-gradient(90deg, #239f55 0%, #7ddba0 35%, #f5fff7 50%, #f08080 68%, #cc1515 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .word-ireland {
+      /* Irish flag: green → white → orange */
+      background: linear-gradient(90deg, #169b62 0%, #6ecfa6 35%, #f5f5ef 50%, #ffb05a 68%, #e8611a 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -790,9 +798,11 @@
           data-fa="گالوی &middot; لیمریک &middot; دوبلین &middot; کورک">
           Galway &middot; Limerick &middot; Dublin &middot; Cork
         </div>
-        <h1>
-          <span data-en="Iranian Democratic Diaspora" data-fa="دیاسپورای دموکراتیک ایرانی">Iranian Democratic Diaspora</span><br>
-          <em data-en="Network in Ireland" data-fa="شبکه در ایرلند">Network in Ireland</em>
+        <h1
+          data-en="<span><span class='word-iran'>Iranian</span> Democratic Diaspora</span><br><em>Network in <span class='word-ireland'>Ireland</span></em>"
+          data-fa="<span>دیاسپورای دموکراتیک <span class='word-iran'>ایرانی</span></span><br><em>شبکه در <span class='word-ireland'>ایرلند</span></em>">
+          <span><span class="word-iran">Iranian</span> Democratic Diaspora</span><br>
+          <em>Network in <span class="word-ireland">Ireland</span></em>
         </h1>
         <p class="hero-sub"
           data-en="A female-led, multi-ethnic, non-partisan network bridging the voices of the Iranian people with Irish and European policymakers &mdash; championing freedom, dignity, and democratic change."
