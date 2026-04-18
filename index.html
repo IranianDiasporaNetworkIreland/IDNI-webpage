@@ -585,7 +585,67 @@
     .contact-email:hover { color: #fff; }
     @media (max-width: 640px) { .media-box { grid-template-columns: 1fr; padding: 2rem; } }
 
-    /* ---- CONTACT ---- */
+    /* ---- MEDIA APPEARANCES ---- */
+    .appearances-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(360px,100%), 1fr));
+      gap: 1.4rem;
+      margin-top: 2.8rem;
+    }
+    .appearance-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      display: flex; flex-direction: column;
+      gap: .75rem;
+      transition: border-color var(--tr), background var(--tr), transform var(--tr), box-shadow var(--tr);
+      text-decoration: none;
+    }
+    .appearance-card:hover {
+      border-color: rgba(232,184,75,.35);
+      background: rgba(232,184,75,.04);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.4);
+    }
+    .appearance-outlet {
+      display: flex; align-items: center; gap: .65rem;
+    }
+    .outlet-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: linear-gradient(135deg, rgba(232,184,75,.15), rgba(22,155,98,.1));
+      border: 1px solid var(--glass-b);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .outlet-name {
+      font-size: .8rem; font-weight: 700;
+      color: var(--gold); text-transform: uppercase;
+      letter-spacing: .8px; line-height: 1.3;
+    }
+    .outlet-format {
+      font-size: .72rem; color: var(--text-muted);
+      font-weight: 500; margin-top: .1rem;
+    }
+    .appearance-date {
+      font-size: .75rem; color: var(--text-muted);
+      font-weight: 500; letter-spacing: .3px;
+    }
+    .appearance-title {
+      font-size: .97rem; font-weight: 700;
+      color: #fff; line-height: 1.42;
+    }
+    .appearance-desc {
+      font-size: .85rem; color: var(--text-muted);
+      line-height: 1.7; flex-grow: 1;
+    }
+    .appearance-link {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .8rem; font-weight: 600;
+      color: var(--gold); margin-top: auto;
+      transition: color var(--tr);
+    }
+    .appearance-card:hover .appearance-link { color: #fff; }
     #contact { text-align: center; }
     .contact-grid {
       display: grid;
@@ -887,6 +947,7 @@
             <span class="arrow">&#9660;</span>
           </button>
           <div class="news-card-expanded" id="pressRelease1">
+
             <div class="news-expanded-inner">
               <div class="lang-en-block">
                 <p class="byline">By the Iranian Democratic Diaspora Network in Ireland (IDDNI) &mdash; 14 April, 2026</p>
@@ -915,6 +976,161 @@
             </div>
           </div>
         </div>
+
+        <a class="news-card fade-up" href="https://www.irishexaminer.com/news/spotlight/arid-41829557.html" target="_blank" rel="noopener" style="text-decoration:none; color:inherit; display:flex; flex-direction:column;">
+          <span class="news-tag" data-en="Press Coverage" data-fa="پوشش مطبوعاتی">Press Coverage</span>
+          <p class="news-date" data-en="18 April, 2026 &mdash; The Irish Examiner" data-fa="۱۸ آوریل ۲۰۲۶ &mdash; ایریش اگزمینر">18 April, 2026 &mdash; The Irish Examiner</p>
+          <h3 data-en="Iranians in Ireland: &lsquo;Iran has been there for 1,000 years. This will pass&rsquo;"
+              data-fa="ایرانیان در ایرلند: «ایران هزار سال است که بوده. این هم می‌گذرد»">
+            Iranians in Ireland: &lsquo;Iran has been there for 1,000 years. This will pass&rsquo;
+          </h3>
+          <p class="news-excerpt lang-en-block">Spotlight feature on Iranians living in Ireland — including IDDNI founder Dr. Mahya Ostovar — sharing harrowing accounts of war, repression, and resilience amid ongoing conflict and internet blackouts in Iran.</p>
+          <p class="news-excerpt lang-fa-block" dir="rtl" lang="fa">گزارش ایریش اگزمینر از ایرانیان مقیم ایرلند، از جمله دکتر مهیا اُستوار، درباره جنگ، سرکوب و امید به آینده ایران.</p>
+          <span class="appearance-link" style="margin-top:auto; padding-top:1rem;">Read &#8599;</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="fancy-divider"></div>
+
+    <!-- ===== MEDIA ===== -->
+    <section id="media">
+      <div class="fade-up">
+        <div class="section-eyebrow" data-en="Press &amp; Media" data-fa="مطبوعات و رسانه">Press &amp; Media</div>
+        <h2 class="section-title" data-en="Media &amp; Public <em>Engagement</em>" data-fa="حضور <em>رسانه‌ای</em> و عمومی">
+          Media &amp; Public <em>Engagement</em>
+        </h2>
+        <p class="section-lead">IDDNI members regularly contribute expert analysis, commentary, and interviews across Irish, European, and international media.</p>
+      </div>
+
+      <div class="appearances-grid">
+
+        <a class="appearance-card fade-up" href="https://www.irishexaminer.com/news/spotlight/arid-41829557.html" target="_blank" rel="noopener">
+          <div class="appearance-outlet">
+            <div class="outlet-icon">📰</div>
+            <div>
+              <div class="outlet-name">The Irish Examiner</div>
+              <div class="outlet-format">Spotlight Feature</div>
+            </div>
+          </div>
+          <div class="appearance-date">April 18, 2026</div>
+          <div class="appearance-title">Iranians in Ireland: &lsquo;Iran has been there for 1,000 years. This will pass&rsquo;</div>
+          <div class="appearance-desc">Spotlight feature on Iranians living in Ireland &mdash; including IDDNI founder Dr. Mahya Ostovar &mdash; sharing accounts of war, repression, and resilience. Despite bombed schools, media blackouts, and executions, the piece captures a defiant hope: that the Islamic regime is &ldquo;at its weakest form now&rdquo; and that Iran&rsquo;s 1,000-year civilisation will endure.</div>
+          <span class="appearance-link">Read &#8599;</span>
+        </a>
+
+        <a class="appearance-card fade-up" href="https://www.galwaybayfm.ie/podcasts/galway-talks/government-survives-confidence-vote-by-14-votes-fuel-costs-threaten-housing-delivery-and-campaign-launched-to-protect-galway-airport-runway-218452" target="_blank" rel="noopener">
+          <div class="appearance-outlet">
+            <div class="outlet-icon">🎙️</div>
+            <div>
+              <div class="outlet-name">Galway Bay FM</div>
+              <div class="outlet-format">Radio Interview &mdash; Galway Talks with John Morley</div>
+            </div>
+          </div>
+          <div class="appearance-date">April 15, 2026</div>
+          <div class="appearance-title">Launch interview introducing IDDNI</div>
+          <div class="appearance-desc">Introducing IDDNI and its mission to bring grounded insights from Iran into Irish public and policy discussions.</div>
+          <span class="appearance-link">Listen &#8599;</span>
+        </a>
+
+        <a class="appearance-card fade-up" href="https://www.irishexaminer.com/opinion/commentanalysis/arid-41818061.html" target="_blank" rel="noopener">
+          <div class="appearance-outlet">
+            <div class="outlet-icon">📰</div>
+            <div>
+              <div class="outlet-name">The Irish Examiner</div>
+              <div class="outlet-format">Opinion Article</div>
+            </div>
+          </div>
+          <div class="appearance-date">March 28, 2026</div>
+          <div class="appearance-title">How anti-war narratives can marginalise Iranian voices</div>
+          <div class="appearance-desc">Opinion piece examining how anti-war narratives can marginalise Iranian voices and obscure the lived realities of those opposing the regime.</div>
+          <span class="appearance-link">Read &#8599;</span>
+        </a>
+
+        <a class="appearance-card fade-up" href="https://www.youtube.com/watch?v=IVfqxftPjeQ&amp;t=344s" target="_blank" rel="noopener">
+          <div class="appearance-outlet">
+            <div class="outlet-icon">📺</div>
+            <div>
+              <div class="outlet-name">RTÉ Six One News</div>
+              <div class="outlet-format">Television Interview</div>
+            </div>
+          </div>
+          <div class="appearance-date">March 10, 2026</div>
+          <div class="appearance-title">The war in Iran &mdash; regional and humanitarian implications</div>
+          <div class="appearance-desc">Interview on Six One News discussing the war in Iran and its broader regional and humanitarian implications.</div>
+          <span class="appearance-link">Watch &#8599;</span>
+        </a>
+
+        <a class="appearance-card fade-up" href="https://www.irishexaminer.com/news/arid-41804213.html" target="_blank" rel="noopener">
+          <div class="appearance-outlet">
+            <div class="outlet-icon">📰</div>
+            <div>
+              <div class="outlet-name">The Irish Examiner</div>
+              <div class="outlet-format">News Feature</div>
+            </div>
+          </div>
+          <div class="appearance-date">04 March, 2026</div>
+          <div class="appearance-title">Iranian protests and state crackdown</div>
+          <div class="appearance-desc">Feature covering the Iranian protests and state crackdown, highlighting the demands of protesters and perspectives from the Iranian diaspora in Ireland.</div>
+          <span class="appearance-link">Read &#8599;</span>
+        </a>
+
+        <a class="appearance-card fade-up" href="https://euobserver.com/205064/irans-regime-collapse-what-next/" target="_blank" rel="noopener">
+          <div class="appearance-outlet">
+            <div class="outlet-icon">🌍</div>
+            <div>
+              <div class="outlet-name">EUobserver</div>
+              <div class="outlet-format">Opinion Article</div>
+            </div>
+          </div>
+          <div class="appearance-date">March 2, 2026</div>
+          <div class="appearance-title">Iran&rsquo;s regime collapse &mdash; what next?</div>
+          <div class="appearance-desc">Opinion piece arguing that Europe must move beyond passive anti-war rhetoric and actively support a democratic transition in Iran.</div>
+          <span class="appearance-link">Read &#8599;</span>
+        </a>
+
+        <a class="appearance-card fade-up" href="https://www.rte.ie/radio/radio1/clips/22588847/" target="_blank" rel="noopener">
+          <div class="appearance-outlet">
+            <div class="outlet-icon">🎙️</div>
+            <div>
+              <div class="outlet-name">RTÉ Radio 1</div>
+              <div class="outlet-format">Radio Interview &mdash; Today with David McCullagh</div>
+            </div>
+          </div>
+          <div class="appearance-date">March 2, 2026</div>
+          <div class="appearance-title">Escalating tensions &mdash; regime violence and political context</div>
+          <div class="appearance-desc">Interview reacting to escalating tensions around Iran, discussing the regime&rsquo;s violence and the broader political context following protests.</div>
+          <span class="appearance-link">Listen &#8599;</span>
+        </a>
+
+        <a class="appearance-card fade-up" href="https://abcnews.com/video/129219957/" target="_blank" rel="noopener">
+          <div class="appearance-outlet">
+            <div class="outlet-icon">📺</div>
+            <div>
+              <div class="outlet-name">ABC News</div>
+              <div class="outlet-format">Television Interview</div>
+            </div>
+          </div>
+          <div class="appearance-date">January 14, 2026</div>
+          <div class="appearance-title">Violent crackdown on protests &mdash; massacre and political demands</div>
+          <div class="appearance-desc">Interview discussing the Iranian regime&rsquo;s violent crackdown on protests, highlighting the massacre of protesters and their demands for fundamental political change.</div>
+          <span class="appearance-link">Watch &#8599;</span>
+        </a>
+
+      </div>
+
+      <div class="media-box" style="margin-top:3rem;">
+        <div>
+          <h3 data-en="Available for Expert Commentary" data-fa="آماده برای تحلیل کارشناسی">Available for Expert Commentary</h3>
+          <div class="lang-en-block">
+            <p>IDDNI members are available to provide expert insights, commentary, and analysis on issues related to the Iranian diaspora, democratic aspirations in Iran, and human rights. We bring academic rigour and lived experience to every media engagement.</p>
+          </div>
+          <div class="lang-fa-block" dir="rtl" lang="fa">
+            <p>اعضای IDDNI برای ارائه دیدگاه‌های کارشناسی، تفسیر و تحلیل در مورد موضوعات مربوط به دیاسپورای ایرانی آماده همکاری با رسانه‌ها هستند.</p>
+          </div>
+          <a href="mailto:iraniandiaspora.ie@gmail.com" class="contact-email">iraniandiaspora.ie@gmail.com</a>
+        </div>
+        <div style="text-align:center; font-size:4rem; opacity:.35;">&#128225;</div>
       </div>
     </section>
 
@@ -1071,31 +1287,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <div class="fancy-divider"></div>
-
-    <!-- ===== MEDIA ===== -->
-    <section id="media">
-      <div class="fade-up">
-        <div class="section-eyebrow" data-en="Press &amp; Media" data-fa="مطبوعات و رسانه">Press &amp; Media</div>
-        <h2 class="section-title" data-en="Media <em>Engagement</em>" data-fa="حضور <em>رسانه‌ای</em>">
-          Media <em>Engagement</em>
-        </h2>
-      </div>
-      <div class="media-box">
-        <div>
-          <h3 data-en="Available for Expert Commentary" data-fa="آماده برای تحلیل کارشناسی">Available for Expert Commentary</h3>
-          <div class="lang-en-block">
-            <p>IDDNI members are available to provide expert insights, commentary, and analysis on issues related to the Iranian diaspora, democratic aspirations in Iran, and human rights. We bring academic rigour and lived experience to every media engagement.</p>
-          </div>
-          <div class="lang-fa-block" dir="rtl" lang="fa">
-            <p>اعضای IDDNI برای ارائه دیدگاه‌های کارشناسی، تفسیر و تحلیل در مورد موضوعات مربوط به دیاسپورای ایرانی، آرزوهای دموکراتیک در ایران و حقوق بشر آماده همکاری با رسانه‌ها هستند.</p>
-          </div>
-          <a href="mailto:iraniandiaspora.ie@gmail.com" class="contact-email">iraniandiaspora.ie@gmail.com</a>
-        </div>
-        <div style="text-align:center; font-size:4rem; opacity:.35;">&#128225;</div>
       </div>
     </section>
 
