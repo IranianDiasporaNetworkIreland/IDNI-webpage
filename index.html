@@ -1,6 +1,5 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,22 +7,28 @@
   <link rel="icon" href="Untitled%20project%20(2).png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --navy:        #080720;
-      --accent:      #c9a84c;
-      --accent-dim:  #a07830;
-      --rose:        #d45f7a;
-      --text:        #dcdcf0;
-      --text-muted:  #9898b8;
-      --glass:       rgba(255,255,255,0.04);
-      --glass-b:     rgba(255,255,255,0.09);
-      --radius:      14px;
-      --tr:          0.35s cubic-bezier(0.4,0,0.2,1);
+      --navy:       #05051a;
+      --navy-mid:   #0b0b28;
+      --gold:       #e8b84b;
+      --gold-dim:   #b08830;
+      --gold-glow:  rgba(232,184,75,.18);
+      --green:      #169b62;
+      --green-dim:  rgba(22,155,98,.12);
+      --rose:       #d45f7a;
+      --text:       #eaeaf8;
+      --text-muted: #8888aa;
+      --glass:      rgba(255,255,255,0.04);
+      --glass-b:    rgba(255,255,255,0.09);
+      --radius:     14px;
+      --radius-lg:  22px;
+      --tr:         0.3s cubic-bezier(0.4,0,0.2,1);
     }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 78px; }
     body {
       background-color: var(--navy);
       color: var(--text);
@@ -37,6 +42,17 @@
       text-align: right;
     }
 
+    /* ---- IDENTITY BAR ---- */
+    .top-bar {
+      height: 4px;
+      background: linear-gradient(90deg,
+        #169b62 0%, #169b62 25%,
+        #ffffff 25%, #ffffff 33%,
+        #e8b84b 33%, #e8b84b 67%,
+        #ffffff 67%, #ffffff 75%,
+        #cc2929 75%, #cc2929 100%);
+    }
+
     /* ---- BG ---- */
     .bg-canvas {
       position: fixed; inset: 0; z-index: 0;
@@ -46,14 +62,9 @@
       content: '';
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(201,168,76,.07) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(212,95,122,.06) 0%, transparent 55%),
-        radial-gradient(ellipse 100% 80% at 50% 0%,  rgba(139,139,189,.05) 0%, transparent 50%);
-      animation: bgPulse 12s ease-in-out infinite alternate;
-    }
-    @keyframes bgPulse {
-      0%   { opacity: .6; transform: scale(1); }
-      100% { opacity: 1;  transform: scale(1.05); }
+        radial-gradient(ellipse 70% 55% at 15% 25%, rgba(232,184,75,.055) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 85% 75%, rgba(22,155,98,.05) 0%, transparent 55%),
+        radial-gradient(ellipse 90% 70% at 50% 0%,  rgba(100,100,180,.04) 0%, transparent 50%);
     }
     .star {
       position: absolute; border-radius: 50%;
@@ -61,325 +72,272 @@
       animation: twinkle var(--d, 4s) ease-in-out infinite alternate;
     }
     @keyframes twinkle {
-      0%   { opacity: .1; transform: scale(.8); }
-      100% { opacity: .7; transform: scale(1.2); }
+      0%   { opacity: .07; transform: scale(.8); }
+      100% { opacity: .5;  transform: scale(1.2); }
     }
     .content-wrap { position: relative; z-index: 1; }
 
     /* ---- HEADER ---- */
     header {
       position: sticky; top: 0; z-index: 1000;
-      background: rgba(8,7,32,.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(5,5,26,.93);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--glass-b);
     }
     .header-inner {
-      max-width: 1280px; margin: 0 auto;
+      max-width: 1320px; margin: 0 auto;
       display: flex; align-items: center;
       justify-content: space-between;
-      padding: 0 2rem; height: 70px; gap: 1.5rem;
+      padding: 0 2rem; height: 72px; gap: 1.5rem;
     }
     .logo-wrap {
       display: flex; align-items: center;
-      gap: .9rem; text-decoration: none; flex-shrink: 0;
+      gap: .85rem; text-decoration: none; flex-shrink: 0;
     }
-    .logo-wrap img { height: 42px; width: auto; object-fit: contain; }
+    .logo-wrap img { height: 40px; width: auto; object-fit: contain; }
     .logo-text {
       font-family: 'Outfit', sans-serif;
-      font-weight: 800; font-size: 1.2rem;
-      color: #fff; letter-spacing: -.5px;
+      font-weight: 900; font-size: 1.22rem;
+      color: #fff; letter-spacing: -.3px;
     }
-    .logo-text span { color: var(--accent); }
+    .logo-text span { color: var(--gold); }
 
-    nav.desktop-nav { display: flex; align-items: center; gap: .2rem; }
+    nav.desktop-nav { display: flex; align-items: center; gap: .1rem; }
     nav.desktop-nav a {
       color: var(--text-muted); text-decoration: none;
-      font-size: .88rem; font-weight: 500;
-      padding: .4rem .75rem; border-radius: 8px;
+      font-size: .875rem; font-weight: 500;
+      padding: .42rem .82rem; border-radius: 8px;
       transition: color var(--tr), background var(--tr);
       white-space: nowrap;
     }
-    nav.desktop-nav a:hover { color: #fff; background: rgba(255,255,255,.06); }
+    nav.desktop-nav a:hover { color: #fff; background: rgba(255,255,255,.07); }
 
-    .nav-right { display: flex; align-items: center; gap: .75rem; }
+    .nav-right { display: flex; align-items: center; gap: .7rem; }
     .lang-btn {
       background: none; border: 1px solid var(--glass-b);
       color: var(--text); font-family: inherit;
-      font-size: .85rem; padding: .38rem .85rem;
+      font-size: .84rem; padding: .38rem .9rem;
       border-radius: 8px; cursor: pointer;
       transition: all var(--tr); white-space: nowrap;
     }
-    .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .join-nav-btn {
+      background: linear-gradient(135deg, var(--green) 0%, #0d7a4c 100%);
+      color: #fff; text-decoration: none;
+      font-size: .84rem; font-weight: 700;
+      padding: .42rem 1.15rem; border-radius: 8px;
+      transition: all var(--tr); white-space: nowrap;
+      border: none; cursor: pointer; font-family: inherit;
+    }
+    .join-nav-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 18px rgba(22,155,98,.38); }
 
     .hamburger {
       display: none; flex-direction: column;
       gap: 5px; cursor: pointer; padding: 4px;
     }
     .hamburger span {
-      display: block; width: 24px; height: 2.5px;
+      display: block; width: 24px; height: 2px;
       background: var(--text); border-radius: 2px;
+      transition: background var(--tr);
     }
     .mobile-menu {
       display: none; flex-direction: column;
-      background: rgba(8,7,32,.97);
-      backdrop-filter: blur(20px);
-      padding: 1rem 2rem 1.5rem;
+      background: rgba(5,5,26,.98);
+      backdrop-filter: blur(24px);
+      padding: 1rem 1.5rem 1.5rem;
       border-top: 1px solid var(--glass-b);
     }
     .mobile-menu.show { display: flex; }
     .mobile-menu a, .mobile-menu button {
       color: var(--text); text-decoration: none;
       background: none; border: none;
-      font-family: inherit; font-size: 1rem;
-      padding: .75rem 0; cursor: pointer;
-      text-align: inherit;
       border-bottom: 1px solid var(--glass-b);
-      transition: color var(--tr);
+      font-family: inherit; font-size: 1rem;
+      padding: .82rem 0; cursor: pointer;
+      text-align: inherit; transition: color var(--tr);
     }
-    .mobile-menu a:last-child,
-    .mobile-menu button:last-child { border-bottom: none; }
-    .mobile-menu a:hover,
-    .mobile-menu button:hover { color: var(--accent); }
-    @media (max-width: 900px) {
+    .mobile-menu a:last-child, .mobile-menu button:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu button:hover { color: var(--gold); }
+    @media (max-width: 960px) {
       nav.desktop-nav { display: none; }
+      .join-nav-btn { display: none; }
       .hamburger { display: flex; }
+    }
+
+    /* ---- FIXED FLAGS ---- */
+    .header-flags {
+      position: fixed;
+      top: 18px; right: 1.5rem;
+      z-index: 1100;
+      pointer-events: none;
+    }
+    .header-flags img {
+      height: 40px; width: auto;
+      filter: drop-shadow(0 3px 12px rgba(232,184,75,.4));
+    }
+    @media (max-width: 960px) {
+      .header-flags img { height: 30px; }
+    }
+    @media (max-width: 480px) {
+      .header-flags { top: 14px; right: .9rem; }
+      .header-flags img { height: 24px; }
     }
 
     /* ---- HERO ---- */
     .hero {
-      min-height: calc(100vh - 70px);
-      display: grid;
-      grid-template-columns: 70px 1fr 1fr;
-      grid-template-rows: 1fr auto;
-      align-items: center;
-      padding: 4rem 4rem 3rem 0;
-      gap: 2rem 3.5rem;
-      position: relative; overflow: hidden;
-    }
-    .hero-stats-sidebar {
-      grid-column: 1; grid-row: 1;
-      align-self: stretch;
+      min-height: calc(100vh - 76px);
       display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      border-right: 1px solid rgba(255,255,255,.08);
-      position: relative; z-index: 1;
-      padding: 1rem 0;
-    }
-    .hstat {
-      display: flex; flex-direction: column;
-      align-items: center; text-align: center;
-      padding: 1.5rem .35rem;
-      width: 100%;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .hstat:last-child { border-bottom: none; }
-    .hstat strong {
-      display: block;
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.4rem; font-weight: 800;
-      background: linear-gradient(180deg, var(--accent) 0%, var(--rose) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1; margin-bottom: .55rem;
-    }
-    .hstat span {
-      display: block;
-      font-size: .58rem; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: .8px;
-      font-weight: 500; line-height: 1.3;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      transform: rotate(180deg);
-    }
-    .hero-content {
-      grid-column: 2; grid-row: 1;
-      position: relative; z-index: 1;
-    }
-    .hero-visual {
-      grid-column: 3; grid-row: 1;
-      display: flex; align-items: center;
       justify-content: center;
-      position: relative; z-index: 1;
-    }
-    .hero-logo-large {
-      display: block; width: 110px; height: auto;
-      margin-bottom: 2rem;
-      filter: drop-shadow(0 8px 28px rgba(201,168,76,.4));
+      padding: 5rem 4rem 4rem;
+      max-width: 1320px; margin: 0 auto;
+      position: relative;
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center;
-      gap: .5rem;
-      background: rgba(201,168,76,.12);
-      border: 1px solid rgba(201,168,76,.3);
-      color: var(--accent);
-      font-size: .78rem; font-weight: 600;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      padding: .38rem 1.1rem; border-radius: 100px;
-      margin-bottom: 1.5rem;
+      gap: .55rem;
+      background: rgba(232,184,75,.1);
+      border: 1px solid rgba(232,184,75,.28);
+      color: var(--gold);
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: .38rem 1.15rem; border-radius: 100px;
+      margin-bottom: 2rem; width: fit-content;
     }
     .hero-eyebrow::before {
       content: '';
-      width: 6px; height: 6px;
-      background: var(--accent); border-radius: 50%;
+      width: 7px; height: 7px;
+      background: var(--green); border-radius: 50%; flex-shrink: 0;
     }
     .hero h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(2rem, 3.8vw, 3.6rem);
-      font-weight: 800; line-height: 1.13;
-      letter-spacing: -1.5px; color: #fff;
-      margin-bottom: 1.5rem;
+      font-size: clamp(2.5rem, 5.8vw, 5.8rem);
+      font-weight: 900; line-height: 1.07;
+      letter-spacing: -2.5px; color: #fff;
+      margin-bottom: 1.7rem;
+      max-width: 960px;
     }
     .hero h1 em {
       font-style: normal;
-      background: linear-gradient(90deg, var(--accent) 0%, var(--rose) 100%);
+      background: linear-gradient(90deg, var(--gold) 0%, var(--rose) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .hero-sub {
-      max-width: 540px;
-      font-size: 1.05rem; color: var(--text-muted);
-      font-weight: 300; line-height: 1.85;
-      margin-bottom: 2.5rem;
-    }
-    .hero-flags-showcase {
-      width: 100%; max-width: 320px;
-      animation: floatFlags 3s ease-in-out infinite alternate;
-    }
-    .hero-flags-showcase img {
-      display: block; width: 100%; height: auto;
-      filter: drop-shadow(0 0 28px rgba(201,168,76,.45))
-              drop-shadow(0 12px 32px rgba(0,0,0,.5));
-    }
-    @keyframes floatFlags {
-      0%   { transform: translateY(0px) rotate(-1deg); }
-      100% { transform: translateY(-28px) rotate(1deg); }
+      font-size: 1.12rem; color: var(--text-muted);
+      font-weight: 300; line-height: 1.9;
+      margin-bottom: 2.8rem; max-width: 740px;
     }
     .hero-cta-row {
       display: flex; flex-wrap: wrap;
-      gap: 1rem; justify-content: flex-start;
+      gap: 1rem; align-items: center;
+      margin-bottom: 4rem;
     }
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
-      color: #fff; text-decoration: none;
-      font-weight: 600; font-size: .95rem;
-      padding: .78rem 1.8rem; border-radius: 10px;
-      border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+      color: #07071e; text-decoration: none;
+      font-weight: 700; font-size: 1rem;
+      padding: .88rem 2rem; border-radius: 10px;
+      border: none; cursor: pointer; font-family: inherit;
       transition: all var(--tr);
-      box-shadow: 0 4px 20px rgba(201,168,76,.3);
+      box-shadow: 0 4px 22px rgba(232,184,75,.28);
     }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(201,168,76,.45);
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(232,184,75,.45); }
+    .btn-green {
+      background: linear-gradient(135deg, var(--green) 0%, #0d7a4c 100%);
+      color: #fff; text-decoration: none;
+      font-weight: 700; font-size: 1rem;
+      padding: .88rem 2rem; border-radius: 10px;
+      border: none; cursor: pointer; font-family: inherit;
+      transition: all var(--tr);
+      box-shadow: 0 4px 22px rgba(22,155,98,.25);
     }
+    .btn-green:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(22,155,98,.42); }
     .btn-outline {
       background: transparent; color: var(--text);
       text-decoration: none; font-weight: 500;
-      font-size: .95rem; padding: .78rem 1.8rem;
+      font-size: 1rem; padding: .88rem 2rem;
       border-radius: 10px; border: 1px solid var(--glass-b);
-      cursor: pointer; transition: all var(--tr);
+      cursor: pointer; transition: all var(--tr); font-family: inherit;
     }
-    .btn-outline:hover {
-      border-color: rgba(255,255,255,.3);
-      color: #fff; background: rgba(255,255,255,.05);
-    }
-    .hero-scroll-hint {
-      grid-column: 2 / -1; grid-row: 2;
-      margin-top: 2rem;
-      display: flex; flex-direction: column;
-      align-items: center; gap: .5rem;
-      color: var(--text-muted);
-      font-size: .72rem; letter-spacing: 1px;
-      text-transform: uppercase; opacity: .55;
-      animation: bounce 2s ease-in-out infinite;
-    }
-    .hero-scroll-hint svg { width: 20px; height: 20px; }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(6px); }
-    }
-    .hero-ring {
-      position: absolute; border-radius: 50%;
-      border: 1px solid; pointer-events: none;
-    }
-    .hero-ring-1 {
-      width: 620px; height: 620px;
-      border-color: rgba(201,168,76,.07);
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      animation: rotRing 30s linear infinite;
-    }
-    .hero-ring-2 {
-      width: 950px; height: 950px;
-      border-color: rgba(139,139,189,.04);
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      animation: rotRing 45s linear infinite reverse;
-    }
-    @keyframes rotRing {
-      from { transform: translate(-50%,-50%) rotate(0deg); }
-      to   { transform: translate(-50%,-50%) rotate(360deg); }
-    }
+    .btn-outline:hover { border-color: rgba(255,255,255,.3); color: #fff; background: rgba(255,255,255,.05); }
 
-    /* ---- STATS ---- */
-    .stats-strip {
-      background: rgba(255,255,255,.025);
-      border-top: 1px solid var(--glass-b);
-      border-bottom: 1px solid var(--glass-b);
+    /* Hero stats strip */
+    .hero-stats-row {
+      display: flex; flex-wrap: wrap;
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius);
+      overflow: hidden; width: fit-content;
+      max-width: 100%; background: var(--glass);
+      backdrop-filter: blur(12px);
     }
-    .stats-inner {
-      max-width: 1280px; margin: 0 auto;
-      padding: 2.5rem 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-      gap: 2rem; text-align: center;
+    .hstat {
+      padding: 1.4rem 2.2rem;
+      border-right: 1px solid var(--glass-b);
+      min-width: 160px;
     }
-    .stat-item strong {
-      display: block; font-size: 2.2rem;
-      font-weight: 800; font-family: 'Outfit', sans-serif;
-      background: linear-gradient(90deg, var(--accent), var(--rose));
+    .hstat:last-child { border-right: none; }
+    .hstat strong {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.1rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--rose) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text; line-height: 1.1;
+      background-clip: text;
+      line-height: 1; margin-bottom: .4rem;
     }
-    .stat-item span {
-      font-size: .82rem; color: var(--text-muted);
+    .hstat span {
+      display: block;
+      font-size: .72rem; color: var(--text-muted);
       text-transform: uppercase; letter-spacing: 1px;
-      font-weight: 500; margin-top: .3rem; display: block;
+      font-weight: 500; line-height: 1.45;
+    }
+    @media (max-width: 640px) {
+      .hero-stats-row { flex-direction: column; width: 100%; }
+      .hstat { border-right: none; border-bottom: 1px solid var(--glass-b); min-width: 0; padding: 1.1rem 1.5rem; }
+      .hstat:last-child { border-bottom: none; }
+    }
+
+    /* ---- DIVIDER ---- */
+    .fancy-divider {
+      width: 100%; max-width: 1320px; margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--glass-b) 30%, var(--glass-b) 70%, transparent);
     }
 
     /* ---- SECTION BASE ---- */
-    section { max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; }
+    section { max-width: 1320px; margin: 0 auto; padding: 5.5rem 2rem; }
     .section-eyebrow {
       display: inline-flex; align-items: center;
-      gap: .5rem; color: var(--accent);
-      font-size: .73rem; font-weight: 600;
-      letter-spacing: 2px; text-transform: uppercase;
-      margin-bottom: .9rem;
+      gap: .55rem; color: var(--gold);
+      font-size: .73rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      margin-bottom: 1rem;
     }
     .section-eyebrow::before {
       content: '';
-      display: block; width: 22px; height: 2px;
-      background: var(--accent); border-radius: 2px;
+      display: block; width: 28px; height: 2px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      border-radius: 2px;
     }
     h2.section-title {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-size: clamp(1.9rem, 3.8vw, 3rem);
       font-weight: 800; letter-spacing: -1px;
-      color: #fff; line-height: 1.2; margin-bottom: 1rem;
+      color: #fff; line-height: 1.18; margin-bottom: 1rem;
     }
     h2.section-title em {
       font-style: normal;
-      background: linear-gradient(90deg, var(--accent), var(--rose));
+      background: linear-gradient(90deg, var(--gold), var(--rose));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .section-lead {
       font-size: 1.03rem; color: var(--text-muted);
-      max-width: 660px; line-height: 1.82;
+      max-width: 660px; line-height: 1.85;
       margin-bottom: 3rem;
     }
 
@@ -389,44 +347,50 @@
       grid-template-columns: 1fr 1fr;
       gap: 4rem; align-items: start;
     }
-    .about-pillars { display: grid; gap: 1.1rem; }
+    .about-pillars { display: grid; gap: 1rem; }
     .pillar-card {
       background: var(--glass);
       border: 1px solid var(--glass-b);
-      border-radius: var(--radius); padding: 1.4rem;
-      transition: border-color var(--tr), background var(--tr);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.4rem 1.4rem 1.6rem;
+      transition: border-color var(--tr), background var(--tr), transform var(--tr);
     }
     .pillar-card:hover {
-      border-color: rgba(201,168,76,.3);
-      background: rgba(201,168,76,.04);
+      border-color: rgba(232,184,75,.4);
+      border-left-color: var(--green);
+      background: rgba(22,155,98,.04);
+      transform: translateX(5px);
     }
-    .pillar-card .picon { font-size: 1.4rem; margin-bottom: .5rem; }
-    .pillar-card h4 {
-      font-size: .97rem; font-weight: 700;
-      color: #fff; margin-bottom: .35rem;
-    }
-    .pillar-card p {
-      font-size: .88rem; color: var(--text-muted); line-height: 1.6;
-    }
+    body.fa-mode .pillar-card { border-left: 1px solid var(--glass-b); border-right: 3px solid var(--gold); }
+    body.fa-mode .pillar-card:hover { border-right-color: var(--green); transform: translateX(-5px); }
+    .pillar-card .picon { font-size: 1.5rem; margin-bottom: .5rem; }
+    .pillar-card h4 { font-size: .97rem; font-weight: 700; color: #fff; margin-bottom: .3rem; }
+    .pillar-card p { font-size: .88rem; color: var(--text-muted); line-height: 1.65; }
+
     .about-prose h3 {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.25rem; font-weight: 700;
-      color: #fff; margin: 1.7rem 0 .5rem;
+      font-size: 1.2rem; font-weight: 700;
+      color: #fff; margin: 1.8rem 0 .55rem;
     }
     .about-prose h3:first-child { margin-top: 0; }
-    .about-prose p {
-      color: var(--text-muted); font-size: .95rem;
-      line-height: 1.85; margin-bottom: .75rem;
-    }
-    .about-prose ul {
-      margin: .5rem 0 1rem 1.4rem;
-      color: var(--text-muted); font-size: .93rem;
-    }
+    .about-prose p { color: var(--text-muted); font-size: .95rem; line-height: 1.88; margin-bottom: .75rem; }
+    .about-prose ul { margin: .5rem 0 1rem 1.4rem; color: var(--text-muted); font-size: .93rem; }
     .about-prose li { margin-bottom: .35rem; }
-    body.fa-mode .about-prose ul {
-      margin: .5rem 1.4rem 1rem 0;
-      padding-right: .5rem;
+    body.fa-mode .about-prose ul { margin: .5rem 1.4rem 1rem 0; }
+
+    .quote-block {
+      background: linear-gradient(135deg, rgba(22,155,98,.08) 0%, rgba(232,184,75,.05) 100%);
+      border: 1px solid rgba(22,155,98,.2);
+      border-left: 4px solid var(--green);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      margin: 1.8rem 0;
+      font-size: 1rem; color: var(--text);
+      font-style: italic; line-height: 1.82;
     }
+    body.fa-mode .quote-block { border-left: 1px solid rgba(22,155,98,.2); border-right: 4px solid var(--green); }
+
     @media (max-width: 860px) {
       #about .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     }
@@ -434,155 +398,95 @@
     /* ---- NEWS ---- */
     .news-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(340px,100%),1fr));
       gap: 1.5rem;
     }
     .news-card {
       background: var(--glass);
       border: 1px solid var(--glass-b);
-      border-radius: var(--radius); padding: 1.8rem;
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius); padding: 1.9rem;
       transition: all var(--tr);
     }
     .news-card:hover {
-      border-color: rgba(201,168,76,.25);
-      background: rgba(201,168,76,.03);
-      transform: translateY(-3px);
+      border-top-color: var(--green);
+      background: rgba(22,155,98,.03);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 44px rgba(0,0,0,.38);
     }
     .news-tag {
       display: inline-block;
-      background: rgba(212,95,122,.15);
-      border: 1px solid rgba(212,95,122,.3);
-      color: #e8889a; font-size: .7rem; font-weight: 600;
+      background: rgba(212,95,122,.12);
+      border: 1px solid rgba(212,95,122,.28);
+      color: #e8889a; font-size: .7rem; font-weight: 700;
       letter-spacing: 1.2px; text-transform: uppercase;
-      padding: .23rem .7rem; border-radius: 100px;
+      padding: .22rem .75rem; border-radius: 100px;
       margin-bottom: .9rem;
     }
     .news-date { font-size: .78rem; color: var(--text-muted); margin-bottom: .45rem; }
-    .news-card h3 {
-      font-size: 1.12rem; font-weight: 700;
-      color: #fff; margin-bottom: .75rem; line-height: 1.4;
-    }
-    .news-excerpt {
-      font-size: .9rem; color: var(--text-muted);
-      line-height: 1.72; margin-bottom: 1.1rem;
-    }
+    .news-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: .75rem; line-height: 1.42; }
+    .news-excerpt { font-size: .9rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.1rem; }
     .news-toggle-btn {
       display: inline-flex; align-items: center; gap: .4rem;
       font-family: inherit; font-size: .84rem; font-weight: 600;
-      color: var(--accent); background: none; border: none;
-      cursor: pointer; padding: 0;
-      transition: color var(--tr); letter-spacing: .3px;
+      color: var(--gold); background: none; border: none;
+      cursor: pointer; padding: 0; transition: color var(--tr);
     }
     .news-toggle-btn:hover { color: #fff; }
-    .news-toggle-btn .arrow {
-      display: inline-block;
-      transition: transform .3s ease; font-size: .72rem;
-    }
+    .news-toggle-btn .arrow { display: inline-block; transition: transform .3s ease; font-size: .72rem; }
     .news-toggle-btn.open .arrow { transform: rotate(180deg); }
-    .news-card-expanded {
-      max-height: 0; overflow: hidden;
-      transition: max-height .6s ease, opacity .4s ease;
-      opacity: 0;
-    }
+    .news-card-expanded { max-height: 0; overflow: hidden; transition: max-height .6s ease, opacity .4s ease; opacity: 0; }
     .news-card-expanded.open { max-height: 9000px; opacity: 1; }
-    .news-expanded-inner {
-      margin-top: 1.4rem; padding-top: 1.4rem;
-      border-top: 1px solid var(--glass-b);
-    }
-    .news-expanded-inner .byline {
-      font-size: .8rem; color: var(--text-muted);
-      font-style: italic; margin-bottom: 1.1rem;
-    }
-    .news-expanded-inner p {
-      font-size: .91rem; color: var(--text-muted);
-      line-height: 1.85; margin-bottom: .9rem;
-    }
-    .news-expanded-inner h4 {
-      font-size: 1.02rem; color: #fff; font-weight: 700;
-      margin: 1.4rem 0 .5rem;
-    }
-    .news-expanded-inner hr {
-      border: none;
-      border-top: 1px solid var(--glass-b);
-      margin: 1.4rem 0;
-    }
+    .news-expanded-inner { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid var(--glass-b); }
+    .news-expanded-inner .byline { font-size: .8rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.1rem; }
+    .news-expanded-inner p { font-size: .91rem; color: var(--text-muted); line-height: 1.88; margin-bottom: .9rem; }
+    .news-expanded-inner h4 { font-size: 1rem; color: #fff; font-weight: 700; margin: 1.4rem 0 .5rem; }
+    .news-expanded-inner hr { border: none; border-top: 1px solid var(--glass-b); margin: 1.4rem 0; }
 
     /* ---- TEAM ---- */
-    #team {
-      background: rgba(255,255,255,.015);
-      max-width: 100%; padding: 5rem 0;
-    }
-    #team .section-inner {
-      max-width: 1280px; margin: 0 auto; padding: 0 2rem;
-    }
+    #team { background: rgba(255,255,255,.015); max-width: 100%; padding: 5.5rem 0; }
+    #team .section-inner { max-width: 1320px; margin: 0 auto; padding: 0 2rem; }
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
-      gap: 1.5rem; margin-top: 2.5rem;
+      gap: 1.5rem; margin-top: 2.8rem;
     }
     .team-card {
       background: var(--glass);
       border: 1px solid var(--glass-b);
-      border-radius: var(--radius);
+      border-radius: var(--radius-lg);
       padding: 2rem 1.5rem 1.5rem;
       cursor: pointer;
-      transition: border-color var(--tr), background var(--tr),
-                  transform var(--tr), box-shadow var(--tr);
+      transition: border-color var(--tr), background var(--tr), transform var(--tr), box-shadow var(--tr);
     }
     .team-card:hover, .team-card.active {
-      border-color: rgba(201,168,76,.35);
-      background: rgba(201,168,76,.04);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 48px rgba(0,0,0,.45);
+      border-color: rgba(232,184,75,.38);
+      background: rgba(232,184,75,.04);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 56px rgba(0,0,0,.5);
     }
-    .team-card-header {
-      display: flex; flex-direction: column;
-      align-items: center; text-align: center;
-    }
+    .team-card-header { display: flex; flex-direction: column; align-items: center; text-align: center; }
     .team-avatar {
-      display: block;
-      width: 90px; height: 90px;
+      display: block; width: 96px; height: 96px;
       border-radius: 50%; object-fit: cover;
-      border: 3px solid rgba(201,168,76,.35);
-      margin-bottom: 1rem; flex-shrink: 0;
-      transition: border-color var(--tr);
+      border: 3px solid rgba(232,184,75,.3);
+      margin-bottom: 1.1rem; flex-shrink: 0;
+      transition: border-color var(--tr), box-shadow var(--tr);
       background: rgba(139,139,189,.2);
     }
-    .team-card:hover .team-avatar,
-    .team-card.active .team-avatar {
-      border-color: rgba(201,168,76,.75);
+    .team-card:hover .team-avatar, .team-card.active .team-avatar {
+      border-color: rgba(232,184,75,.8);
+      box-shadow: 0 0 24px rgba(232,184,75,.2);
     }
-    .team-card h3 {
-      font-size: 1.03rem; font-weight: 700;
-      color: #fff; margin-bottom: .3rem;
-    }
-    .team-card .role {
-      font-size: .74rem; color: var(--accent);
-      font-weight: 600; text-transform: uppercase;
-      letter-spacing: .8px; margin-bottom: .2rem;
-    }
-    .team-card .location {
-      font-size: .76rem; color: var(--text-muted);
-    }
-    .team-bio {
-      max-height: 0; overflow: hidden; opacity: 0;
-      transition: max-height .5s ease, opacity .4s ease;
-    }
-    .team-card:hover .team-bio,
-    .team-card.active .team-bio {
-      max-height: 1200px; opacity: 1;
-    }
-    .team-bio-inner {
-      padding-top: 1.1rem; margin-top: 1.1rem;
-      border-top: 1px solid var(--glass-b);
-    }
-    .team-bio-inner p {
-      font-size: .85rem; color: var(--text-muted);
-      line-height: 1.75; margin-bottom: .65rem;
-      text-align: left;
-    }
+    .team-card h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: .3rem; }
+    .team-card .role { font-size: .73rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: .2rem; }
+    .team-card .location { font-size: .76rem; color: var(--text-muted); }
+    .team-bio { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .5s ease, opacity .4s ease; }
+    .team-card:hover .team-bio, .team-card.active .team-bio { max-height: 1200px; opacity: 1; }
+    .team-bio-inner { padding-top: 1.1rem; margin-top: 1.1rem; border-top: 1px solid var(--glass-b); }
+    .team-bio-inner p { font-size: .85rem; color: var(--text-muted); line-height: 1.78; margin-bottom: .65rem; text-align: left; }
     body.fa-mode .team-bio-inner p { text-align: right; }
-    .team-bio-inner a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .team-bio-inner a { color: var(--gold); text-decoration: none; font-weight: 600; }
     .team-bio-inner a:hover { color: #fff; }
 
     /* ---- MISSION ---- */
@@ -590,35 +494,94 @@
     .mission-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px,1fr));
-      gap: 1.4rem; margin-top: 2.8rem;
+      gap: 1.4rem; margin-top: 3rem;
     }
     .mission-item {
       background: var(--glass);
       border: 1px solid var(--glass-b);
       border-radius: var(--radius);
-      padding: 1.9rem 1.4rem; text-align: center;
-      transition: border-color var(--tr), transform var(--tr);
+      padding: 2rem 1.5rem; text-align: center;
+      position: relative; overflow: hidden;
+      transition: border-color var(--tr), transform var(--tr), background var(--tr);
     }
+    .mission-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      opacity: 0; transition: opacity var(--tr);
+    }
+    .mission-item:hover::before { opacity: 1; }
     .mission-item:hover {
-      border-color: rgba(201,168,76,.3);
-      transform: translateY(-3px);
+      border-color: rgba(232,184,75,.22);
+      background: rgba(232,184,75,.03);
+      transform: translateY(-4px);
     }
-    .micon { font-size: 1.9rem; margin-bottom: .9rem; }
+    .micon { font-size: 2rem; margin-bottom: 1rem; }
     .mission-item h4 { font-size: .97rem; font-weight: 700; color: #fff; margin-bottom: .45rem; }
-    .mission-item p { font-size: .86rem; color: var(--text-muted); line-height: 1.63; }
+    .mission-item p { font-size: .86rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ---- JOIN SECTION ---- */
+    #join {
+      max-width: 100%;
+      background: linear-gradient(135deg,
+        rgba(22,155,98,.07) 0%,
+        rgba(232,184,75,.05) 60%,
+        rgba(212,95,122,.03) 100%);
+      border-top: 1px solid rgba(22,155,98,.18);
+      border-bottom: 1px solid rgba(22,155,98,.18);
+      padding: 5.5rem 0;
+    }
+    #join .join-inner { max-width: 1320px; margin: 0 auto; padding: 0 2rem; }
+    .join-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4.5rem; align-items: center;
+    }
+    .join-text .section-eyebrow { color: var(--green); }
+    .join-text .section-eyebrow::before { background: linear-gradient(90deg, var(--gold), var(--green)); }
+    .join-text h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 800; letter-spacing: -1px;
+      color: #fff; line-height: 1.18; margin-bottom: 1rem;
+    }
+    .join-text h2 em {
+      font-style: normal; color: var(--green);
+      -webkit-text-fill-color: var(--green);
+    }
+    .join-text p { color: var(--text-muted); font-size: 1rem; line-height: 1.85; margin-bottom: 2rem; }
+    .join-reasons { display: grid; gap: .9rem; }
+    .join-reason {
+      display: flex; align-items: flex-start; gap: .9rem;
+      background: var(--glass); border: 1px solid var(--glass-b);
+      border-radius: var(--radius); padding: 1.1rem 1.3rem;
+      transition: border-color var(--tr), background var(--tr), transform var(--tr);
+    }
+    .join-reason:hover {
+      border-color: rgba(22,155,98,.3);
+      background: rgba(22,155,98,.05);
+      transform: translateX(4px);
+    }
+    body.fa-mode .join-reason:hover { transform: translateX(-4px); }
+    .join-reason-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: .1rem; }
+    .join-reason h4 { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: .2rem; }
+    .join-reason p { font-size: .85rem; color: var(--text-muted); line-height: 1.6; }
+    @media (max-width: 840px) {
+      .join-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
 
     /* ---- MEDIA ---- */
     .media-box {
       background: linear-gradient(135deg,
-        rgba(201,168,76,.08) 0%, rgba(212,95,122,.06) 100%);
-      border: 1px solid rgba(201,168,76,.2);
-      border-radius: var(--radius); padding: 3rem;
+        rgba(232,184,75,.07) 0%, rgba(212,95,122,.05) 100%);
+      border: 1px solid rgba(232,184,75,.18);
+      border-radius: var(--radius-lg); padding: 3rem;
       display: grid; grid-template-columns: 1fr auto;
       gap: 2rem; align-items: center;
     }
-    .media-box h3 { font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: .75rem; }
-    .media-box p { font-size: .95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.1rem; }
-    .contact-email { font-size: .98rem; color: var(--accent); font-weight: 600; text-decoration: none; }
+    .media-box h3 { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: .75rem; }
+    .media-box p { font-size: .95rem; color: var(--text-muted); line-height: 1.78; margin-bottom: 1.1rem; }
+    .contact-email { font-size: .98rem; color: var(--gold); font-weight: 600; text-decoration: none; }
     .contact-email:hover { color: #fff; }
     @media (max-width: 640px) { .media-box { grid-template-columns: 1fr; padding: 2rem; } }
 
@@ -633,98 +596,95 @@
     .contact-item {
       background: var(--glass);
       border: 1px solid var(--glass-b);
-      border-radius: var(--radius); padding: 1.75rem;
+      border-radius: var(--radius); padding: 1.8rem;
       text-align: center; text-decoration: none;
       transition: all var(--tr);
     }
     .contact-item:hover {
-      border-color: rgba(201,168,76,.35);
-      background: rgba(201,168,76,.05);
+      border-color: rgba(232,184,75,.35);
+      background: rgba(232,184,75,.05);
       transform: translateY(-3px);
     }
-    .cicon { font-size: 1.7rem; margin-bottom: .75rem; }
-    .contact-item h4 {
-      font-size: .78rem; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: 1px;
-      font-weight: 600; margin-bottom: .35rem;
-    }
+    .cicon { font-size: 1.8rem; margin-bottom: .8rem; }
+    .contact-item h4 { font-size: .78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: .35rem; }
     .contact-item p { font-size: .88rem; color: var(--text); font-weight: 500; }
 
     /* ---- FOOTER ---- */
     footer {
       background: rgba(255,255,255,.02);
       border-top: 1px solid var(--glass-b);
-      padding: 2rem;
+      padding: 2.8rem 2rem;
     }
     .footer-inner {
-      max-width: 1280px; margin: 0 auto;
+      max-width: 1320px; margin: 0 auto;
       display: flex; flex-wrap: wrap;
-      align-items: center; justify-content: space-between; gap: 1rem;
+      align-items: center; justify-content: space-between; gap: 1.5rem;
     }
     .footer-logo { display: flex; align-items: center; gap: .65rem; }
-    .footer-logo img { height: 30px; width: auto; }
+    .footer-logo img { height: 32px; width: auto; }
     .footer-logo span { font-weight: 700; font-size: .92rem; color: var(--text-muted); }
-    footer p { font-size: .8rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .footer-links a { font-size: .82rem; color: var(--text-muted); text-decoration: none; transition: color var(--tr); }
+    .footer-links a:hover { color: var(--gold); }
+    footer .copyright { font-size: .8rem; color: var(--text-muted); }
 
     /* ---- LANGUAGE ---- */
     .lang-en-block { display: block; }
     .lang-fa-block { display: none; }
     body.fa-mode .lang-en-block { display: none; }
     body.fa-mode .lang-fa-block { display: block; direction: rtl; line-height: 1.9; }
-    body.fa-mode .lang-fa-block ul {
-      margin: .5rem 1.4rem 1rem 0;
-      padding-right: .5rem; padding-left: 0;
-    }
-
-    /* ---- DIVIDER ---- */
-    .fancy-divider {
-      width: 100%; max-width: 1280px; margin: 0 auto;
-      height: 1px;
-      background: linear-gradient(to right,
-        transparent, var(--glass-b) 30%, var(--glass-b) 70%, transparent);
-    }
+    body.fa-mode .lang-fa-block ul { margin: .5rem 1.4rem 1rem 0; padding-right: .5rem; padding-left: 0; }
 
     /* ---- SCROLL ANIM ---- */
     .fade-up {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity .65s ease, transform .65s ease;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ---- RESPONSIVE ---- */
     @media (max-width: 960px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 3.5rem 2rem 2.5rem;
-        text-align: center;
-        gap: 2rem;
-      }
-      .hero-stats-sidebar { display: none; }
-      .hero-content { grid-column: 1; order: 2; }
-      .hero-visual { grid-column: 1; order: 1; }
-      .hero-scroll-hint { grid-column: 1; margin-top: 1rem; }
-      .hero-logo-large { margin: 0 auto 1.5rem; }
-      .hero-flags-showcase { max-width: 260px; margin: 0 auto; }
+      .hero { padding: 4rem 2rem 3rem; }
+      .hero h1 { letter-spacing: -1.5px; }
       .hero-sub { max-width: 100%; }
-      .hero-cta-row { justify-content: center; }
     }
     @media (max-width: 768px) {
-      section { padding: 3.5rem 1.5rem; }
-      #team { padding: 3.5rem 0; }
+      section { padding: 3.8rem 1.5rem; }
+      #team { padding: 3.8rem 0; }
       #team .section-inner { padding: 0 1.5rem; }
       .team-grid { grid-template-columns: 1fr 1fr; }
+      #join { padding: 3.8rem 0; }
+      #join .join-inner { padding: 0 1.5rem; }
     }
     @media (max-width: 480px) {
       .hero { padding: 3rem 1.25rem 2rem; }
       .team-grid { grid-template-columns: 1fr; }
-      .hero h1 { letter-spacing: -.5px; }
-      .hero-flags-showcase { max-width: 280px; }
+      .hero h1 { letter-spacing: -.8px; }
+      .header-inner { padding: 0 1rem; gap: .5rem; }
+      .logo-text { font-size: 1rem; }
+      section { padding: 2.8rem 1.25rem; }
+      #team .section-inner, #join .join-inner { padding: 0 1.25rem; }
+      .media-box { padding: 1.5rem; }
+      .btn-primary, .btn-green, .btn-outline { padding: .78rem 1.4rem; font-size: .95rem; }
+    }
+    @media (max-width: 380px) {
+      .hero { padding: 2.5rem 1rem 1.75rem; }
+      section { padding: 2.5rem 1rem; }
+      #team .section-inner, #join .join-inner { padding: 0 1rem; }
+      .hero-cta-row { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-green, .btn-outline { text-align: center; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .header-inner { height: 62px; }
+      .logo-wrap img { height: 34px; }
     }
   </style>
 </head>
-
 <body>
+  <div class="top-bar"></div>
   <div class="bg-canvas" id="bgCanvas"></div>
+  <div class="header-flags">
+    <img src="flags.png" alt="Ireland and Iran">
+  </div>
   <div class="content-wrap">
 
     <!-- ===== HEADER ===== -->
@@ -744,6 +704,7 @@
         </nav>
         <div class="nav-right">
           <button class="lang-btn" onclick="toggleLanguage()" id="langToggleDesktop">فارسی</button>
+          <a href="#join" class="join-nav-btn" data-en="Reach Out" data-fa="تماس بگیرید">Reach Out</a>
           <div class="hamburger" onclick="toggleMenu()">
             <span></span><span></span><span></span>
           </div>
@@ -754,6 +715,7 @@
         <a href="#mission" onclick="closeMobile()" data-en="Mission"            data-fa="مأموریت">Mission</a>
         <a href="#news"    onclick="closeMobile()" data-en="News"               data-fa="اخبار">News</a>
         <a href="#team"    onclick="closeMobile()" data-en="Steering Committee" data-fa="کمیته راهبری">Steering Committee</a>
+        <a href="#join"    onclick="closeMobile()" data-en="Join Us"            data-fa="به ما بپیوندید">Join Us</a>
         <a href="#media"   onclick="closeMobile()" data-en="Media"              data-fa="رسانه">Media</a>
         <a href="#contact" onclick="closeMobile()" data-en="Contact"            data-fa="تماس">Contact</a>
         <button onclick="toggleLanguage(); closeMobile();" id="langToggleMobile">فارسی</button>
@@ -762,26 +724,7 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
-      <div class="hero-ring hero-ring-1"></div>
-      <div class="hero-ring hero-ring-2"></div>
-
-      <div class="hero-stats-sidebar">
-        <div class="hstat">
-          <strong data-en="46+" data-fa="+&#x06F4;&#x06F6;">46+</strong>
-          <span data-en="Years of Regime Oppression" data-fa="سال سرکوب رژیم">Years of Regime Oppression</span>
-        </div>
-        <div class="hstat">
-          <strong data-en="1" data-fa="&#x06F1;">1</strong>
-          <span data-en="Clear Democratic Demand" data-fa="خواسته دموکراتیک">Clear Democratic Demand</span>
-        </div>
-        <div class="hstat">
-          <strong data-en="100%" data-fa="&#x06F1;&#x06F0;&#x06F0;&#x066A;">100%</strong>
-          <span data-en="Non-Partisan &amp; Inclusive" data-fa="غیرحزبی و فراگیر">Non-Partisan &amp; Inclusive</span>
-        </div>
-      </div>
-
-      <div class="hero-content">
-        <img class="hero-logo-large" src="Untitled%20project%20(2).png" alt="IDDNI">
+      <div class="fade-up">
         <div class="hero-eyebrow"
           data-en="Galway &middot; Limerick &middot; Dublin &middot; Cork"
           data-fa="گالوی &middot; لیمریک &middot; دوبلین &middot; کورک">
@@ -797,26 +740,29 @@
           A female-led, multi-ethnic, non-partisan network bridging the voices of the Iranian people with Irish and European policymakers &mdash; championing freedom, dignity, and democratic change.
         </p>
         <div class="hero-cta-row">
-          <a href="#about"   class="btn-primary" data-en="Learn About Us" data-fa="درباره ما بدانید">Learn About Us</a>
-          <a href="#contact" class="btn-outline"  data-en="Get In Touch"   data-fa="تماس بگیرید">Get In Touch</a>
+          <a href="#join"    class="btn-green"   data-en="Reach Out" data-fa="تماس بگیرید">Reach Out</a>
+          <a href="#about"   class="btn-primary" data-en="Learn About Us"   data-fa="درباره ما بدانید">Learn About Us</a>
+          <a href="#contact" class="btn-outline"  data-en="Get In Touch"    data-fa="تماس بگیرید">Get In Touch</a>
         </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-flags-showcase">
-          <img src="flags.png" alt="Ireland and Iran united">
+        <div class="hero-stats-row">
+          <div class="hstat">
+            <strong data-en="46+" data-fa="+۴۶">46+</strong>
+            <span data-en="Years of Regime Oppression" data-fa="سال سرکوب رژیم">Years of Regime Oppression</span>
+          </div>
+          <div class="hstat" style="justify-content:center;">
+            <strong data-en="1" data-fa="۱" style="font-size:2.8rem;font-weight:900;letter-spacing:-1px;display:flex;align-items:center;justify-content:center;width:100%;">1</strong>
+            <span data-en="Clear Democratic Demand" data-fa="خواسته دموکراتیک">Clear Democratic Demand</span>
+          </div>
+          <div class="hstat">
+            <strong data-en="100%" data-fa="۱۰۰٪">100%</strong>
+            <span data-en="Non-Partisan &amp; Inclusive" data-fa="غیرحزبی و فراگیر">Non-Partisan &amp; Inclusive</span>
+          </div>
         </div>
-      </div>
-
-      <div class="hero-scroll-hint">
-        <span data-en="Scroll to explore" data-fa="پایین بروید">Scroll to explore</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
       </div>
     </section>
 
     <!-- ===== ABOUT ===== -->
+    <div class="fancy-divider"></div>
     <section id="about">
       <div class="fade-up">
         <div class="section-eyebrow" data-en="About Us" data-fa="درباره ما">About Us</div>
@@ -824,46 +770,44 @@
           Who we are &amp; <em>what we do</em>
         </h2>
       </div>
-
       <div class="about-layout">
         <div class="about-prose">
           <div class="lang-en-block">
             <p>We are the <strong>Iranian Democratic Diaspora Network in Ireland (IDDNI)</strong> &mdash; a multi-ethnic, non-partisan network of Iranians based primarily in Galway and Limerick, with members in Dublin and Cork. We bring together academics and professionals committed to supporting the Iranian people in their pursuit of a secular democratic future.</p>
             <p>Our network reflects a broad range of political perspectives, lived experiences, and connections to Iran. We are female-led, with women forming the majority of our steering committee, and we place particular emphasis on civil liberties and women's rights.</p>
-            <p>We are united by a shared objective: to ensure that the voices, realities, and democratic aspirations of people inside Iran are meaningfully represented in Ireland &mdash; in both policymaking and the media.</p>
+            <div class="quote-block">"We are united by a shared objective: to ensure that the voices, realities, and democratic aspirations of people inside Iran are meaningfully represented in Ireland &mdash; in both policymaking and the media."</div>
             <h3>Context</h3>
             <p>Iran is facing a deep and ongoing human rights crisis under an authoritarian regime that represses its own people. Women face systematic discrimination described by activists as <strong>gender apartheid</strong>.</p>
             <p>The current situation is particularly urgent. Following nationwide protests, reports indicate a large-scale crackdown, including the massacre of protesters on 8&ndash;9 January 2026, alongside ongoing detentions and escalating executions. Despite these conditions, Iranians have consistently expressed a clear collective demand for freedom, dignity, and a secular democratic system.</p>
           </div>
           <div class="lang-fa-block" dir="rtl" lang="fa">
-            <p>ما <strong>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI)</strong> هستیم &mdash; یک شبکه چندقومیتی، غیرحزبی و زن‌محور از ایرانیان مستقر در گالوی، لیمریک، دوبلین و کورک. ما دانشگاهیان و متخصصانی را گرد هم می‌آوریم که متعهد به حمایت از مردم ایران در مسیر دستیابی به آینده‌ای سکولار و دموکراتیک هستند.</p>
+            <p>ما <strong>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI)</strong> هستیم &mdash; یک شبکه چندقومیتی، غیرحزبی و زن‌محور از ایرانیان مستقر در گالوی، لیمریک، دوبلین و کورک.</p>
             <p>شبکه ما بازتاب‌دهنده طیف گسترده‌ای از دیدگاه‌ها، تجربه‌ها و پیشینه‌های موجود در میان ایرانیان خارج از کشور است. ما زن‌محور هستیم و بر آزادی‌های مدنی و حقوق زنان تاکید ویژه داریم.</p>
-            <p>ما متحد هستیم در یک هدف مشترک: اطمینان از اینکه صداها، واقعیت‌های زیسته و خواسته‌های دموکراتیک مردم داخل ایران به شکلی معنادار در ایرلند بازتاب یابد.</p>
+            <div class="quote-block">«ما متحد هستیم در یک هدف مشترک: اطمینان از اینکه صداها، واقعیت‌های زیسته و خواسته‌های دموکراتیک مردم داخل ایران به شکلی معنادار در ایرلند بازتاب یابد.»</div>
             <h3>زمینه و بستر</h3>
-            <p>ایران با یک بحران عمیق و مداوم حقوق بشر روبروست. زنان با تبعیض ساختاری مواجه‌اند که توسط فعالان به عنوان «آپارتاید جنسیتی» توصیف شده است. وضعیت کنونی به ویژه فوری است: کشتار معترضان در ژانویه ۲۰۲۶ و اعدام‌های مداوم زندانیان سیاسی همچنان ادامه دارد.</p>
+            <p>ایران با یک بحران عمیق و مداوم حقوق بشر روبروست. زنان با «آپارتاید جنسیتی» مواجه‌اند. کشتار معترضان در ژانویه ۲۰۲۶ و اعدام‌های مداوم زندانیان سیاسی همچنان ادامه دارد.</p>
           </div>
         </div>
-
-        <div class="about-pillars">
+        <div class="about-pillars fade-up">
           <div class="pillar-card">
             <div class="picon">🎯</div>
             <h4 data-en="Our Mission" data-fa="مأموریت ما">Our Mission</h4>
-            <p data-en="Support the Iranian people in their pursuit of a secular democratic future through informed advocacy." data-fa="حمایت از مردم ایران در مسیر دستیابی به آینده‌ای سکولار و دموکراتیک از طریق مناصره آگاهانه.">Support the Iranian people in their pursuit of a secular democratic future through informed advocacy.</p>
+            <p data-en="Support the Iranian people in their pursuit of a secular democratic future through informed advocacy." data-fa="حمایت از مردم ایران در مسیر دستیابی به آینده‌ای سکولار و دموکراتیک.">Support the Iranian people in their pursuit of a secular democratic future through informed advocacy.</p>
           </div>
           <div class="pillar-card">
             <div class="picon">🌍</div>
             <h4 data-en="Policy Bridge" data-fa="پل سیاستگذاری">Policy Bridge</h4>
-            <p data-en="Connecting lived Iranian experiences to Irish and European policymakers with constructive recommendations." data-fa="اتصال تجربیات زیسته ایرانیان به سیاستگذاران ایرلندی و اروپایی با توصیه‌های سازنده.">Connecting lived Iranian experiences to Irish and European policymakers with constructive recommendations.</p>
+            <p data-en="Connecting lived Iranian experiences to Irish and European policymakers with constructive recommendations." data-fa="اتصال تجربیات زیسته ایرانیان به سیاستگذاران ایرلندی و اروپایی.">Connecting lived Iranian experiences to Irish and European policymakers with constructive recommendations.</p>
           </div>
           <div class="pillar-card">
             <div class="picon">📣</div>
             <h4 data-en="Amplify Voices" data-fa="تقویت صداها">Amplify Voices</h4>
-            <p data-en="Ensuring the democratic aspirations of Iranians are heard in media, civil society, and public discourse." data-fa="اطمینان از اینکه خواسته‌های دموکراتیک ایرانیان در رسانه‌ها، جامعه مدنی و گفتمان عمومی شنیده می‌شود.">Ensuring the democratic aspirations of Iranians are heard in media, civil society, and public discourse.</p>
+            <p data-en="Ensuring the democratic aspirations of Iranians are heard in media, civil society, and public discourse." data-fa="اطمینان از اینکه خواسته‌های دموکراتیک ایرانیان شنیده می‌شود.">Ensuring the democratic aspirations of Iranians are heard in media, civil society, and public discourse.</p>
           </div>
           <div class="pillar-card">
             <div class="picon">⚖️</div>
             <h4 data-en="Human Rights" data-fa="حقوق بشر">Human Rights</h4>
-            <p data-en="Grounded in human rights and dignity &mdash; opposing gender apartheid and all forms of repression." data-fa="مبتنی بر حقوق بشر و کرامت انسانی &mdash; مخالف آپارتاید جنسیتی و هر شکلی از سرکوب.">Grounded in human rights and dignity &mdash; opposing gender apartheid and all forms of repression.</p>
+            <p data-en="Grounded in human rights and dignity &mdash; opposing gender apartheid and all forms of repression." data-fa="مبتنی بر حقوق بشر &mdash; مخالف آپارتاید جنسیتی و هر شکلی از سرکوب.">Grounded in human rights and dignity &mdash; opposing gender apartheid and all forms of repression.</p>
           </div>
         </div>
       </div>
@@ -885,35 +829,35 @@
         </p>
       </div>
       <div class="mission-grid">
-        <div class="mission-item">
+        <div class="mission-item fade-up">
           <div class="micon">✊</div>
           <h4 data-en="Democracy" data-fa="دموکراسی">Democracy</h4>
-          <p data-en="Championing a secular democratic future shaped by and for the Iranian people." data-fa="حمایت از آینده‌ای دموکراتیک و سکولار که توسط مردم ایران و برای آنها شکل می‌گیرد.">Championing a secular democratic future shaped by and for the Iranian people.</p>
+          <p data-en="Championing a secular democratic future shaped by and for the Iranian people." data-fa="حمایت از آینده‌ای دموکراتیک و سکولار که توسط مردم ایران شکل می‌گیرد.">Championing a secular democratic future shaped by and for the Iranian people.</p>
         </div>
-        <div class="mission-item">
+        <div class="mission-item fade-up">
           <div class="micon">♀️</div>
           <h4 data-en="Women's Rights" data-fa="حقوق زنان">Women's Rights</h4>
           <p data-en="A female-led network placing women's liberation and equality at the heart of our work." data-fa="یک شبکه زن‌محور که رهایی و برابری زنان را در مرکز فعالیت‌هایش قرار می‌دهد.">A female-led network placing women's liberation and equality at the heart of our work.</p>
         </div>
-        <div class="mission-item">
+        <div class="mission-item fade-up">
           <div class="micon">🤝</div>
           <h4 data-en="Inclusion" data-fa="فراگیری">Inclusion</h4>
           <p data-en="Embracing Iran's full diversity of ethnicities, backgrounds, and political perspectives." data-fa="پذیرش تنوع کامل ایران از نظر قومیت‌ها، پیشینه‌ها و دیدگاه‌های سیاسی.">Embracing Iran's full diversity of ethnicities, backgrounds, and political perspectives.</p>
         </div>
-        <div class="mission-item">
+        <div class="mission-item fade-up">
           <div class="micon">🔬</div>
           <h4 data-en="Evidence-Based" data-fa="مبتنی بر شواهد">Evidence-Based</h4>
-          <p data-en="Careful, rigorous engagement &mdash; analysis grounded in facts and lived experience." data-fa="تعامل دقیق و سخت‌گیرانه &mdash; تحلیل مبتنی بر واقعیت‌ها و تجربیات زیسته.">Careful, rigorous engagement &mdash; analysis grounded in facts and lived experience.</p>
+          <p data-en="Careful, rigorous engagement &mdash; analysis grounded in facts and lived experience." data-fa="تعامل دقیق &mdash; تحلیل مبتنی بر واقعیت‌ها و تجربیات زیسته.">Careful, rigorous engagement &mdash; analysis grounded in facts and lived experience.</p>
         </div>
-        <div class="mission-item">
+        <div class="mission-item fade-up">
           <div class="micon">🕊️</div>
           <h4 data-en="Non-Partisanship" data-fa="غیرحزبی بودن">Non-Partisanship</h4>
           <p data-en="Independent of all political parties &mdash; united solely around democratic values." data-fa="مستقل از همه احزاب &mdash; متحد صرفاً حول ارزش‌های دموکراتیک.">Independent of all political parties &mdash; united solely around democratic values.</p>
         </div>
-        <div class="mission-item">
+        <div class="mission-item fade-up">
           <div class="micon">🌐</div>
           <h4 data-en="Global Engagement" data-fa="تعامل جهانی">Global Engagement</h4>
-          <p data-en="Building coalitions with Irish, European, and international actors aligned with our values." data-fa="ساختن ائتلاف با کنشگران ایرلندی، اروپایی و بین‌المللی همسو با ارزش‌های ما.">Building coalitions with Irish, European, and international actors aligned with our values.</p>
+          <p data-en="Building coalitions with Irish, European, and international actors aligned with our values." data-fa="ساختن ائتلاف با کنشگران ایرلندی، اروپایی و بین‌المللی.">Building coalitions with Irish, European, and international actors aligned with our values.</p>
         </div>
       </div>
     </section>
@@ -928,9 +872,8 @@
           News &amp; <em>Press</em>
         </h2>
       </div>
-
       <div class="news-grid">
-        <div class="news-card">
+        <div class="news-card fade-up">
           <span class="news-tag" data-en="Press Release" data-fa="بیانیه مطبوعاتی">Press Release</span>
           <p class="news-date" data-en="14 April, 2026 &mdash; IDDNI" data-fa="۱۴ آوریل ۲۰۲۶ &mdash; IDDNI">14 April, 2026 &mdash; IDDNI</p>
           <h3 data-en="Iran's People Are Being Erased from Their Own Future &mdash; Europe Cannot Stay Silent"
@@ -938,13 +881,11 @@
             Iran's People Are Being Erased from Their Own Future &mdash; Europe Cannot Stay Silent
           </h3>
           <p class="news-excerpt lang-en-block">As ceasefire talks involving Iran continue behind closed doors, the Iranian people remain absent from the table where their future is being decided. IDDNI warns that international diplomacy is repeating a dangerous pattern.</p>
-          <p class="news-excerpt lang-fa-block" dir="rtl" lang="fa">در حالی که مذاکرات آتش‌بس با ایران پشت درهای بسته ادامه دارد، مردم ایران از میزی که آینده‌شان در آن تعیین می‌شود غایب‌اند. IDDNI هشدار می‌دهد که دیپلماسی بین‌المللی الگویی خطرناک را تکرار می‌کند.</p>
-
+          <p class="news-excerpt lang-fa-block" dir="rtl" lang="fa">در حالی که مذاکرات آتش‌بس با ایران پشت درهای بسته ادامه دارد، مردم ایران از میزی که آینده‌شان در آن تعیین می‌شود غایب‌اند.</p>
           <button class="news-toggle-btn" id="pressRelease1Btn" onclick="toggleNewsCard('pressRelease1','pressRelease1Btn')">
             <span class="btn-label" data-en="Read Full Statement" data-fa="متن کامل را بخوانید">Read Full Statement</span>
             <span class="arrow">&#9660;</span>
           </button>
-
           <div class="news-card-expanded" id="pressRelease1">
             <div class="news-expanded-inner">
               <div class="lang-en-block">
@@ -956,20 +897,20 @@
                 <p>The United Nations Fact Finding Mission has found that the Islamic Republic committed crimes against humanity during the 2022 Woman, Life, Freedom protests. Just three months ago, large-scale killings of protesters once again underscored the scale of state violence. Several human rights organisations, including Amnesty International, have described the January crackdown as a massacre of civilians. At least 14 political prisoners have been executed since the beginning of the war, and thousands more remain detained.</p>
                 <p>Despite this, current ceasefire proposals make no meaningful reference to human rights, the protection of Iranian lives, or their democratic aspirations. When international negotiations focus exclusively on state actors while excluding civil society, they risk reinforcing the very structures that produced instability in the first place.</p>
                 <p>IDDNI is calling on Irish and European policymakers to adopt a simple but essential principle: no sustainable diplomatic engagement with Iran can exclude the Iranian people themselves. This means embedding human rights monitoring, civil society consultation, and diaspora representation into any framework of engagement.</p>
-                <p>Silence, in this context, is not neutrality. It is a political choice &mdash; one that determines whose voices count, and whose are erased. If Europe is serious about long-term stability in the region, it must begin by ensuring that the Iranian people are no longer invisible in the negotiations that shape their future.</p>
+                <p>Silence, in this context, is not neutrality. It is a political choice &mdash; one that determines whose voices count, and whose are erased.</p>
                 <hr>
                 <h4>About IDDNI</h4>
-                <p>The Iranian Democratic Diaspora Network in Ireland (IDDNI) is a multi-ethnic, non-partisan, female-led network of Iranians based primarily in Galway and Limerick, with members in Dublin and Cork. The network was established to fill a critical gap in meaningful, informed engagement on Iran in Ireland and across Europe.</p>
+                <p>The Iranian Democratic Diaspora Network in Ireland (IDDNI) is a multi-ethnic, non-partisan, female-led network of Iranians based primarily in Galway and Limerick, with members in Dublin and Cork.</p>
               </div>
               <div class="lang-fa-block" dir="rtl" lang="fa">
                 <p class="byline">توسط شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) &mdash; ۱۴ آوریل ۲۰۲۶</p>
-                <p>در حالی که مذاکرات آتش‌بس و گفت‌وگوهای دیپلماتیک مربوط به ایران پشت درهای بسته ادامه دارد، یک حقیقت اساسی نادیده گرفته می‌شود: مردم ایران در میزی که آینده‌شان در آن تعیین می‌شود، حضور ندارند.</p>
+                <p>در حالی که مذاکرات آتش‌بس مربوط به ایران پشت درهای بسته ادامه دارد، یک حقیقت اساسی نادیده گرفته می‌شود: مردم ایران در میزی که آینده‌شان در آن تعیین می‌شود، حضور ندارند.</p>
                 <p>IDDNI هشدار می‌دهد که دیپلماسی بین‌المللی بار دیگر در حال تکرار الگویی آشنا و خطرناک است: تعامل با قدرت در حالی که مردمی که بر آنها حکومت می‌شود، کنار گذاشته می‌شوند.</p>
-                <p>بیش از چهار دهه است که ایرانیان تحت نظامی زندگی می‌کنند که آزادی‌های بنیادین را به شدت محدود می‌کند. زنان با «آپارتاید جنسیتی» مواجه‌اند. از آغاز جنگ دست‌کم ۱۴ زندانی سیاسی اعدام شده‌اند و هزاران نفر دیگر در بازداشت به سر می‌برند.</p>
-                <p>IDDNI از سیاستگذاران ایرلندی و اروپایی می‌خواهد که یک اصل ساده اما حیاتی را بپذیرند: هیچ تعامل دیپلماتیک پایداری با ایران نمی‌تواند مردم ایران را نادیده بگیرد. سکوت، در این زمینه، بی‌طرفی نیست. سکوت یک انتخاب سیاسی است.</p>
+                <p>بیش از چهار دهه است که ایرانیان تحت نظامی زندگی می‌کنند که آزادی‌های بنیادین را به شدت محدود می‌کند. زنان با «آپارتاید جنسیتی» مواجه‌اند. از آغاز جنگ دست‌کم ۱۴ زندانی سیاسی اعدام شده‌اند.</p>
+                <p>IDDNI از سیاستگذاران ایرلندی و اروپایی می‌خواهد: هیچ تعامل دیپلماتیک پایداری با ایران نمی‌تواند مردم ایران را نادیده بگیرد. سکوت یک انتخاب سیاسی است.</p>
                 <hr>
                 <h4>درباره IDDNI</h4>
-                <p>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) یک شبکه چندقومیتی، غیرحزبی و زن‌محور از ایرانیان است که عمدتاً در گالوی و لیمریک مستقر بوده و اعضایی در دوبلین و کورک دارد.</p>
+                <p>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) یک شبکه چندقومیتی، غیرحزبی و زن‌محور از ایرانیان است.</p>
               </div>
             </div>
           </div>
@@ -993,11 +934,9 @@
             Academics, professionals, and activists united by a shared commitment to a democratic and free Iran.
           </p>
         </div>
-
         <div class="team-grid">
 
-          <!-- Dr. Mahya Ostovar -->
-          <div class="team-card">
+          <div class="team-card fade-up">
             <div class="team-card-header">
               <img class="team-avatar"
                 src="Mahya.jpg"
@@ -1005,7 +944,6 @@
                 alt="Dr. Mahya Ostovar" loading="lazy">
               <h3 data-en="Dr. Mahya Ostovar" data-fa="دکتر محیا استوار">Dr. Mahya Ostovar</h3>
               <p class="role" data-en="Founder" data-fa="بنیانگذار">Founder</p>
-              <p class="location" data-en="&#128205; Galway" data-fa="&#128205; گالوی">&#128205; Galway</p>
             </div>
             <div class="team-bio">
               <div class="team-bio-inner">
@@ -1021,15 +959,11 @@
             </div>
           </div>
 
-          <!-- Dr. Nasim Soleimanian -->
-          <div class="team-card">
+          <div class="team-card fade-up">
             <div class="team-card-header">
-              <img class="team-avatar"
-                src="Nasim.jpg"
-                alt="Dr. Nasim Soleimanian" loading="lazy">
+              <img class="team-avatar" src="Nasim.jpg" alt="Dr. Nasim Soleimanian" loading="lazy">
               <h3 data-en="Dr. Nasim Soleimanian" data-fa="دکتر نسیم سلیمانیان">Dr. Nasim Soleimanian</h3>
               <p class="role" data-en="Co-Founder &amp; Coordinator" data-fa="هم‌بنیانگذار و هماهنگ‌کننده">Co-Founder &amp; Coordinator</p>
-              <p class="location" data-en="&#128205; Galway" data-fa="&#128205; گالوی">&#128205; Galway</p>
             </div>
             <div class="team-bio">
               <div class="team-bio-inner">
@@ -1038,61 +972,106 @@
                   <p><a href="https://www.linkedin.com/posts/dr-nasim-soleimanian-executive-mba-95b66327_today-as-a-multi-national-i-ask-my-western-activity-7416138265331822592-NbNx" target="_blank" rel="noopener">LinkedIn &#8599;</a></p>
                 </div>
                 <div class="lang-fa-block" dir="rtl" lang="fa">
-                  <p><strong>بیوگرافی:</strong> نسیم زنی ایرانی در تبعید، یک رهبر جهانی در حوزه تجارت، و حامی‌ای متعهد به تبدیل نوآوری‌های فناوری عمیق به تأثیرات واقعی در حوزه اقلیم است. او از دموکراسی سکولار حمایت می‌کند و ائتلاف‌هایی اخلاق‌محور ایجاد می‌کند.</p>
+                  <p><strong>بیوگرافی:</strong> نسیم زنی ایرانی در تبعید، یک رهبر جهانی در حوزه تجارت، و حامی‌ای متعهد است. او از دموکراسی سکولار حمایت می‌کند و ائتلاف‌هایی اخلاق‌محور ایجاد می‌کند.</p>
                   <p><a href="https://www.linkedin.com/posts/dr-nasim-soleimanian-executive-mba-95b66327_today-as-a-multi-national-i-ask-my-western-activity-7416138265331822592-NbNx" target="_blank" rel="noopener">لینکدین &#8599;</a></p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Dr. Mehdi Yekrangi -->
-          <div class="team-card">
+          <div class="team-card fade-up">
             <div class="team-card-header">
-              <img class="team-avatar"
-                src="mehdi.jpg"
-                alt="Dr. Mehdi Yekrangi" loading="lazy">
+              <img class="team-avatar" src="mehdi.jpg" alt="Dr. Mehdi Yekrangi" loading="lazy">
               <h3 data-en="Dr. Mehdi Yekrangi" data-fa="دکتر مهدی یکرنگی">Dr. Mehdi Yekrangi</h3>
               <p class="role" data-en="Tech Lead" data-fa="راهبر فنی">Tech Lead</p>
-              <p class="location" data-en="&#128205; Limerick" data-fa="&#128205; لیمریک">&#128205; Limerick</p>
             </div>
             <div class="team-bio">
               <div class="team-bio-inner">
                 <div class="lang-en-block">
-                  <p><strong>Bio:</strong> Mehdi is known for his clarity, conviction, and global perspective. Beyond his professional leadership, he is a committed voice on global issues, particularly the movement for freedom and democracy in Iran. He actively raises awareness and stands in solidarity with those advocating for human rights, equality, and women's rights. Inspired by the Lion and Sun &mdash; a symbol of identity, unity, and resilience.</p>
+                  <p><strong>Bio:</strong> Mehdi is known for his clarity, conviction, and global perspective. Beyond his professional leadership, he is a committed voice on global issues, particularly the movement for freedom and democracy in Iran. Inspired by the Lion and Sun &mdash; a symbol of identity, unity, and resilience.</p>
                 </div>
                 <div class="lang-fa-block" dir="rtl" lang="fa">
-                  <p><strong>بیوگرافی:</strong> مهدی به خاطر شفافیت، قاطعیت و دیدگاه جهانی‌اش شناخته می‌شود. فراتر از رهبری حرفه‌ای، او صدایی متعهد در مسائل جهانی است، به ویژه در جنبش آزادی و دموکراسی در ایران. با الهام از «شیر و خورشید» &mdash; نمادی از هویت، وحدت و تاب‌آوری.</p>
+                  <p><strong>بیوگرافی:</strong> مهدی به خاطر شفافیت، قاطعیت و دیدگاه جهانی‌اش شناخته می‌شود. با الهام از «شیر و خورشید» &mdash; نمادی از هویت، وحدت و تاب‌آوری.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Parand Shokrani -->
-          <div class="team-card">
+          <div class="team-card fade-up">
             <div class="team-card-header">
-              <img class="team-avatar"
-                src="photo_2026-04-07_22-45-05.jpg"
-                alt="Parand Shokrani" loading="lazy">
+              <img class="team-avatar" src="photo_2026-04-07_22-45-05.jpg" alt="Parand Shokrani" loading="lazy">
               <h3 data-en="Parand Shokrani" data-fa="پرند شکرانی">Parand Shokrani</h3>
               <p class="role" data-en="Content Creator" data-fa="تولیدکننده محتوا">Content Creator</p>
-              <p class="location" data-en="&#128205; Galway" data-fa="&#128205; گالوی">&#128205; Galway</p>
             </div>
             <div class="team-bio">
               <div class="team-bio-inner">
                 <div class="lang-en-block">
-                  <p><strong>Bio:</strong> Parand is a PhD student in biomedical engineering at the University of Galway. She left Iran three years ago in search of freedom, after living under years of oppression. Today, she uses her voice to speak out for her people in Iran, especially women who have endured decades of injustice &mdash; because every woman deserves the right to live freely, choose her own path, and be heard without fear.</p>
+                  <p><strong>Bio:</strong> Parand is a PhD student in biomedical engineering at the University of Galway. She left Iran three years ago in search of freedom. Today, she uses her voice to speak out for her people in Iran, especially women who have endured decades of injustice &mdash; because every woman deserves the right to live freely, choose her own path, and be heard without fear.</p>
                   <p><a href="https://www.linkedin.com/in/parand-shokrani" target="_blank" rel="noopener">LinkedIn &#8599;</a></p>
                 </div>
                 <div class="lang-fa-block" dir="rtl" lang="fa">
-                  <p><strong>بیوگرافی:</strong> پرند دانشجوی دکتری مهندسی پزشکی در دانشگاه گالوی است. او سه سال پیش در جستجوی آزادی، پس از سال‌ها زندگی زیر سایه سرکوب، ایران را ترک کرد. امروز می‌خواهد از صدای خود برای دفاع از مردم ایران، به ویژه زنان، استفاده کند.</p>
+                  <p><strong>بیوگرافی:</strong> پرند دانشجوی دکتری مهندسی پزشکی در دانشگاه گالوی است. او سه سال پیش در جستجوی آزادی ایران را ترک کرد. امروز از صدای خود برای دفاع از مردم ایران، به ویژه زنان، استفاده می‌کند.</p>
                   <p><a href="https://www.linkedin.com/in/parand-shokrani" target="_blank" rel="noopener">لینکدین &#8599;</a></p>
                 </div>
               </div>
             </div>
           </div>
 
-        </div><!-- .team-grid -->
-      </div><!-- .section-inner -->
+        </div>
+      </div>
+    </section>
+
+    <div class="fancy-divider"></div>
+
+    <!-- ===== JOIN / GET INVOLVED ===== -->
+    <section id="join">
+      <div class="join-inner">
+        <div class="join-layout">
+          <div class="join-text fade-up">
+            <div class="section-eyebrow" data-en="Get Involved" data-fa="مشارکت کنید">Get Involved</div>
+            <h2>
+              <span data-en="Join the" data-fa="به">Join the</span>
+              <em data-en=" Network" data-fa=" شبکه"> Network</em>
+            </h2>
+            <p data-en="If you are an Iranian living in Ireland who shares our values of democracy, human rights, and inclusivity — we want to hear from you. Your voice and experience are exactly what this network is built on."
+               data-fa="اگر ایرانی هستید که در ایرلند زندگی می‌کنید و ارزش‌های دموکراسی، حقوق بشر و فراگیری را با ما مشترک دارید — مشتاق شنیدن صدای شما هستیم. صدا و تجربه شما پایه این شبکه است.">
+              If you are an Iranian living in Ireland who shares our values of democracy, human rights, and inclusivity — we want to hear from you. Your voice and experience are exactly what this network is built on.
+            </p>
+            <a href="mailto:iraniandiaspora.ie@gmail.com?subject=Join%20IDDNI" class="btn-green"
+               data-en="Reach Out" data-fa="تماس بگیرید">Reach Out</a>
+          </div>
+          <div class="join-reasons fade-up">
+            <div class="join-reason">
+              <div class="join-reason-icon">🗣️</div>
+              <div>
+                <h4 data-en="Make Your Voice Heard" data-fa="صدای خود را بشنوانید">Make Your Voice Heard</h4>
+                <p data-en="Represent Iranian perspectives directly in Irish and European policy discussions." data-fa="دیدگاه‌های ایرانیان را مستقیماً در مباحث سیاستگذاری ایرلند و اروپا نمایندگی کنید.">Represent Iranian perspectives directly in Irish and European policy discussions.</p>
+              </div>
+            </div>
+            <div class="join-reason">
+              <div class="join-reason-icon">🤝</div>
+              <div>
+                <h4 data-en="Build Solidarity" data-fa="همبستگی بسازید">Build Solidarity</h4>
+                <p data-en="Connect with a growing community of Iranians and allies across Ireland committed to change." data-fa="با جامعه‌ای رو به رشد از ایرانیان و حامیانشان در سراسر ایرلند آشنا شوید.">Connect with a growing community of Iranians and allies across Ireland committed to change.</p>
+              </div>
+            </div>
+            <div class="join-reason">
+              <div class="join-reason-icon">📢</div>
+              <div>
+                <h4 data-en="Amplify Iran's Story" data-fa="داستان ایران را بازگو کنید">Amplify Iran's Story</h4>
+                <p data-en="Help shape media narratives and public understanding of the Iranian people's democratic struggle." data-fa="در شکل‌دادن به روایت‌های رسانه‌ای درباره مبارزه دموکراتیک مردم ایران سهیم شوید.">Help shape media narratives and public understanding of the Iranian people's democratic struggle.</p>
+              </div>
+            </div>
+            <div class="join-reason">
+              <div class="join-reason-icon">🌱</div>
+              <div>
+                <h4 data-en="Open to All Iranians" data-fa="باز برای همه ایرانیان">Open to All Iranians</h4>
+                <p data-en="We welcome all Iranians regardless of political background — united only by shared democratic values." data-fa="از همه ایرانیان صرف‌نظر از پیشینه سیاسی استقبال می‌کنیم — متحد حول ارزش‌های دموکراتیک مشترک.">We welcome all Iranians regardless of political background — united only by shared democratic values.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div class="fancy-divider"></div>
@@ -1112,11 +1091,11 @@
             <p>IDDNI members are available to provide expert insights, commentary, and analysis on issues related to the Iranian diaspora, democratic aspirations in Iran, and human rights. We bring academic rigour and lived experience to every media engagement.</p>
           </div>
           <div class="lang-fa-block" dir="rtl" lang="fa">
-            <p>اعضای IDDNI برای ارائه دیدگاه‌های کارشناسی، تفسیر و تحلیل در مورد موضوعات مربوط به دیاسپورای ایرانی، آرزوهای دموکراتیک در ایران و حقوق بشر از طریق رسانه‌های مختلف آماده همکاری هستند.</p>
+            <p>اعضای IDDNI برای ارائه دیدگاه‌های کارشناسی، تفسیر و تحلیل در مورد موضوعات مربوط به دیاسپورای ایرانی، آرزوهای دموکراتیک در ایران و حقوق بشر آماده همکاری با رسانه‌ها هستند.</p>
           </div>
           <a href="mailto:iraniandiaspora.ie@gmail.com" class="contact-email">iraniandiaspora.ie@gmail.com</a>
         </div>
-        <div style="text-align:center; font-size:4rem; opacity:.5;">&#128225;</div>
+        <div style="text-align:center; font-size:4rem; opacity:.35;">&#128225;</div>
       </div>
     </section>
 
@@ -1156,8 +1135,19 @@
           <img src="Untitled%20project%20(2).png" alt="IDDNI">
           <span>IDDNI</span>
         </div>
-        <p data-en="&copy; 2026 IDDNI. All rights reserved." data-fa="&copy; ۲۰۲۶ IDDNI. تمامی حقوق محفوظ است.">&copy; 2026 IDDNI. All rights reserved.</p>
-        <p data-en="Iranian Democratic Diaspora Network in Ireland" data-fa="شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند">Iranian Democratic Diaspora Network in Ireland</p>
+        <div class="footer-links">
+          <a href="#about"   data-en="About"   data-fa="درباره">About</a>
+          <a href="#mission" data-en="Mission" data-fa="مأموریت">Mission</a>
+          <a href="#news"    data-en="News"    data-fa="اخبار">News</a>
+          <a href="#team"    data-en="Team"    data-fa="تیم">Team</a>
+          <a href="#join"    data-en="Join Us" data-fa="به ما بپیوندید">Join Us</a>
+          <a href="#contact" data-en="Contact" data-fa="تماس">Contact</a>
+        </div>
+        <p class="copyright"
+          data-en="&copy; 2026 IDDNI &mdash; Iranian Democratic Diaspora Network in Ireland"
+          data-fa="&copy; ۲۰۲۶ IDDNI &mdash; شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند">
+          &copy; 2026 IDDNI &mdash; Iranian Democratic Diaspora Network in Ireland
+        </p>
       </div>
     </footer>
 
@@ -1167,10 +1157,10 @@
     /* ---- STARS ---- */
     (function () {
       var c = document.getElementById('bgCanvas');
-      for (var i = 0; i < 80; i++) {
+      for (var i = 0; i < 70; i++) {
         var s = document.createElement('div');
         s.className = 'star';
-        var sz = Math.random() * 2.5 + 0.5;
+        var sz = Math.random() * 2.2 + 0.4;
         s.style.cssText =
           'width:' + sz + 'px;height:' + sz + 'px;' +
           'top:' + (Math.random() * 100) + '%;' +
@@ -1271,12 +1261,9 @@
         }, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
         document.querySelectorAll('.fade-up').forEach(function (el) { obs.observe(el); });
       } else {
-        document.querySelectorAll('.fade-up').forEach(function (el) {
-          el.classList.add('visible');
-        });
+        document.querySelectorAll('.fade-up').forEach(function (el) { el.classList.add('visible'); });
       }
     });
   </script>
 </body>
 </html>
-
