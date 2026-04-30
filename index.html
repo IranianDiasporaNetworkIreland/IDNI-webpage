@@ -454,48 +454,47 @@
     /* ---- TEAM ---- */
     #team { background: rgba(255,255,255,.015); max-width: 100%; padding: 5.5rem 0; }
     #team .section-inner { max-width: 1320px; margin: 0 auto; padding: 0 2rem; }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
-      gap: 1.5rem; margin-top: 2.8rem;
-    }
-    .team-card {
+    .committee-block {
       background: var(--glass);
       border: 1px solid var(--glass-b);
       border-radius: var(--radius-lg);
-      padding: 2rem 1.5rem 1.5rem;
-      cursor: pointer;
-      transition: border-color var(--tr), background var(--tr), transform var(--tr), box-shadow var(--tr);
+      padding: 3rem 3.5rem;
+      margin-top: 2.8rem;
     }
-    .team-card:hover, .team-card.active {
-      border-color: rgba(232,184,75,.38);
-      background: rgba(232,184,75,.04);
-      transform: translateY(-5px);
-      box-shadow: 0 24px 56px rgba(0,0,0,.5);
+    .committee-intro {
+      font-size: 1.08rem; line-height: 1.85;
+      color: var(--text); margin-bottom: 2.8rem;
+      max-width: 860px;
     }
-    .team-card-header { display: flex; flex-direction: column; align-items: center; text-align: center; }
-    .team-avatar {
-      display: block; width: 96px; height: 96px;
-      border-radius: 50%; object-fit: cover;
-      border: 3px solid rgba(232,184,75,.3);
-      margin-bottom: 1.1rem; flex-shrink: 0;
-      transition: border-color var(--tr), box-shadow var(--tr);
-      background: rgba(139,139,189,.2);
+    .committee-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 1.4rem;
     }
-    .team-card:hover .team-avatar, .team-card.active .team-avatar {
-      border-color: rgba(232,184,75,.8);
-      box-shadow: 0 0 24px rgba(232,184,75,.2);
+    .committee-pillar {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--glass-b);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.5rem;
+      transition: border-color var(--tr), background var(--tr);
     }
-    .team-card h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: .3rem; }
-    .team-card .role { font-size: .73rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: .2rem; }
-    .team-card .location { font-size: .76rem; color: var(--text-muted); }
-    .team-bio { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .5s ease, opacity .4s ease; }
-    .team-card:hover .team-bio, .team-card.active .team-bio { max-height: 1200px; opacity: 1; }
-    .team-bio-inner { padding-top: 1.1rem; margin-top: 1.1rem; border-top: 1px solid var(--glass-b); }
-    .team-bio-inner p { font-size: .85rem; color: var(--text-muted); line-height: 1.78; margin-bottom: .65rem; text-align: left; }
-    body.fa-mode .team-bio-inner p { text-align: right; }
-    .team-bio-inner a { color: var(--gold); text-decoration: none; font-weight: 600; }
-    .team-bio-inner a:hover { color: #fff; }
+    .committee-pillar:hover {
+      border-left-color: var(--green);
+      background: rgba(22,155,98,.04);
+    }
+    .committee-pillar-icon { font-size: 1.7rem; margin-bottom: .6rem; }
+    .committee-pillar h4 {
+      font-size: .8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--gold); margin-bottom: .5rem;
+    }
+    .committee-pillar p {
+      font-size: .85rem; color: var(--text-muted); line-height: 1.78;
+    }
+    @media (max-width: 700px) {
+      .committee-block { padding: 2rem 1.4rem; }
+    }
 
     /* ---- MISSION ---- */
     #mission { text-align: center; }
@@ -1150,99 +1149,60 @@
     <section id="team">
       <div class="section-inner">
         <div class="fade-up">
-          <div class="section-eyebrow" data-en="The People" data-fa="افراد">The People</div>
+          <div class="section-eyebrow" data-en="Who We Are" data-fa="ما که هستیم">Who We Are</div>
           <h2 class="section-title" data-en="Steering <em>Committee</em>" data-fa="کمیته <em>راهبری</em>">
             Steering <em>Committee</em>
           </h2>
           <p class="section-lead"
-            data-en="Academics, professionals, and activists united by a shared commitment to a democratic and free Iran."
-            data-fa="دانشگاهیان، متخصصان و فعالانی که با تعهد مشترک به ایرانی دموکراتیک و آزاد متحد شده‌اند.">
-            Academics, professionals, and activists united by a shared commitment to a democratic and free Iran.
+            data-en="A collective of academics, professionals, and advocates &mdash; united by expertise, driven by purpose."
+            data-fa="گروهی از دانشگاهیان، متخصصان و فعالان &mdash; متحد در تخصص، هدایت‌شده توسط هدف.">
+            A collective of academics, professionals, and advocates &mdash; united by expertise, driven by purpose.
           </p>
         </div>
-        <div class="team-grid">
 
-          <div class="team-card fade-up">
-            <div class="team-card-header">
-              <img class="team-avatar"
-                src="Mahya.jpg"
-                onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/IranianDiasporaNetworkIreland/IDNI-webpage/refs/heads/main/mahya.jpg'"
-                alt="Dr. Mahya Ostovar" loading="lazy">
-              <h3 data-en="Dr. Mahya Ostovar" data-fa="دکتر محیا استوار">Dr. Mahya Ostovar</h3>
-              <p class="role" data-en="Founder" data-fa="بنیانگذار">Founder</p>
-            </div>
-            <div class="team-bio">
-              <div class="team-bio-inner">
-                <div class="lang-en-block">
-                  <p><strong>Bio:</strong> Dr Mahya Ostovar is an Assistant Professor at the University of Galway and an Iranian women's rights activist. Her research focuses on social movements and digital activism, with particular attention to resistance against compulsory hijab in Iran. She is a leading member of the Irish End Gender Apartheid Campaign and was a member of the Afghan and Iranian Women's Coalition, supported by the George W. Bush Institute and IRI's Women's Democracy Network.</p>
-                  <p><a href="https://www.linkedin.com/in/mahya-ostovar/" target="_blank" rel="noopener">LinkedIn &#8599;</a></p>
-                </div>
-                <div class="lang-fa-block" dir="rtl" lang="fa">
-                  <p><strong>بیوگرافی:</strong> دکتر محیا استوار فعال حقوق زنان و استادیار در دانشگاه گالوی است. پژوهش‌های او بر جنبش‌های اجتماعی و کنشگری دیجیتال متمرکز است. او یکی از اعضای اصلی «کمپین پایان دادن به آپارتاید جنسیتی در ایرلند» است.</p>
-                  <p><a href="https://www.linkedin.com/in/mahya-ostovar/" target="_blank" rel="noopener">لینکدین &#8599;</a></p>
-                </div>
-              </div>
-            </div>
+        <div class="committee-block fade-up">
+
+          <div class="committee-intro lang-en-block">
+            <p>IDDNI is founded by Iranians in the diaspora in Ireland &mdash; people who left Iran carrying lived experience, professional skills, and an unshakeable commitment to democratic values and human rights. The steering committee is deliberately rooted in the everyday reality of Iranian life: it draws on direct connections to people on the ground inside Iran, to journalists and press contacts covering the region, to academic and policy communities, and above all to ordinary Iranians whose voices are too often absent from international conversations about their own future.</p>
+            <p>The committee operates as a non-hierarchical collective. No title or background determines whose voice carries weight &mdash; only the shared belief that Iran's people deserve freedom, dignity, and the right to shape their own future. Decisions are made collectively and transparently, in keeping with the democratic principles the network stands for.</p>
           </div>
 
-          <div class="team-card fade-up">
-            <div class="team-card-header">
-              <img class="team-avatar" src="Nasim.jpg" alt="Dr. Nasim Soleimanian" loading="lazy">
-              <h3 data-en="Dr. Nasim Soleimanian" data-fa="دکتر نسیم سلیمانیان">Dr. Nasim Soleimanian</h3>
-              <p class="role" data-en="Co-Founder &amp; Coordinator" data-fa="هم‌بنیانگذار و هماهنگ‌کننده">Co-Founder &amp; Coordinator</p>
-            </div>
-            <div class="team-bio">
-              <div class="team-bio-inner">
-                <div class="lang-en-block">
-                  <p><strong>Bio:</strong> Nasim is an Iranian woman in exile, a global commercial leader, and an advocate dedicated to transforming deep-tech innovation into real-world climate impact. She champions secular democracy, protects diaspora communities, and builds ethical, future-focused coalitions.</p>
-                  <p><a href="https://www.linkedin.com/posts/dr-nasim-soleimanian-executive-mba-95b66327_today-as-a-multi-national-i-ask-my-western-activity-7416138265331822592-NbNx" target="_blank" rel="noopener">LinkedIn &#8599;</a></p>
-                </div>
-                <div class="lang-fa-block" dir="rtl" lang="fa">
-                  <p><strong>بیوگرافی:</strong> نسیم زنی ایرانی در تبعید، یک رهبر جهانی در حوزه تجارت، و حامی‌ای متعهد است. او از دموکراسی سکولار حمایت می‌کند و ائتلاف‌هایی اخلاق‌محور ایجاد می‌کند.</p>
-                  <p><a href="https://www.linkedin.com/posts/dr-nasim-soleimanian-executive-mba-95b66327_today-as-a-multi-national-i-ask-my-western-activity-7416138265331822592-NbNx" target="_blank" rel="noopener">لینکدین &#8599;</a></p>
-                </div>
-              </div>
-            </div>
+          <div class="committee-intro lang-fa-block" dir="rtl" lang="fa">
+            <p>IDDNI توسط ایرانیان مقیم ایرلند تأسیس شده است &mdash; کسانی که ایران را با تجربه زیسته، مهارت‌های حرفه‌ای و تعهدی راسخ به ارزش‌های دموکراتیک و حقوق بشر ترک کردند. کمیته راهبری عمداً در واقعیت روزمره زندگی ایرانی ریشه دارد: از ارتباط مستقیم با مردم در داخل ایران، با روزنامه‌نگاران و رسانه‌ها، با جوامع دانشگاهی و سیاستگذاری، و مهم‌تر از همه با ایرانیان عادی‌ای که صدایشان اغلب از گفتگوهای بین‌المللی درباره آینده‌شان غایب است.</p>
+            <p>این کمیته به شکل غیرسلسله‌مراتبی عمل می‌کند. هیچ عنوان یا پیشینه‌ای تعیین نمی‌کند که صدای چه کسی اهمیت دارد &mdash; تنها اعتقاد مشترک به این که مردم ایران شایسته آزادی، کرامت و حق تعیین آینده خود هستند. تصمیم‌ها به صورت جمعی و شفاف گرفته می‌شوند.</p>
           </div>
 
-          <div class="team-card fade-up">
-            <div class="team-card-header">
-              <img class="team-avatar" src="mehdi.jpg" alt="Dr. Mehdi Yekrangi" loading="lazy">
-              <h3 data-en="Dr. Mehdi Yekrangi" data-fa="دکتر مهدی یکرنگی">Dr. Mehdi Yekrangi</h3>
-              <p class="role" data-en="Tech Lead" data-fa="راهبر فنی">Tech Lead</p>
-            </div>
-            <div class="team-bio">
-              <div class="team-bio-inner">
-                <div class="lang-en-block">
-                  <p><strong>Bio:</strong> Mehdi is known for his clarity, conviction, and global perspective. Beyond his professional leadership, he is a committed voice on global issues, particularly the movement for freedom and democracy in Iran. Inspired by the Lion and Sun &mdash; a symbol of identity, unity, and resilience.</p>
-                </div>
-                <div class="lang-fa-block" dir="rtl" lang="fa">
-                  <p><strong>بیوگرافی:</strong> مهدی به خاطر شفافیت، قاطعیت و دیدگاه جهانی‌اش شناخته می‌شود. با الهام از «شیر و خورشید» &mdash; نمادی از هویت، وحدت و تاب‌آوری.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="committee-pillars">
 
-          <div class="team-card fade-up">
-            <div class="team-card-header">
-              <img class="team-avatar" src="photo_2026-04-07_22-45-05.jpg" alt="Parand Shokrani" loading="lazy">
-              <h3 data-en="Parand Shokrani" data-fa="پرند شکرانی">Parand Shokrani</h3>
-              <p class="role" data-en="Content Creator" data-fa="تولیدکننده محتوا">Content Creator</p>
+            <div class="committee-pillar">
+              <div class="committee-pillar-icon">&#127979;</div>
+              <h4 data-en="Founding &amp; Vision" data-fa="بنیانگذاری و چشم‌انداز">Founding &amp; Vision</h4>
+              <p class="lang-en-block">IDDNI was founded by Iranians who brought with them the memory of life under the regime and the determination to act. The founding vision is one of inclusion: this network belongs to all Iranians &mdash; regardless of class, profession, or background &mdash; who believe in a free and democratic Iran. Academic insight informs the work, but it is the lived experience of ordinary people that gives it purpose.</p>
+              <p class="lang-fa-block" dir="rtl" lang="fa">IDDNI توسط ایرانیانی تأسیس شد که خاطره زندگی زیر رژیم و عزم برای عمل را با خود آوردند. چشم‌انداز بنیانگذاری بر فراگیری استوار است: این شبکه متعلق به همه ایرانیان است &mdash; فارغ از طبقه، حرفه یا پیشینه &mdash; که به ایرانی آزاد و دموکراتیک اعتقاد دارند.</p>
             </div>
-            <div class="team-bio">
-              <div class="team-bio-inner">
-                <div class="lang-en-block">
-                  <p><strong>Bio:</strong> Parand is a PhD student in biomedical engineering at the University of Galway. She left Iran three years ago in search of freedom. Today, she uses her voice to speak out for her people in Iran, especially women who have endured decades of injustice &mdash; because every woman deserves the right to live freely, choose her own path, and be heard without fear.</p>
-                  <p><a href="https://www.linkedin.com/in/parand-shokrani" target="_blank" rel="noopener">LinkedIn &#8599;</a></p>
-                </div>
-                <div class="lang-fa-block" dir="rtl" lang="fa">
-                  <p><strong>بیوگرافی:</strong> پرند دانشجوی دکتری مهندسی پزشکی در دانشگاه گالوی است. او سه سال پیش در جستجوی آزادی ایران را ترک کرد. امروز از صدای خود برای دفاع از مردم ایران، به ویژه زنان، استفاده می‌کند.</p>
-                  <p><a href="https://www.linkedin.com/in/parand-shokrani" target="_blank" rel="noopener">لینکدین &#8599;</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
 
+            <div class="committee-pillar">
+              <div class="committee-pillar-icon">&#127760;</div>
+              <h4 data-en="Network Coordination &amp; Outreach" data-fa="هماهنگی شبکه و ارتباطات خارجی">Network Coordination &amp; Outreach</h4>
+              <p class="lang-en-block">The committee includes experienced global professionals who manage the day-to-day coordination of the network, build strategic partnerships, and represent IDDNI in engagements with civil society, policymakers, and international organisations. They bring a track record in building ethical, future-focused coalitions across borders.</p>
+              <p class="lang-fa-block" dir="rtl" lang="fa">کمیته شامل متخصصان بین‌المللی باتجربه‌ای است که هماهنگی روزانه شبکه را مدیریت می‌کنند و مشارکت‌های استراتژیک با جامعه مدنی، سیاستگذاران و سازمان‌های بین‌المللی را توسعه می‌دهند.</p>
+            </div>
+
+            <div class="committee-pillar">
+              <div class="committee-pillar-icon">&#128187;</div>
+              <h4 data-en="Technology &amp; Digital Infrastructure" data-fa="فناوری و زیرساخت دیجیتال">Technology &amp; Digital Infrastructure</h4>
+              <p class="lang-en-block">The network maintains a secure, accessible, and effective digital presence built and managed collectively by the committee. Technology at IDDNI is not a back-office function &mdash; it is the means by which voices from inside Iran and across the diaspora are amplified, connected, and protected. The committee ensures that no technical barrier stands between ordinary Iranians and the network that represents them.</p>
+              <p class="lang-fa-block" dir="rtl" lang="fa">شبکه یک حضور دیجیتال امن، در دسترس و مؤثر دارد که توسط کمیته به صورت جمعی ساخته و مدیریت می‌شود. فناوری در IDDNI یک عملکرد پشتیبان نیست &mdash; ابزاری است که صداهای داخل ایران و در سراسر دیاسپورا را تقویت، متصل و محافظت می‌کند.</p>
+            </div>
+
+            <div class="committee-pillar">
+              <div class="committee-pillar-icon">&#128227;</div>
+              <h4 data-en="Media Engagement &amp; Content Creation" data-fa="تعامل رسانه‌ای و تولید محتوا">Media Engagement &amp; Content Creation</h4>
+              <p class="lang-en-block">IDDNI&rsquo;s voice in public discourse is shaped by committee members with direct experience of living under and leaving the Iranian regime. Their personal knowledge, combined with professional communication skills, drives the network&rsquo;s storytelling &mdash; ensuring that Iranian perspectives are heard with authenticity, impact, and dignity across media and public platforms.</p>
+              <p class="lang-fa-block" dir="rtl" lang="fa">صدای IDDNI در گفتمان عمومی توسط اعضای کمیته‌ای شکل می‌گیرد که تجربه مستقیم زندگی زیر رژیم ایران را دارند. این دانش شخصی روایت‌سرایی شبکه را هدایت می‌کند.</p>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
