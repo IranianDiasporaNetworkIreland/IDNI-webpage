@@ -492,11 +492,139 @@
     .committee-pillar p {
       font-size: .85rem; color: var(--text-muted); line-height: 1.78;
     }
+    /* committee member cards */
+    .committee-members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 1.4rem;
+      margin-bottom: 2.8rem;
+    }
+    .committee-member {
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--glass-b);
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.5rem;
+    }
+    .committee-member-photo {
+      width: 72px; height: 72px; flex-shrink: 0;
+      border-radius: 50%;
+      object-fit: cover; object-position: top;
+      border: 2px solid var(--gold);
+    }
+    .committee-member-info { flex: 1; }
+    .committee-member-name {
+      font-size: 1rem; font-weight: 700; color: #fff;
+      margin-bottom: .18rem; line-height: 1.3;
+    }
+    .committee-member-role {
+      font-size: .75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--gold); margin-bottom: .55rem;
+    }
+    .committee-member-bio {
+      font-size: .84rem; color: var(--text-muted); line-height: 1.72;
+      margin-bottom: .65rem;
+    }
+    .committee-member-links { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .committee-member-links a {
+      font-size: .75rem; font-weight: 600;
+      color: var(--green); text-decoration: none;
+      border: 1px solid rgba(22,155,98,.3);
+      padding: .15rem .6rem; border-radius: 100px;
+      transition: background var(--tr), color var(--tr);
+    }
+    .committee-member-links a:hover {
+      background: rgba(22,155,98,.12); color: #fff;
+    }
+    .committee-divider-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: 1.8px;
+      text-transform: uppercase; color: var(--text-muted);
+      display: flex; align-items: center; gap: .75rem;
+      margin-bottom: 1.6rem; margin-top: .4rem;
+    }
+    .committee-divider-label::before, .committee-divider-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--glass-b);
+    }
     @media (max-width: 700px) {
       .committee-block { padding: 2rem 1.4rem; }
+      .committee-member { flex-direction: column; align-items: center; text-align: center; }
+      .committee-member-links { justify-content: center; }
     }
 
-    /* ---- MISSION ---- */
+    /* ---- BLOG ---- */
+    #blog { }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(340px,100%),1fr));
+      gap: 1.5rem; margin-top: 2.8rem;
+    }
+    .blog-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-top: 3px solid var(--green);
+      border-radius: var(--radius); padding: 1.9rem;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+      transition: all var(--tr);
+    }
+    .blog-card:hover {
+      border-top-color: var(--gold);
+      background: rgba(232,184,75,.03);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 44px rgba(0,0,0,.38);
+    }
+    .blog-tag {
+      display: inline-block;
+      background: rgba(22,155,98,.12);
+      border: 1px solid rgba(22,155,98,.3);
+      color: #4ecf96; font-size: .7rem; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      padding: .22rem .75rem; border-radius: 100px;
+      margin-bottom: .9rem;
+    }
+    .blog-date { font-size: .78rem; color: var(--text-muted); margin-bottom: .45rem; }
+    .blog-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: .75rem; line-height: 1.42; }
+    .blog-excerpt { font-size: .9rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.1rem; flex-grow: 1; }
+    .blog-read-more { font-size: .84rem; font-weight: 600; color: var(--green); align-self: flex-start; }
+    /* investigative / deep-dive variant */
+    .blog-card.investigative {
+      border-top-color: var(--rose);
+    }
+    .blog-card.investigative:hover {
+      border-top-color: var(--gold);
+      background: rgba(212,95,122,.04);
+    }
+    .blog-tag-row {
+      display: flex; align-items: center; flex-wrap: wrap; gap: .5rem;
+      margin-bottom: .9rem;
+    }
+    .blog-tag-row .blog-tag { margin-bottom: 0; }
+    .blog-badge {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: rgba(212,95,122,.1);
+      border: 1px solid rgba(212,95,122,.3);
+      color: #e8889a; font-size: .65rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: .22rem .75rem; border-radius: 100px;
+    }
+    .blog-badge::before { content: '\25CF'; font-size: .55rem; }
+    .blog-section-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 1.2rem; margin-top: 2.8rem;
+      display: flex; align-items: center; gap: .75rem;
+      grid-column: 1 / -1;
+    }
+    .blog-section-label::before, .blog-section-label::after {
+      content: ''; flex: 1; height: 1px; background: rgba(212,95,122,.22);
+    }
+    .blog-coming-soon {
+      text-align: center; padding: 4rem 2rem;
+      background: var(--glass); border: 1px dashed var(--glass-b);
+      border-radius: var(--radius-lg); margin-top: 2.8rem;
+    }
+    .blog-coming-soon p { color: var(--text-muted); margin-top: .75rem; font-size: .95rem; }
     #mission { text-align: center; }
     .mission-grid {
       display: grid;
@@ -765,6 +893,7 @@
           <a href="#about"   data-en="About Us"          data-fa="درباره ما">About Us</a>
           <a href="#mission" data-en="Mission"            data-fa="مأموریت">Mission</a>
           <a href="#news"    data-en="News"               data-fa="اخبار">News</a>
+          <a href="#blog"    data-en="Blog"               data-fa="وبلاگ">Blog</a>
           <a href="#team"    data-en="Steering Committee" data-fa="کمیته راهبری">Steering Committee</a>
           <a href="#media"   data-en="Media"              data-fa="رسانه">Media</a>
           <a href="#contact" data-en="Contact"            data-fa="تماس">Contact</a>
@@ -781,6 +910,7 @@
         <a href="#about"   onclick="closeMobile()" data-en="About Us"          data-fa="درباره ما">About Us</a>
         <a href="#mission" onclick="closeMobile()" data-en="Mission"            data-fa="مأموریت">Mission</a>
         <a href="#news"    onclick="closeMobile()" data-en="News"               data-fa="اخبار">News</a>
+        <a href="#blog"    onclick="closeMobile()" data-en="Blog"               data-fa="وبلاگ">Blog</a>
         <a href="#team"    onclick="closeMobile()" data-en="Steering Committee" data-fa="کمیته راهبری">Steering Committee</a>
         <a href="#join"    onclick="closeMobile()" data-en="Join Us"            data-fa="به ما بپیوندید">Join Us</a>
         <a href="#media"   onclick="closeMobile()" data-en="Media"              data-fa="رسانه">Media</a>
@@ -1002,6 +1132,203 @@
 
     <div class="fancy-divider"></div>
 
+    <!-- ===== BLOG ===== -->
+    <section id="blog">
+      <div class="fade-up">
+        <div class="section-eyebrow" data-en="Perspectives" data-fa="دیدگاه‌ها">Perspectives</div>
+        <h2 class="section-title" data-en="Blog &amp; <em>Commentary</em>" data-fa="وبلاگ و <em>تحلیل</em>">
+          Blog &amp; <em>Commentary</em>
+        </h2>
+        <p class="section-lead"
+          data-en="In-depth perspectives on Iran, the diaspora, Irish politics, and the ongoing struggle for democratic change &mdash; written by and for the Iranian community in Ireland."
+          data-fa="دیدگاه‌های عمیق درباره ایران، دیاسپورا، سیاست ایرلند، و مبارزه برای تغییر دموکراتیک">
+          In-depth perspectives on Iran, the diaspora, Irish politics, and the ongoing struggle for democratic change &mdash; written by and for the Iranian community in Ireland.
+        </p>
+      </div>
+
+      <div class="blog-grid">
+
+        <!-- ─── INVESTIGATIVE / REGIME VS REALITY ─── -->
+        <div class="blog-section-label lang-en-block">Investigative &mdash; Regime vs. Reality</div>
+        <div class="blog-section-label lang-fa-block" dir="rtl">تحقیقی &mdash; رژیم در برابر واقعیت</div>
+
+        <div class="blog-card investigative fade-up">
+          <div class="blog-tag-row">
+            <span class="blog-tag" data-en="Regime vs. Reality" data-fa="رژیم در برابر واقعیت">Regime vs. Reality</span>
+            <span class="blog-badge lang-en-block">Source Analysis Coming</span>
+            <span class="blog-badge lang-fa-block">تحلیل منابع به زودی</span>
+          </div>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="Freedom in Iran: What the Regime Claims vs. What Iranians Actually Live" data-fa="آزادی در ایران: آنچه رژیم ادعا می‌کند در برابر آنچه ایرانیان واقعاً تجربه می‌کنند">
+            Freedom in Iran: What the Regime Claims vs. What Iranians Actually Live
+          </h3>
+          <p class="blog-excerpt lang-en-block">The Islamic Republic insists it is a republic &mdash; that citizens elect their leaders, that its constitution protects rights, that Iran is a sovereign democracy. Non-Iranian observers often take this framing at face value. We break down the institutional architecture of control: the Guardian Council's candidate vetting, the mandatory hijab laws enforced by morality police, the closure of newspapers, the blocking of the internet, and the imprisonment of lawyers. This is not a flawed democracy. It is a theocratic system engineered to simulate one.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">جمهوری اسلامی اصرار دارد که یک جمهوری است؛ که شهروندان رهبران خود را انتخاب می‌کنند، که قانون اساسی‌اش از حقوق محافظت می‌کند. بسیاری از ناظران غیرایرانی این روایت را ظاهراً می‌پذیرند. ما معماری نهادی کنترل را تجزیه می‌کنیم: تأیید صلاحیت نامزدها توسط شورای نگهبان، قوانین حجاب اجباری، زندانی کردن وکلا، و قطع اینترنت. این یک دموکراسی معیوب نیست. یک نظام تئوکراتیک است که برای شبیه‌سازی دموکراسی طراحی شده.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <div class="blog-card investigative fade-up">
+          <div class="blog-tag-row">
+            <span class="blog-tag" data-en="Undercovered" data-fa="پوشش نایافته">Undercovered</span>
+            <span class="blog-badge lang-en-block">Source Analysis Coming</span>
+            <span class="blog-badge lang-fa-block">تحلیل منابع به زودی</span>
+          </div>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="January 2026: The Death Toll the World Wasn&rsquo;t Told About" data-fa="ژانویه ۲۰۲۶: تعداد کشته‌شدگانی که جهان از آن باخبر نشد">
+            January 2026: The Death Toll the World Wasn&rsquo;t Told About
+          </h3>
+          <p class="blog-excerpt lang-en-block">In January 2026, as Iranian protesters took to the streets in Tehran, Mashhad, Isfahan, and dozens of other cities, the Islamic Republic's security forces opened fire. Western media reported &ldquo;clashes&rdquo; and &ldquo;unrest.&rdquo; The regime's own figures acknowledged minimal casualties. But reports compiled from verified sources inside Iran &mdash; cross-referenced by Iran Human Rights, Hrana, and diaspora monitoring networks &mdash; indicate that <strong>at least 40,000 people lost their lives</strong> during the January 2026 crackdown, with thousands more arrested, tortured, or disappeared. Internet blackouts and journalist expulsions made independent verification impossible &mdash; which is precisely how the regime intended it. This post places the documented figures alongside the regime's narrative and the Western media framing that uncritically echoed it. The gap is not a difference of opinion. It is a systematic suppression of truth.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">در ژانویه ۲۰۲۶، وقتی معترضان ایرانی در تهران، مشهد، اصفهان و ده‌ها شهر دیگر به خیابان‌ها ریختند، نیروهای امنیتی جمهوری اسلامی آتش گشودند. رسانه‌های غربی از «درگیری» و «ناآرامی» نوشتند. اما گزارش‌های تأییدشده از منابع داخل ایران &mdash; که توسط ایران هیومن رایتس، هرانا، و شبکه‌های پایش دیاسپورا مطابقت داده شده‌اند &mdash; نشان می‌دهند که <strong>حداقل ۴۰٬۰۰۰ نفر در سرکوب ژانویه ۲۰۲۶ جان خود را از دست دادند</strong>، با هزاران نفر دیگر که دستگیر، شکنجه یا ناپدید شدند. قطع اینترنت و اخراج خبرنگاران تأیید مستقل را ناممکن کرد &mdash; که دقیقاً همان نقشه رژیم بود. این پست ارقام مستند را در کنار روایت رژیم و قاب‌بندی رسانه‌های غربی که بی‌انتقاد آن را بازتاب دادند قرار می‌دهد.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <div class="blog-card investigative fade-up">
+          <div class="blog-tag-row">
+            <span class="blog-tag" data-en="Data &amp; Accountability" data-fa="داده و پاسخگویی">Data &amp; Accountability</span>
+            <span class="blog-badge lang-en-block">Source Analysis Coming</span>
+            <span class="blog-badge lang-fa-block">تحلیل منابع به زودی</span>
+          </div>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="The Execution Capital of the World: Iran&rsquo;s Killing Record in Numbers" data-fa="پایتخت اعدام جهان: رکورد کشتار ایران در اعداد">
+            The Execution Capital of the World: Iran&rsquo;s Killing Record in Numbers
+          </h3>
+          <p class="blog-excerpt lang-en-block">Iran executes more people per capita than any country on earth. In 2024 alone, Iran Human Rights documented 901 executions &mdash; the highest in 15 years. The regime carries most of them out quietly, without notification to families. Many are drug offenders from marginalised ethnic minorities: Baluch Iranians account for over 20% of executions while representing around 5% of the population. This is not a justice system. This post examines who is being killed, why, and what the numbers reveal about who the regime considers expendable.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">ایران بیشتر از هر کشوری در جهان به نسبت جمعیت اعدام می‌کند. در سال ۲۰۲۴ تنها، ایران هیومن رایتس ۹۰۱ اعدام را مستند کرد &mdash; بالاترین رقم در ۱۵ سال. رژیم اکثر آن‌ها را بی‌سروصدا و بدون اطلاع خانواده‌ها انجام می‌دهد. این یک سیستم عدالت نیست. این پست بررسی می‌کند چه کسانی کشته می‌شوند و اعداد چه چیزی درباره آن‌هایی که رژیم آن‌ها را قابل فداکاری می‌داند آشکار می‌کنند.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <div class="blog-card investigative fade-up">
+          <div class="blog-tag-row">
+            <span class="blog-tag" data-en="Regime Hypocrisy" data-fa="ریاکاری رژیم">Regime Hypocrisy</span>
+            <span class="blog-badge lang-en-block">Source Analysis Coming</span>
+            <span class="blog-badge lang-fa-block">تحلیل منابع به زودی</span>
+          </div>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="Performing Modernity, Enforcing Terror: How the Regime Manages Its Global Image" data-fa="نمایش مدرنیته، اجرای ترور: چگونه رژیم تصویر جهانی خود را مدیریت می‌کند">
+            Performing Modernity, Enforcing Terror: How the Regime Manages Its Global Image
+          </h3>
+          <p class="blog-excerpt lang-en-block">The Islamic Republic has a sophisticated international PR operation. It sends delegations to UN human rights sessions. It maintains embassies that speak the language of sovereignty and anti-imperialism. It hosts foreign journalists in carefully curated tours of Tehran's coffee shops. Meanwhile, at home: women are arrested for removing their headscarf, journalists are jailed, LGBTQ+ Iranians face execution, and ethnic minorities &mdash; Kurds, Arabs, Baluch, Azeris &mdash; face systemic discrimination. This post maps the gap between the regime's international face and the reality it maintains through violence.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">جمهوری اسلامی یک دستگاه روابط عمومی بین‌المللی پیچیده دارد. هیئت‌هایی به جلسات حقوق بشر سازمان ملل می‌فرستد. در خارج از زبان حاکمیت و ضد امپریالیسم صحبت می‌کند. اما در داخل: زنان به خاطر برداشتن حجاب دستگیر می‌شوند، روزنامه‌نگاران زندانی می‌شوند، و اقلیت‌های قومی با تبعیض سیستماتیک روبرو هستند. این پست شکاف میان چهره بین‌المللی رژیم و واقعیتی که از طریق خشونت حفظ می‌کند را ترسیم می‌کند.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <div class="blog-card investigative fade-up">
+          <div class="blog-tag-row">
+            <span class="blog-tag" data-en="Democracy &amp; Power" data-fa="دموکراسی و قدرت">Democracy &amp; Power</span>
+            <span class="blog-badge lang-en-block">Source Analysis Coming</span>
+            <span class="blog-badge lang-fa-block">تحلیل منابع به زودی</span>
+          </div>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="Iran&rsquo;s &lsquo;Elections&rsquo;: Engineered Legitimacy in a Closed System" data-fa="«انتخابات» ایران: مشروعیت‌سازی مهندسی‌شده در یک سیستم بسته">
+            Iran&rsquo;s &lsquo;Elections&rsquo;: Engineered Legitimacy in a Closed System
+          </h3>
+          <p class="blog-excerpt lang-en-block">Western commentators sometimes describe Iran as having &ldquo;elections&rdquo; &mdash; as though the existence of a ballot makes it a democracy. In Iran, the Guardian Council &mdash; an unelected body of clerics and jurists &mdash; vets every candidate. In the 2024 parliamentary elections, over 30% of registered candidates were disqualified. The Supreme Leader holds veto power over all major decisions regardless of who is &ldquo;elected.&rdquo; This post explains how the system is designed to simulate popular participation while ensuring the ruling class never loses control.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">مفسران غربی گاهی از «انتخابات» ایران سخن می‌گویند &mdash; گویی وجود رأی‌گیری آن را دموکراسی می‌کند. در ایران، شورای نگهبان &mdash; نهادی غیرانتخابی از روحانیون و حقوقدانان &mdash; هر نامزدی را تأیید صلاحیت می‌کند. در انتخابات مجلس ۲۰۲۴، بیش از ۳۰٪ نامزدهای ثبت‌نام شده رد صلاحیت شدند. این پست توضیح می‌دهد که چگونه سیستم برای شبیه‌سازی مشارکت مردمی طراحی شده در حالی که طبقه حاکم هرگز کنترل را از دست نمی‌دهد.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <div class="blog-card investigative fade-up">
+          <div class="blog-tag-row">
+            <span class="blog-tag" data-en="Economy &amp; Power" data-fa="اقتصاد و قدرت">Economy &amp; Power</span>
+            <span class="blog-badge lang-en-block">Source Analysis Coming</span>
+            <span class="blog-badge lang-fa-block">تحلیل منابع به زودی</span>
+          </div>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="Who Controls Iran? The IRGC&rsquo;s Grip on the Economy, Media, and Law" data-fa="چه کسی ایران را کنترل می‌کند؟ سیطره سپاه پاسداران بر اقتصاد، رسانه و قانون">
+            Who Controls Iran? The IRGC&rsquo;s Grip on the Economy, Media, and Law
+          </h3>
+          <p class="blog-excerpt lang-en-block">The Islamic Revolutionary Guard Corps is not just a military force. It is a state within the state. IRGC-linked companies control an estimated 30&ndash;40% of Iran's formal economy, including construction, telecommunications, energy, and banking. IRGC-affiliated media shape domestic public opinion. Its intelligence arm runs the prison system used to suppress dissent. For ordinary Iranians, the IRGC is not a distant institution &mdash; it is the landlord, the employer, the censor, and the jailer. This post maps the IRGC's reach and what it means for any prospect of real change.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">سپاه پاسداران انقلاب اسلامی فقط یک نیروی نظامی نیست. یک دولت درون دولت است. شرکت‌های وابسته به سپاه تخمیناً ۳۰ تا ۴۰ درصد اقتصاد رسمی ایران را کنترل می‌کنند، از جمله ساخت‌وساز، مخابرات، انرژی و بانکداری. برای ایرانیان عادی، سپاه یک نهاد دور نیست &mdash; بلکه صاحبخانه، کارفرما، سانسورچی و زندانبان است. این پست دسترسی سپاه و معنای آن برای هر چشم‌اندازی از تغییر واقعی را ترسیم می‌کند.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <!-- ─── GENERAL PERSPECTIVES ─── -->
+        <div class="blog-section-label lang-en-block">Perspectives &amp; Community</div>
+        <div class="blog-section-label lang-fa-block" dir="rtl">دیدگاه‌ها و جامعه</div>
+
+        <div class="blog-card fade-up">
+          <span class="blog-tag" data-en="War &amp; Conflict" data-fa="جنگ و درگیری">War &amp; Conflict</span>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="The Ceasefire That Left Iran's People Out" data-fa="آتش‌بسی که مردم ایران را کنار گذاشت">
+            The Ceasefire That Left Iran's People Out
+          </h3>
+          <p class="blog-excerpt lang-en-block">As international powers negotiate terms of a ceasefire around Iran, the voices of ordinary Iranians &mdash; the people most directly affected &mdash; are conspicuously absent from the table. We examine what this means for any prospect of lasting peace and democratic transition.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">در حالی که قدرت‌های بین‌المللی شرایط آتش‌بس را مذاکره می‌کنند، صدای مردم عادی ایران به طرز جالب توجهی از میز غایب است. بررسی می‌کنیم که این وضعیت برای صلح پایدار چه معنایی دارد.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <div class="blog-card fade-up">
+          <span class="blog-tag" data-en="Human Rights" data-fa="حقوق بشر">Human Rights</span>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="Gender Apartheid Is Not a Metaphor" data-fa="آپارتاید جنسیتی یک استعاره نیست">
+            Gender Apartheid Is Not a Metaphor
+          </h3>
+          <p class="blog-excerpt lang-en-block">The term &ldquo;gender apartheid&rdquo; is increasingly used to describe what Iranian women face under the Islamic Republic. This post explores what that designation means in practice &mdash; legally, socially, and personally &mdash; and why international recognition matters.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">اصطلاح «آپارتاید جنسیتی» برای توصیف آنچه زنان ایرانی تحت جمهوری اسلامی تجربه می‌کنند بیش از پیش به کار می‌رود. این نوشته بررسی می‌کند که این تعریف در عمل چه معنایی دارد.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <div class="blog-card fade-up">
+          <span class="blog-tag" data-en="Ireland &amp; Iran" data-fa="ایرلند و ایران">Ireland &amp; Iran</span>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="What Should Ireland's Position on Iran Be?" data-fa="موضع ایرلند درباره ایران چیستد؟">
+            What Should Ireland's Position on Iran Be?
+          </h3>
+          <p class="blog-excerpt lang-en-block">Ireland has a reputation for principled foreign policy and solidarity with oppressed peoples. We ask: does that reputation extend to Iran? And what would meaningful Irish engagement with the Iranian democratic movement actually look like at government and civil society level?</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">ایرلند به خاطر سیاست خارجی اصولگرایانه‌اش شهرت دارد. می‌پرسیم: آیا این شهرت به ایران هم تسری می‌شود؟ تعامل معنادار ایرلند با جنبش دموکراتیک ایران چه شکلی خواهد داشت؟</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <div class="blog-card fade-up">
+          <span class="blog-tag" data-en="Diaspora Life" data-fa="زندگی در تبعید">Diaspora Life</span>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="Being Iranian in Ireland: Between Two Worlds" data-fa="ایرانی در ایرلند: میان دو دنیا">
+            Being Iranian in Ireland: Between Two Worlds
+          </h3>
+          <p class="blog-excerpt lang-en-block">What does it mean to build a life in Ireland while your family is under bombardment in Tehran? How do Iranians in the diaspora carry grief, guilt, hope, and activism at the same time? Voices from the Irish-Iranian community reflect on identity, belonging, and resistance.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">زندگی در ایرلند هنگامی که خانواده‌ات زیر باران موشکبار در تهران هستند دقیقاً چه معنایی دارد؟ دیدگاه‌هایی از جامعه ایرانی‌-ایرلندی درباره هویت، تعلق و مقاومت.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <div class="blog-card fade-up">
+          <span class="blog-tag" data-en="Policy" data-fa="سیاستگذاری">Policy</span>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="Europe's Silence on Iran: Complicity or Caution?" data-fa="سکوت اروپا درباره ایران: همدستی یا احتیاط؟">
+            Europe's Silence on Iran: Complicity or Caution?
+          </h3>
+          <p class="blog-excerpt lang-en-block">European governments have repeatedly condemned Iran's human rights record in words while maintaining diplomatic and economic ties. This post analyses the gap between rhetoric and action, and what a genuine European commitment to democratic Iran would require.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">دولت‌های اروپایی بارها پرونده حقوق بشر ایران را با کلمات محکوم کرده‌اند ولی روابط دیپلماتیک و اقتصادی خود را حفظ کرده‌اند. این نوشته شکاف میان گفتار و عمل را تحلیل می‌کند.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+        <div class="blog-card fade-up">
+          <span class="blog-tag" data-en="Women &amp; Freedom" data-fa="زنان و آزادی">Women &amp; Freedom</span>
+          <p class="blog-date">April 2026</p>
+          <h3 data-en="Woman, Life, Freedom &mdash; Three Years On" data-fa="زن، زندگی، آزادی &mdash; سه سال بعد">
+            Woman, Life, Freedom &mdash; Three Years On
+          </h3>
+          <p class="blog-excerpt lang-en-block">Three years after the uprising ignited by Mahsa Amini's death, what has changed &mdash; and what has not? This piece looks at the ongoing repression, the resilience of the protest movement, and what the slogan &ldquo;Woman, Life, Freedom&rdquo; still means today for Iranians inside and outside Iran.</p>
+          <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">سه سال بعد از خیزشی که مرگ مهسا امینی دامن زد، چه تغییر کرده و چه تغییر نکرده است؟ این نوشته درباره سرکوب مستمر و تاب‌آوری جنبش اعتراض و معنای شعار «زن، زندگی، آزادی» امروز می‌نویسد.</p>
+          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
+          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="fancy-divider"></div>
+
     <!-- ===== MEDIA ===== -->
     <section id="media">
       <div class="fade-up">
@@ -1172,12 +1499,47 @@
             <p>این کمیته به شکل غیرسلسله‌مراتبی عمل می‌کند. هیچ عنوان یا پیشینه‌ای تعیین نمی‌کند که صدای چه کسی اهمیت دارد &mdash; تنها اعتقاد مشترک به این که مردم ایران شایسته آزادی، کرامت و حق تعیین آینده خود هستند. تصمیم‌ها به صورت جمعی و شفاف گرفته می‌شوند.</p>
           </div>
 
+          <div class="committee-members">
+
+            <div class="committee-member">
+              <img class="committee-member-photo" src="Mahya.jpg" alt="Dr. Mahya Ostovar">
+              <div class="committee-member-info">
+                <div class="committee-member-name">Dr. Mahya Ostovar</div>
+                <div class="committee-member-role lang-en-block">Founder</div>
+                <div class="committee-member-role lang-fa-block" dir="rtl">بنیانگذار</div>
+                <p class="committee-member-bio lang-en-block">Dr Mahya Ostovar is an Assistant Professor at the University of Galway and an Iranian women&rsquo;s rights activist. Her research focuses on social movements and digital activism, with particular attention to resistance against compulsory hijab in Iran. She is a leading member of the Irish End Gender Apartheid Campaign and was a member of the Afghan and Iranian Women&rsquo;s Coalition, supported by the George W. Bush Institute and IRI&rsquo;s Women&rsquo;s Democracy Network.</p>
+                <p class="committee-member-bio lang-fa-block" dir="rtl" lang="fa">دکتر مهیا استوار استادیار دانشگاه گالوی و فعال حقوق زنان ایرانی است. پژوهش او بر جنبش‌های اجتماعی و فعالیت دیجیتال با تأکید ویژه بر مقاومت در برابر حجاب اجباری در ایران متمرکز است. او عضو اصلی کمپین پایان آپارتاید جنسیتی ایرلند است و عضو ائتلاف زنان افغان و ایرانی با حمایت انستیتوی جورج دبلیو بوش و شبکه دموکراسی زنان IRI بوده است.</p>
+                <div class="committee-member-links">
+                  <a href="https://www.linkedin.com/in/mahya-ostovar/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="committee-member">
+              <img class="committee-member-photo" src="Nasim.jpg" alt="Dr. Nasim Soleimanian">
+              <div class="committee-member-info">
+                <div class="committee-member-name">Dr. Nasim Soleimanian</div>
+                <div class="committee-member-role lang-en-block">Co-founder</div>
+                <div class="committee-member-role lang-fa-block" dir="rtl">هم‌بنیانگذار</div>
+                <p class="committee-member-bio lang-en-block">Nasim is an Iranian woman in exile, a global commercial leader, and an advocate dedicated to transforming deep-tech innovation into real-world climate impact. She champions secular democracy, protects diaspora communities, and builds ethical, future-focused coalitions.</p>
+                <p class="committee-member-bio lang-fa-block" dir="rtl" lang="fa">نسیم یک زن ایرانی در تبعید، رهبر تجاری جهانی و مدافعی است که به تبدیل نوآوری فناوری عمیق به تأثیر واقعی بر آب‌وهوا اختصاص یافته است. او مدافع دموکراسی سکولار است، از جوامع دیاسپورا محافظت می‌کند و ائتلاف‌های اخلاقی و آینده‌نگر می‌سازد.</p>
+                <div class="committee-member-links">
+                  <a href="https://www.linkedin.com/in/dr-nasim-soleimanian-executive-mba-95b66327/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="committee-divider-label lang-en-block">How we work</div>
+          <div class="committee-divider-label lang-fa-block">چگونه کار می‌کنیم</div>
+
           <div class="committee-pillars">
 
             <div class="committee-pillar">
               <div class="committee-pillar-icon">&#127979;</div>
               <h4 data-en="Founding &amp; Vision" data-fa="بنیانگذاری و چشم‌انداز">Founding &amp; Vision</h4>
-              <p class="lang-en-block">IDDNI was founded by Iranians who brought with them the memory of life under the regime and the determination to act. The founding vision is one of inclusion: this network belongs to all Iranians &mdash; regardless of class, profession, or background &mdash; who believe in a free and democratic Iran. Academic insight informs the work, but it is the lived experience of ordinary people that gives it purpose.</p>
+              <p class="lang-en-block">IDDNI was founded by Iranians who brought with them the memory of life under the regime and the determination to act. The founding vision is one of inclusion: this network belongs to all Iranians &mdash; regardless of class, profession, or background &mdash; who believe in a free and democratic Iran. Every perspective matters here: the student, the worker, the parent, the professional, the activist. Knowledge and lived experience are equal contributions &mdash; it is the collective voice of ordinary Iranian people that gives this work its meaning and its urgency.</p>
               <p class="lang-fa-block" dir="rtl" lang="fa">IDDNI توسط ایرانیانی تأسیس شد که خاطره زندگی زیر رژیم و عزم برای عمل را با خود آوردند. چشم‌انداز بنیانگذاری بر فراگیری استوار است: این شبکه متعلق به همه ایرانیان است &mdash; فارغ از طبقه، حرفه یا پیشینه &mdash; که به ایرانی آزاد و دموکراتیک اعتقاد دارند.</p>
             </div>
 
@@ -1300,6 +1662,7 @@
           <a href="#about"   data-en="About"   data-fa="درباره">About</a>
           <a href="#mission" data-en="Mission" data-fa="مأموریت">Mission</a>
           <a href="#news"    data-en="News"    data-fa="اخبار">News</a>
+          <a href="#blog"    data-en="Blog"    data-fa="وبلاگ">Blog</a>
           <a href="#team"    data-en="Team"    data-fa="تیم">Team</a>
           <a href="#join"    data-en="Join Us" data-fa="به ما بپیوندید">Join Us</a>
           <a href="#contact" data-en="Contact" data-fa="تماس">Contact</a>
