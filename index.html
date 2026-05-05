@@ -625,6 +625,49 @@
       border-radius: var(--radius-lg); margin-top: 2.8rem;
     }
     .blog-coming-soon p { color: var(--text-muted); margin-top: .75rem; font-size: .95rem; }
+
+    /* ---- MEDIA WATCH (compact placeholder) ---- */
+    .mediawatch-wrap {
+      display: flex; justify-content: center; padding: 1rem 0 2rem;
+    }
+    .mediawatch-inner {
+      max-width: 680px; width: 100%; text-align: center;
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      position: relative;
+    }
+    .mediawatch-badge {
+      display: inline-block;
+      font-size: .72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(201,168,76,.35);
+      border-radius: 20px; padding: 3px 14px;
+      margin-bottom: 1.25rem;
+    }
+    .mediawatch-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800; color: #fff; line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .mediawatch-title em { color: var(--gold); font-style: normal; }
+    .mediawatch-desc {
+      font-size: .97rem; color: var(--text-muted);
+      line-height: 1.8; max-width: 540px; margin: 0 auto;
+    }
+    .mediawatch-pills {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: .65rem; margin-top: 1.75rem;
+    }
+    .mediawatch-pill {
+      font-size: .8rem; font-weight: 600;
+      color: var(--text-muted);
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--glass-b);
+      border-radius: 20px; padding: 5px 14px;
+    }
+
     #mission { text-align: center; }
     .mission-grid {
       display: grid;
@@ -893,7 +936,7 @@
           <a href="#about"   data-en="About Us"          data-fa="درباره ما">About Us</a>
           <a href="#mission" data-en="Mission"            data-fa="مأموریت">Mission</a>
           <a href="#news"    data-en="News"               data-fa="اخبار">News</a>
-          <a href="#blog"    data-en="Blog"               data-fa="وبلاگ">Blog</a>
+          <a href="#blog"    data-en="Media Watch"         data-fa="رصد رسانه">Media Watch</a>
           <a href="#team"    data-en="Steering Committee" data-fa="کمیته راهبری">Steering Committee</a>
           <a href="#media"   data-en="Media"              data-fa="رسانه">Media</a>
           <a href="#contact" data-en="Contact"            data-fa="تماس">Contact</a>
@@ -910,7 +953,7 @@
         <a href="#about"   onclick="closeMobile()" data-en="About Us"          data-fa="درباره ما">About Us</a>
         <a href="#mission" onclick="closeMobile()" data-en="Mission"            data-fa="مأموریت">Mission</a>
         <a href="#news"    onclick="closeMobile()" data-en="News"               data-fa="اخبار">News</a>
-        <a href="#blog"    onclick="closeMobile()" data-en="Blog"               data-fa="وبلاگ">Blog</a>
+        <a href="#blog"    onclick="closeMobile()" data-en="Media Watch"         data-fa="رصد رسانه">Media Watch</a>
         <a href="#team"    onclick="closeMobile()" data-en="Steering Committee" data-fa="کمیته راهبری">Steering Committee</a>
         <a href="#join"    onclick="closeMobile()" data-en="Join Us"            data-fa="به ما بپیوندید">Join Us</a>
         <a href="#media"   onclick="closeMobile()" data-en="Media"              data-fa="رسانه">Media</a>
@@ -1132,23 +1175,30 @@
 
     <div class="fancy-divider"></div>
 
-    <!-- ===== BLOG ===== -->
+    <!-- ===== MEDIA WATCH ===== -->
     <section id="blog">
-      <div class="fade-up">
-        <div class="section-eyebrow" data-en="Perspectives" data-fa="دیدگاه‌ها">Perspectives</div>
-        <h2 class="section-title" data-en="Blog &amp; <em>Commentary</em>" data-fa="وبلاگ و <em>تحلیل</em>">
-          Blog &amp; <em>Commentary</em>
-        </h2>
-        <p class="section-lead"
-          data-en="In-depth perspectives on Iran, the diaspora, Irish politics, and the ongoing struggle for democratic change &mdash; written by and for the Iranian community in Ireland."
-          data-fa="دیدگاه‌های عمیق درباره ایران، دیاسپورا، سیاست ایرلند، و مبارزه برای تغییر دموکراتیک">
-          In-depth perspectives on Iran, the diaspora, Irish politics, and the ongoing struggle for democratic change &mdash; written by and for the Iranian community in Ireland.
-        </p>
+      <div class="fade-up mediawatch-wrap">
+        <div class="mediawatch-inner">
+          <div class="mediawatch-badge lang-en-block">Coming Soon</div>
+          <div class="mediawatch-badge lang-fa-block">به زودی</div>
+          <h2 class="mediawatch-title" data-en="Iran <em>Media Watch</em>" data-fa="رصد <em>رسانه‌ای</em> ایران">
+            Iran <em>Media Watch</em>
+          </h2>
+          <p class="mediawatch-desc lang-en-block">A dedicated tool to track, evaluate, and challenge how Iran is covered in the Irish and international press. We score articles for accuracy and framing &mdash; flagging when regime narratives go unchallenged and when Iranian voices are left out of the story.</p>
+          <p class="mediawatch-desc lang-fa-block" dir="rtl" lang="fa">ابزاری اختصاصی برای رصد، ارزیابی، و به چالش کشیدن نحوه پوشش اخبار ایران در مطبوعات ایرلندی و بین‌المللی. مقالات را از نظر دقت و چارچوب‌بندی بررسی می‌کنیم — و موارد تکرار روایت رژیم یا حذف صدای ایرانیان را علامت‌گذاری می‌کنیم.</p>
+          <div class="mediawatch-pills">
+            <span class="mediawatch-pill">📰 Coverage Monitoring</span>
+            <span class="mediawatch-pill">⚖️ Accuracy Scoring</span>
+            <span class="mediawatch-pill">🗺 Outlet &amp; Journalist Profiles</span>
+            <span class="mediawatch-pill">📣 IDDNI Response Tracker</span>
+          </div>
+
+        </div>
       </div>
 
-      <div class="blog-grid">
+      <div style="display:none">
 
-        <!-- ─── INVESTIGATIVE / REGIME VS REALITY ─── -->
+        <!-- ─── NEWS TRACKER PLACEHOLDER ─── -->
         <div class="blog-section-label lang-en-block">Investigative &mdash; Regime vs. Reality</div>
         <div class="blog-section-label lang-fa-block" dir="rtl">تحقیقی &mdash; رژیم در برابر واقعیت</div>
 
@@ -1320,8 +1370,32 @@
           </h3>
           <p class="blog-excerpt lang-en-block">Three years after the uprising ignited by Mahsa Amini's death, what has changed &mdash; and what has not? This piece looks at the ongoing repression, the resilience of the protest movement, and what the slogan &ldquo;Woman, Life, Freedom&rdquo; still means today for Iranians inside and outside Iran.</p>
           <p class="blog-excerpt lang-fa-block" dir="rtl" lang="fa">سه سال بعد از خیزشی که مرگ مهسا امینی دامن زد، چه تغییر کرده و چه تغییر نکرده است؟ این نوشته درباره سرکوب مستمر و تاب‌آوری جنبش اعتراض و معنای شعار «زن، زندگی، آزادی» امروز می‌نویسد.</p>
-          <span class="blog-read-more lang-en-block">Coming soon &#8599;</span>
-          <span class="blog-read-more lang-fa-block">به زودی &#8599;</span>
+        <div class="tracker-feature-grid fade-up">
+
+          <div class="tracker-feature">
+            <div class="tracker-feature-icon">🔍</div>
+            <h3 class="tracker-feature-title" data-en="Coverage Monitoring" data-fa="رصد پوشش خبری">Coverage Monitoring</h3>
+            <p class="tracker-feature-desc" data-en="Every article, interview, and broadcast about Iran in the Irish press — gathered in one place, updated continuously." data-fa="هر مقاله، مصاحبه و برنامه درباره ایران در مطبوعات ایرلندی — یکجا و به‌روز.">Every article, interview, and broadcast about Iran in the Irish press — gathered in one place, updated continuously.</p>
+          </div>
+
+          <div class="tracker-feature">
+            <div class="tracker-feature-icon">⚖️</div>
+            <h3 class="tracker-feature-title" data-en="Accuracy & Framing Analysis" data-fa="تحلیل دقت و چارچوب‌بندی">Accuracy &amp; Framing Analysis</h3>
+            <p class="tracker-feature-desc" data-en="We evaluate whether coverage centres the lived reality of Iranians — or defaults to geopolitical narratives that serve state interests over human ones." data-fa="ارزیابی می‌کنیم که آیا پوشش خبری واقعیت زندگی ایرانیان را منعکس می‌کند یا روایت‌های ژئوپلیتیکی را.">We evaluate whether coverage centres the lived reality of Iranians — or defaults to geopolitical narratives that serve state interests over human ones.</p>
+          </div>
+
+          <div class="tracker-feature">
+            <div class="tracker-feature-icon">🗺</div>
+            <h3 class="tracker-feature-title" data-en="Journalist & Outlet Profiles" data-fa="پروفایل خبرنگاران و رسانه‌ها">Journalist &amp; Outlet Profiles</h3>
+            <p class="tracker-feature-desc" data-en="Who is writing about Iran? Which outlets give space to diaspora voices? Which ones repeat regime talking points? We track it all." data-fa="چه کسانی درباره ایران می‌نویسند؟ کدام رسانه‌ها صدای دیاسپورا را بازتاب می‌دهند؟ کدام‌ها روایت رژیم را تکرار می‌کنند؟">Who is writing about Iran? Which outlets give space to diaspora voices? Which ones repeat regime talking points? We track it all.</p>
+          </div>
+
+          <div class="tracker-feature">
+            <div class="tracker-feature-icon">📣</div>
+            <h3 class="tracker-feature-title" data-en="Response & Amplification" data-fa="پاسخ و تقویت صداها">Response &amp; Amplification</h3>
+            <p class="tracker-feature-desc" data-en="When coverage distorts the truth, IDDNI will respond — with facts, with sources, and with the voices of Iranians who live that truth every day." data-fa="هنگامی که پوشش خبری واقعیت را تحریف می‌کند، IDDNI پاسخ می‌دهد — با اسناد، منابع، و صدای ایرانیانی که هر روز آن واقعیت را زندگی می‌کنند.">When coverage distorts the truth, IDDNI will respond — with facts, with sources, and with the voices of Iranians who live that truth every day.</p>
+          </div>
+
         </div>
 
       </div>
@@ -1704,7 +1778,7 @@
           <a href="#about"   data-en="About"   data-fa="درباره">About</a>
           <a href="#mission" data-en="Mission" data-fa="مأموریت">Mission</a>
           <a href="#news"    data-en="News"    data-fa="اخبار">News</a>
-          <a href="#blog"    data-en="Blog"    data-fa="وبلاگ">Blog</a>
+          <a href="#blog"    data-en="Media Watch"    data-fa="رصد رسانه">Media Watch</a>
           <a href="#team"    data-en="Team"    data-fa="تیم">Team</a>
           <a href="#join"    data-en="Join Us" data-fa="به ما بپیوندید">Join Us</a>
           <a href="#contact" data-en="Contact" data-fa="تماس">Contact</a>
