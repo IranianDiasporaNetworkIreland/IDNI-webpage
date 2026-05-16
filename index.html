@@ -915,6 +915,116 @@
       .header-inner { height: 62px; }
       .logo-wrap img { height: 34px; }
     }
+
+    /* ---- JOIN MODAL ---- */
+    .jmodal-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(5,5,26,.84);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.25rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity .28s ease;
+    }
+    .jmodal-overlay.active { opacity: 1; pointer-events: all; }
+    .jmodal-panel {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,.12);
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      width: 100%; max-width: 580px;
+      max-height: 90vh; overflow-y: auto;
+      position: relative;
+      transform: translateY(24px) scale(.97);
+      transition: transform .28s cubic-bezier(0.4,0,0.2,1);
+      scrollbar-width: thin; scrollbar-color: var(--glass-b) transparent;
+    }
+    .jmodal-overlay.active .jmodal-panel { transform: translateY(0) scale(1); }
+    .jmodal-close {
+      position: absolute; top: 1.1rem; right: 1.1rem;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      color: var(--text-muted); width: 32px; height: 32px;
+      border-radius: 8px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.25rem; line-height: 1; transition: all var(--tr); font-family: inherit;
+    }
+    .jmodal-close:hover { color: #fff; background: rgba(255,255,255,.14); }
+    body.fa-mode .jmodal-close { right: auto; left: 1.1rem; }
+    .jmodal-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 0; }
+    .jmodal-form-group { margin-bottom: .85rem; }
+    .jmodal-label {
+      font-size: .8rem; color: var(--text-muted); font-weight: 500;
+      display: block; margin-bottom: .35rem;
+    }
+    .jmodal-panel input[type=text],
+    .jmodal-panel input[type=email],
+    .jmodal-panel textarea {
+      width: 100%; box-sizing: border-box;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px; color: var(--text);
+      font-family: inherit; font-size: .9rem;
+      padding: .65rem .95rem; outline: none;
+      transition: border-color .2s, background .2s;
+    }
+    .jmodal-panel input:focus,
+    .jmodal-panel textarea:focus {
+      border-color: rgba(232,184,75,.55);
+      background: rgba(232,184,75,.04);
+    }
+    .jmodal-panel input::placeholder,
+    .jmodal-panel textarea::placeholder { color: rgba(136,136,170,.6); }
+    .jmodal-panel textarea { resize: vertical; }
+    .jmodal-skill-card {
+      display: flex; align-items: flex-start; gap: .85rem;
+      padding: .85rem 1rem; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.03);
+      cursor: pointer; user-select: none;
+      transition: border-color .15s, background .15s;
+    }
+    .jmodal-skill-card:hover { border-color: rgba(255,255,255,.2); }
+    .jmodal-skill-card.selected { border-color: rgba(22,155,98,.5); background: rgba(22,155,98,.09); }
+    .jmodal-skill-icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(255,255,255,.07); display: flex;
+      align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 16px; margin-top: 1px;
+    }
+    .jmodal-skill-body { flex: 1; }
+    .jmodal-skill-title { font-size: .87rem; font-weight: 600; color: var(--text); margin: 0 0 3px; line-height: 1.3; }
+    .jmodal-skill-card.selected .jmodal-skill-title { color: #4ecf96; }
+    .jmodal-skill-desc { font-size: .78rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+    .jmodal-skill-check { font-size: 18px; flex-shrink: 0; margin-top: 2px; transition: color .15s; color: rgba(255,255,255,.18); }
+    .jmodal-skill-card.selected .jmodal-skill-check { color: #4ecf96; }
+    .jmodal-submit-btn {
+      width: 100%; margin-top: .5rem;
+      background: linear-gradient(135deg, var(--green) 0%, #0d7a4c 100%);
+      color: #fff; border: none; font-family: inherit;
+      font-size: .97rem; font-weight: 700;
+      padding: .85rem 2rem; border-radius: 10px;
+      cursor: pointer; transition: all var(--tr);
+      box-shadow: 0 4px 22px rgba(22,155,98,.25);
+    }
+    .jmodal-submit-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(22,155,98,.42); }
+    .jmodal-submit-btn:disabled { opacity: .6; cursor: not-allowed; transform: none !important; }
+    .jmodal-success { text-align: center; padding: 2.5rem 1rem 1.5rem; }
+    .jmodal-success-icon {
+      width: 58px; height: 58px; border-radius: 50%;
+      background: rgba(22,155,98,.15); border: 1px solid rgba(22,155,98,.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem; font-size: 1.6rem; color: #4ecf96;
+    }
+    .jmodal-success h3 { font-size: 1.4rem; font-weight: 800; color: #fff; margin: 0 0 .65rem; }
+    .jmodal-success p { font-size: .95rem; color: var(--text-muted); line-height: 1.8; margin: 0; }
+    nav.desktop-nav a.join-us-nav-tab { color: var(--gold); font-weight: 700; }
+    nav.desktop-nav a.join-us-nav-tab:hover { color: #fff; background: rgba(232,184,75,.1); }
+    @media (max-width: 540px) {
+      .jmodal-panel { padding: 1.5rem; }
+      .jmodal-form-row { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -940,10 +1050,11 @@
           <a href="#team"    data-en="Steering Committee" data-fa="کمیته راهبری">Steering Committee</a>
           <a href="#media"   data-en="Media"              data-fa="رسانه">Media</a>
           <a href="#contact" data-en="Contact"            data-fa="تماس">Contact</a>
+          <a href="#" class="join-us-nav-tab" onclick="openJoinModal(); return false;" data-en="Join Us" data-fa="به ما بپیوندید">Join Us</a>
         </nav>
         <div class="nav-right">
           <button class="lang-btn" onclick="toggleLanguage()" id="langToggleDesktop">فارسی</button>
-          <a href="#join" class="join-nav-btn" data-en="Reach Out" data-fa="تماس بگیرید">Reach Out</a>
+          <button class="join-nav-btn" onclick="openJoinModal()" data-en="Join Us" data-fa="به ما بپیوندید">Join Us</button>
           <div class="hamburger" onclick="toggleMenu()">
             <span></span><span></span><span></span>
           </div>
@@ -955,7 +1066,7 @@
         <a href="#news"    onclick="closeMobile()" data-en="News"               data-fa="اخبار">News</a>
         <a href="#blog"    onclick="closeMobile()" data-en="Media Watch"         data-fa="رصد رسانه">Media Watch</a>
         <a href="#team"    onclick="closeMobile()" data-en="Steering Committee" data-fa="کمیته راهبری">Steering Committee</a>
-        <a href="#join"    onclick="closeMobile()" data-en="Join Us"            data-fa="به ما بپیوندید">Join Us</a>
+        <a href="#" onclick="closeMobile(); openJoinModal(); return false;" data-en="Join Us" data-fa="به ما بپیوندید">Join Us</a>
         <a href="#media"   onclick="closeMobile()" data-en="Media"              data-fa="رسانه">Media</a>
         <a href="#contact" onclick="closeMobile()" data-en="Contact"            data-fa="تماس">Contact</a>
         <button onclick="toggleLanguage(); closeMobile();" id="langToggleMobile">فارسی</button>
@@ -1793,6 +1904,63 @@
 
   </div><!-- .content-wrap -->
 
+  <!-- ===== JOIN MODAL ===== -->
+  <div id="join-modal" class="jmodal-overlay" role="dialog" aria-modal="true" aria-labelledby="jmodal-title">
+    <div class="jmodal-panel">
+      <button class="jmodal-close" onclick="closeJoinModal()" aria-label="Close">&times;</button>
+
+      <div id="jmodal-form-view">
+        <div style="margin-bottom:1.75rem;">
+          <p style="font-size:.73rem;color:var(--text-muted);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;">Join our network</p>
+          <h2 id="jmodal-title" style="font-family:'Outfit',sans-serif;font-size:1.55rem;font-weight:800;color:#fff;margin:0;letter-spacing:-.5px;">How can you help?</h2>
+        </div>
+
+        <div class="jmodal-form-row">
+          <div class="jmodal-form-group">
+            <label class="jmodal-label" for="jm-fname">First name</label>
+            <input type="text" id="jm-fname" placeholder="Jane" autocomplete="given-name" />
+          </div>
+          <div class="jmodal-form-group">
+            <label class="jmodal-label" for="jm-lname">Last name</label>
+            <input type="text" id="jm-lname" placeholder="Smith" autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="jmodal-form-group">
+          <label class="jmodal-label" for="jm-email">Email address</label>
+          <input type="email" id="jm-email" placeholder="jane@example.com" autocomplete="email" />
+        </div>
+
+        <div class="jmodal-form-group">
+          <label class="jmodal-label" for="jm-org">Organisation / Affiliation <span style="font-weight:400;opacity:.7;">(optional)</span></label>
+          <input type="text" id="jm-org" placeholder="Your organisation" autocomplete="organization" />
+        </div>
+
+        <div style="margin:1.2rem 0 1rem;">
+          <p style="font-size:.88rem;font-weight:700;color:#fff;margin:0 0 4px;">Where can you contribute?</p>
+          <p style="font-size:.8rem;color:var(--text-muted);margin:0 0 .9rem;">Select all that apply.</p>
+          <div id="jm-skill-cards" style="display:flex;flex-direction:column;gap:.5rem;"></div>
+        </div>
+
+        <div class="jmodal-form-group">
+          <label class="jmodal-label" for="jm-notes">Anything else? <span style="font-weight:400;opacity:.7;">(optional)</span></label>
+          <textarea id="jm-notes" rows="3" placeholder="Tell us about your background or experience..."></textarea>
+        </div>
+
+        <button class="jmodal-submit-btn" id="jm-submit-btn" onclick="handleJoinSubmit()">Submit &nbsp;&rarr;</button>
+        <p id="jm-error-msg" style="color:#e8889a;font-size:.82rem;margin-top:.65rem;display:none;"></p>
+      </div>
+
+      <div id="jmodal-success-view" style="display:none;">
+        <div class="jmodal-success">
+          <div class="jmodal-success-icon">&#10003;</div>
+          <h3>Thank you for joining!</h3>
+          <p id="jm-success-msg"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     /* ---- STARS ---- */
     (function () {
@@ -1903,7 +2071,169 @@
       } else {
         document.querySelectorAll('.fade-up').forEach(function (el) { el.classList.add('visible'); });
       }
+
+      /* ---- JOIN MODAL EVENTS ---- */
+      var jmodalEl = document.getElementById('join-modal');
+      if (jmodalEl) {
+        jmodalEl.addEventListener('click', function (e) {
+          if (e.target === this) closeJoinModal();
+        });
+      }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeJoinModal();
+      });
     });
+
+    /* ---- JOIN MODAL ---- */
+    var jmAreas = [
+      { id: 'media',    icon: '📢', title: 'Media engagement',                desc: 'Outreach to journalists, pitching stories, coordinating interviews' },
+      { id: 'content',  icon: '✏️', title: 'Content creation',                desc: 'Social media, website updates, statements, public communications' },
+      { id: 'emails',   icon: '✉️', title: 'Drafting emails & correspondence', desc: 'Emails to journalists, policymakers, and follow-ups' },
+      { id: 'policy',   icon: '📋', title: 'Policy & advocacy support',        desc: 'Policy briefs, statements, submissions, political stakeholder materials' },
+      { id: 'research', icon: '🔍', title: 'Research & monitoring',            desc: 'Tracking coverage, mapping actors, identifying trends' }
+    ];
+    var jmSelected = new Set();
+
+    function renderJmCards() {
+      var container = document.getElementById('jm-skill-cards');
+      if (!container) return;
+      container.innerHTML = '';
+      jmAreas.forEach(function (a) {
+        var isSel = jmSelected.has(a.id);
+        var card = document.createElement('div');
+        card.className = 'jmodal-skill-card' + (isSel ? ' selected' : '');
+        card.setAttribute('role', 'checkbox');
+        card.setAttribute('aria-checked', String(isSel));
+        card.setAttribute('tabindex', '0');
+
+        var iconEl = document.createElement('div');
+        iconEl.className = 'jmodal-skill-icon';
+        iconEl.setAttribute('aria-hidden', 'true');
+        iconEl.textContent = a.icon;
+
+        var bodyEl = document.createElement('div');
+        bodyEl.className = 'jmodal-skill-body';
+        var titleEl = document.createElement('p');
+        titleEl.className = 'jmodal-skill-title';
+        titleEl.textContent = a.title;
+        var descEl = document.createElement('p');
+        descEl.className = 'jmodal-skill-desc';
+        descEl.textContent = a.desc;
+        bodyEl.appendChild(titleEl);
+        bodyEl.appendChild(descEl);
+
+        var checkEl = document.createElement('div');
+        checkEl.className = 'jmodal-skill-check';
+        checkEl.setAttribute('aria-hidden', 'true');
+        checkEl.textContent = isSel ? '✓' : '○';
+
+        card.appendChild(iconEl);
+        card.appendChild(bodyEl);
+        card.appendChild(checkEl);
+
+        card.addEventListener('click', function () {
+          if (jmSelected.has(a.id)) jmSelected.delete(a.id); else jmSelected.add(a.id);
+          renderJmCards();
+        });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); card.click(); }
+        });
+        container.appendChild(card);
+      });
+    }
+
+    function openJoinModal() {
+      var formView    = document.getElementById('jmodal-form-view');
+      var successView = document.getElementById('jmodal-success-view');
+      var btn = document.getElementById('jm-submit-btn');
+      var err = document.getElementById('jm-error-msg');
+      formView.style.display = '';
+      successView.style.display = 'none';
+      if (btn) { btn.disabled = false; btn.innerHTML = 'Submit &nbsp;&rarr;'; }
+      if (err) { err.style.display = 'none'; err.textContent = ''; }
+      document.getElementById('join-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      renderJmCards();
+      setTimeout(function () {
+        var first = document.getElementById('jm-fname');
+        if (first) first.focus();
+      }, 300);
+    }
+
+    function closeJoinModal() {
+      document.getElementById('join-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function handleJoinSubmit() {
+      var fname = document.getElementById('jm-fname').value.trim();
+      var lname = document.getElementById('jm-lname').value.trim();
+      var email = document.getElementById('jm-email').value.trim();
+      var org   = document.getElementById('jm-org').value.trim();
+      var notes = document.getElementById('jm-notes').value.trim();
+      var err   = document.getElementById('jm-error-msg');
+
+      if (!fname || !lname || !email || jmSelected.size === 0) {
+        err.textContent = 'Please fill in your name and email, and select at least one area.';
+        err.style.display = 'block';
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        err.textContent = 'Please enter a valid email address.';
+        err.style.display = 'block';
+        return;
+      }
+      err.style.display = 'none';
+
+      var chosenAreas = jmAreas
+        .filter(function (a) { return jmSelected.has(a.id); })
+        .map(function (a) { return a.title; })
+        .join(', ');
+
+      var btn = document.getElementById('jm-submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending\u2026';
+
+      var formData = new FormData();
+      formData.append('First Name', fname);
+      formData.append('Last Name', lname);
+      formData.append('Email', email);
+      if (org)   formData.append('Organisation', org);
+      formData.append('Areas of Contribution', chosenAreas);
+      if (notes) formData.append('Additional Notes', notes);
+      formData.append('_replyto', email);
+      formData.append('_subject', 'New volunteer sign-up: ' + fname + ' ' + lname);
+
+      /*
+       * EMAIL SETUP: Sign up (free) at https://formspree.io, create a form
+       * for info@iddni.com, then replace YOUR_FORM_ID below with the ID
+       * shown in your Formspree dashboard (e.g. "xwpbqkgz").
+       */
+      fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) {
+        if (res.ok) {
+          document.getElementById('jmodal-form-view').style.display = 'none';
+          document.getElementById('jmodal-success-view').style.display = 'block';
+          var msg = fname + ', we\'ve noted your interest in: ' + chosenAreas + '. We\'ll be in touch soon.';
+          document.getElementById('jm-success-msg').textContent = msg;
+          jmSelected.clear();
+        } else {
+          return res.json().then(function (data) {
+            throw new Error(data.errors ? data.errors.map(function (e) { return e.message; }).join(', ') : 'Submission failed.');
+          });
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.innerHTML = 'Submit &nbsp;&rarr;';
+        err.textContent = 'Unable to send. Please email us directly at info@iddni.com';
+        err.style.display = 'block';
+      });
+    }
   </script>
 </body>
 </html>
