@@ -1025,6 +1025,129 @@
       .jmodal-panel { padding: 1.5rem; }
       .jmodal-form-row { grid-template-columns: 1fr; }
     }
+
+    /* ---- GALLERY OVERLAY ---- */
+    .gallery-overlay {
+      position: fixed; inset: 0; z-index: 8000;
+      background: var(--navy);
+      display: flex; flex-direction: column;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s ease;
+    }
+    .gallery-overlay.active { opacity: 1; pointer-events: all; }
+    .gallery-overlay-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 2rem 1.2rem;
+      border-bottom: 1px solid var(--glass-b);
+      flex-shrink: 0;
+      background: rgba(5,5,26,.97);
+      backdrop-filter: blur(12px);
+    }
+    .gallery-overlay-eyebrow {
+      font-size: .72rem; color: var(--gold); font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase; margin: 0 0 3px;
+    }
+    .gallery-overlay-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem; font-weight: 800; color: #fff; margin: 0; letter-spacing: -.4px;
+    }
+    .gallery-overlay-close {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      color: var(--text-muted); width: 40px; height: 40px;
+      border-radius: 10px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.35rem; font-family: inherit; transition: all var(--tr); flex-shrink: 0;
+    }
+    .gallery-overlay-close:hover { color: #fff; background: rgba(255,255,255,.14); }
+    .gallery-overlay-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(300px,100%), 1fr));
+      gap: 1.25rem;
+      padding: 2rem;
+      overflow-y: auto;
+      flex: 1;
+      align-content: start;
+    }
+    .gallery-thumb {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--glass-b);
+      cursor: pointer;
+      position: relative;
+      background: var(--glass);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s;
+    }
+    .gallery-thumb:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.55);
+      border-color: rgba(232,184,75,.35);
+    }
+    .gallery-thumb:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .gallery-thumb img { width: 100%; height: auto; display: block; transition: transform .45s ease; }
+    .gallery-thumb:hover img { transform: scale(1.04); }
+    .gallery-thumb-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: .7rem 1rem;
+      background: linear-gradient(to top, rgba(5,5,26,.9) 0%, transparent 100%);
+      font-size: .8rem; color: rgba(255,255,255,.85);
+      font-weight: 500; line-height: 1.4;
+      transform: translateY(100%);
+      transition: transform .25s ease;
+    }
+    .gallery-thumb:hover .gallery-thumb-caption,
+    .gallery-thumb:focus-visible .gallery-thumb-caption { transform: translateY(0); }
+    /* Lightbox */
+    .gallery-lightbox {
+      position: fixed; inset: 0; z-index: 8001;
+      background: rgba(2,2,14,.96);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem 4rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    .gallery-lightbox.active { opacity: 1; pointer-events: all; }
+    .lightbox-content { max-width: 1000px; width: 100%; text-align: center; }
+    .lightbox-content img {
+      max-width: 100%; max-height: 80vh;
+      border-radius: var(--radius-lg);
+      object-fit: contain;
+      box-shadow: 0 32px 80px rgba(0,0,0,.7);
+    }
+    .lightbox-caption {
+      margin-top: .9rem; font-size: .9rem;
+      color: var(--text-muted); line-height: 1.65;
+      max-width: 680px; margin-left: auto; margin-right: auto;
+    }
+    .lightbox-counter {
+      font-size: .78rem; color: rgba(136,136,170,.6);
+      margin-top: .4rem; letter-spacing: .5px;
+    }
+    .lightbox-close {
+      position: fixed; top: 1.25rem; right: 1.25rem;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      color: #fff; width: 42px; height: 42px;
+      border-radius: 10px; font-size: 1.35rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all var(--tr); font-family: inherit; z-index: 8002;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,.22); }
+    .lightbox-prev, .lightbox-next {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      color: #fff; width: 48px; height: 48px;
+      border-radius: 10px; font-size: 1.3rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all var(--tr); font-family: inherit; z-index: 8002;
+    }
+    .lightbox-prev { left: 1.25rem; }
+    .lightbox-next { right: 1.25rem; }
+    .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,.22); }
+    @media (max-width: 600px) {
+      .gallery-overlay-grid { padding: 1.25rem; gap: .9rem; }
+      .gallery-lightbox { padding: 1rem 1rem; }
+      .lightbox-prev { left: .4rem; }
+      .lightbox-next { right: .4rem; }
+    }
   </style>
 </head>
 <body>
@@ -1050,6 +1173,7 @@
           <a href="#team"    data-en="Steering Committee" data-fa="کمیته راهبری">Steering Committee</a>
           <a href="#media"   data-en="Media"              data-fa="رسانه">Media</a>
           <a href="#contact" data-en="Contact"            data-fa="تماس">Contact</a>
+          <a href="#" onclick="openGalleryModal(); return false;" data-en="Gallery" data-fa="گالری">Gallery</a>
           <a href="#" class="join-us-nav-tab" onclick="openJoinModal(); return false;" data-en="Join Us" data-fa="به ما بپیوندید">Join Us</a>
         </nav>
         <div class="nav-right">
@@ -1069,6 +1193,7 @@
         <a href="#" onclick="closeMobile(); openJoinModal(); return false;" data-en="Join Us" data-fa="به ما بپیوندید">Join Us</a>
         <a href="#media"   onclick="closeMobile()" data-en="Media"              data-fa="رسانه">Media</a>
         <a href="#contact" onclick="closeMobile()" data-en="Contact"            data-fa="تماس">Contact</a>
+        <a href="#" onclick="closeMobile(); openGalleryModal(); return false;" data-en="Gallery" data-fa="گالری">Gallery</a>
         <button onclick="toggleLanguage(); closeMobile();" id="langToggleMobile">فارسی</button>
       </div>
     </header>
@@ -1279,6 +1404,18 @@
           </h3>
           <p class="news-excerpt lang-en-block">Spotlight feature on Iranians living in Ireland — including IDDNI founder Dr. Mahya Ostovar — sharing harrowing accounts of war, repression, and resilience amid ongoing conflict and internet blackouts in Iran.</p>
           <p class="news-excerpt lang-fa-block" dir="rtl" lang="fa">گزارش ایریش اگزمینر از ایرانیان مقیم ایرلند، از جمله دکتر مهیا اُستوار، درباره جنگ، سرکوب و امید به آینده ایران.</p>
+          <span class="appearance-link" style="margin-top:auto; padding-top:1rem;">Read &#8599;</span>
+        </a>
+
+        <a class="news-card fade-up" href="https://www.dublininquirer.com/gardai-press-charges-against-a-man-for-a-poster-on-the-gates-of-iranian-embassy/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit; display:flex; flex-direction:column;">
+          <span class="news-tag" data-en="Press Coverage" data-fa="پوشش مطبوعاتی">Press Coverage</span>
+          <p class="news-date" data-en="13 May, 2026 &mdash; Dublin Inquirer" data-fa="۱۳ مه ۲۰۲۶ &mdash; دوبلین اینکوایرر">13 May, 2026 &mdash; Dublin Inquirer</p>
+          <h3 data-en="Garda&iacute; press charges against a man for a poster on the gates of Iranian embassy"
+              data-fa="گاردا علیه مردی به دلیل نصب پوستر بر دروازه سفارت ایران اعلام اتهام کرد">
+            Garda&iacute; press charges against a man for a poster on the gates of Iranian embassy
+          </h3>
+          <p class="news-excerpt lang-en-block">Morteza Najafi was charged for placing an anti-Khamenei poster on the Iranian embassy gates during a peaceful Blackrock protest. IDDNI co-founder Mahya Ostovar described the prosecution as part of the regime&rsquo;s transnational effort to silence dissent abroad — while Gardaí ignored assaults on Iranian protesters elsewhere.</p>
+          <p class="news-excerpt lang-fa-block" dir="rtl" lang="fa">مرتضی نجفی به دلیل نصب پوستری ضد خامنه‌ای بر دروازه سفارت ایران در جریان یک اعتراض مسالمت‌آمیز تحت پیگرد قرار گرفت. مهیا اُستوار، هم‌بنیان‌گذار IDDNI، این اقدام را بخشی از تلاش فراملی رژیم برای خاموش کردن مخالفان دانست.</p>
           <span class="appearance-link" style="margin-top:auto; padding-top:1rem;">Read &#8599;</span>
         </a>
       </div>
@@ -1961,6 +2098,30 @@
     </div>
   </div>
 
+  <!-- ===== GALLERY OVERLAY ===== -->
+  <div id="gallery-overlay" class="gallery-overlay" role="dialog" aria-modal="true" aria-label="Photo Gallery">
+    <div class="gallery-overlay-header">
+      <div>
+        <p class="gallery-overlay-eyebrow">Visual Archive</p>
+        <h2 class="gallery-overlay-title">Gallery</h2>
+      </div>
+      <button class="gallery-overlay-close" onclick="closeGalleryModal()" aria-label="Close gallery">&times;</button>
+    </div>
+    <div class="gallery-overlay-grid" id="gallery-grid"></div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="gallery-lightbox" class="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image viewer">&times;</button>
+    <button class="lightbox-prev" onclick="lightboxNav(-1)" aria-label="Previous image">&#8592;</button>
+    <button class="lightbox-next" onclick="lightboxNav(1)" aria-label="Next image">&#8594;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="" />
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+      <p id="lightbox-counter" class="lightbox-counter"></p>
+    </div>
+  </div>
+
   <script>
     /* ---- STARS ---- */
     (function () {
@@ -2080,9 +2241,97 @@
         });
       }
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeJoinModal();
+        if (e.key === 'Escape') { closeLightbox(); closeGalleryModal(); closeJoinModal(); }
+        if (e.key === 'ArrowLeft' && document.getElementById('gallery-lightbox').classList.contains('active')) lightboxNav(-1);
+        if (e.key === 'ArrowRight' && document.getElementById('gallery-lightbox').classList.contains('active')) lightboxNav(1);
       });
+      var galleryLightboxEl = document.getElementById('gallery-lightbox');
+      if (galleryLightboxEl) {
+        galleryLightboxEl.addEventListener('click', function (e) {
+          if (e.target === this) closeLightbox();
+        });
+      }
     });
+
+    /* ---- GALLERY ---- */
+    var galleryImages = [
+      {
+        src: 'gallery-1.jpg',
+        alt: 'Bombs made news. Executions didn\'t. #StopExecutionsInIran',
+        caption: '#StopExecutionsInIran — Bombs made news. Executions didn\'t.'
+      },
+      {
+        src: 'gallery-2.jpg',
+        alt: 'Iranian diaspora is not a different type of Iranians. It\'s just Iranians with internet.',
+        caption: '"Iranian diaspora is not a different type of Iranians — it\'s just Iranians with internet."'
+      }
+    ];
+    var lightboxIndex = 0;
+    var galleryRendered = false;
+
+    function openGalleryModal() {
+      document.getElementById('gallery-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      if (!galleryRendered) { renderGalleryGrid(); galleryRendered = true; }
+    }
+
+    function closeGalleryModal() {
+      document.getElementById('gallery-overlay').classList.remove('active');
+      closeLightbox();
+      document.body.style.overflow = '';
+    }
+
+    function renderGalleryGrid() {
+      var grid = document.getElementById('gallery-grid');
+      galleryImages.forEach(function (img, i) {
+        var thumb = document.createElement('div');
+        thumb.className = 'gallery-thumb';
+        thumb.setAttribute('tabindex', '0');
+        thumb.setAttribute('role', 'button');
+        thumb.setAttribute('aria-label', 'View image: ' + img.alt);
+        var imgEl = document.createElement('img');
+        imgEl.src = img.src;
+        imgEl.alt = img.alt;
+        imgEl.loading = 'lazy';
+        var cap = document.createElement('div');
+        cap.className = 'gallery-thumb-caption';
+        cap.textContent = img.caption;
+        thumb.appendChild(imgEl);
+        thumb.appendChild(cap);
+        thumb.addEventListener('click', function () { openLightbox(i); });
+        thumb.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); }
+        });
+        grid.appendChild(thumb);
+      });
+    }
+
+    function openLightbox(index) {
+      lightboxIndex = index;
+      var img = galleryImages[index];
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').alt = img.alt;
+      document.getElementById('lightbox-caption').textContent = img.caption;
+      document.getElementById('lightbox-counter').textContent = (index + 1) + ' / ' + galleryImages.length;
+      var lb = document.getElementById('gallery-lightbox');
+      lb.classList.add('active');
+      var prevBtn = lb.querySelector('.lightbox-prev');
+      var nextBtn = lb.querySelector('.lightbox-next');
+      if (galleryImages.length <= 1) {
+        prevBtn.style.display = 'none'; nextBtn.style.display = 'none';
+      } else {
+        prevBtn.style.display = ''; nextBtn.style.display = '';
+      }
+    }
+
+    function closeLightbox() {
+      document.getElementById('gallery-lightbox').classList.remove('active');
+    }
+
+    function lightboxNav(dir) {
+      lightboxIndex = (lightboxIndex + dir + galleryImages.length) % galleryImages.length;
+      openLightbox(lightboxIndex);
+    }
 
     /* ---- JOIN MODAL ---- */
     var jmAreas = [
@@ -2194,37 +2443,34 @@
       btn.disabled = true;
       btn.textContent = 'Sending\u2026';
 
-      var formData = new FormData();
-      formData.append('First Name', fname);
-      formData.append('Last Name', lname);
-      formData.append('Email', email);
-      if (org)   formData.append('Organisation', org);
-      formData.append('Areas of Contribution', chosenAreas);
-      if (notes) formData.append('Additional Notes', notes);
-      formData.append('_replyto', email);
-      formData.append('_subject', 'New volunteer sign-up: ' + fname + ' ' + lname);
+      var payload = {
+        access_key: '69b30a22-4ddd-45c2-bbf5-76ef66cc62c8',
+        subject: 'New volunteer sign-up: ' + fname + ' ' + lname,
+        from_name: fname + ' ' + lname,
+        replyto: email,
+        'First Name': fname,
+        'Last Name': lname,
+        'Email': email,
+        'Organisation': org || '',
+        'Areas of Contribution': chosenAreas,
+        'Additional Notes': notes || ''
+      };
 
-      /*
-       * EMAIL SETUP: Sign up (free) at https://formspree.io, create a form
-       * for info@iddni.com, then replace YOUR_FORM_ID below with the ID
-       * shown in your Formspree dashboard (e.g. "xwpbqkgz").
-       */
-      fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
       })
-      .then(function (res) {
-        if (res.ok) {
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) {
           document.getElementById('jmodal-form-view').style.display = 'none';
           document.getElementById('jmodal-success-view').style.display = 'block';
-          var msg = fname + ', we\'ve noted your interest in: ' + chosenAreas + '. We\'ll be in touch soon.';
+          var msg = fname + ', thank you for joining! We\'ve received your sign-up and will be in touch soon.';
           document.getElementById('jm-success-msg').textContent = msg;
           jmSelected.clear();
         } else {
-          return res.json().then(function (data) {
-            throw new Error(data.errors ? data.errors.map(function (e) { return e.message; }).join(', ') : 'Submission failed.');
-          });
+          throw new Error(data.message || 'Submission failed.');
         }
       })
       .catch(function () {
