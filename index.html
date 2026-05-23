@@ -1148,6 +1148,76 @@
       .lightbox-prev { left: .4rem; }
       .lightbox-next { right: .4rem; }
     }
+
+    /* ===== MEMBERS LOGIN MODAL ===== */
+    .lmodal-overlay {
+      position: fixed; inset: 0; z-index: 99999;
+      background: rgba(5,5,26,.9);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.25rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    .lmodal-overlay.active { opacity: 1; pointer-events: all; }
+    .lmodal-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,.11);
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      width: 100%; max-width: 380px;
+      text-align: center;
+      position: relative;
+      transform: translateY(20px) scale(.97);
+      transition: transform .25s cubic-bezier(0.4,0,0.2,1);
+    }
+    .lmodal-overlay.active .lmodal-card { transform: translateY(0) scale(1); }
+    .lmodal-close-x {
+      position: absolute; top: 1rem; right: 1rem;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      color: var(--text-muted); width: 30px; height: 30px;
+      border-radius: 7px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.1rem; transition: background .2s;
+    }
+    .lmodal-close-x:hover { background: rgba(255,255,255,.13); color: #fff; }
+    .lmodal-icon { font-size: 2rem; margin-bottom: .6rem; }
+    .lmodal-eyebrow {
+      font-size: .68rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--text-muted); margin: 0 0 5px;
+    }
+    .lmodal-title {
+      font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800;
+      color: #fff; margin: 0 0 1.75rem; letter-spacing: -.4px;
+    }
+    .lmodal-input {
+      width: 100%; box-sizing: border-box;
+      padding: .72rem 1rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      color: #fff; font-size: .95rem;
+      outline: none; margin-bottom: .7rem;
+      transition: border-color .2s;
+    }
+    .lmodal-input:focus { border-color: var(--gold); }
+    .lmodal-input::placeholder { color: rgba(255,255,255,.35); }
+    .lmodal-btn {
+      width: 100%; padding: .75rem;
+      background: var(--gold); color: #05051a;
+      font-weight: 700; font-size: .95rem;
+      border: none; border-radius: 10px; cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .lmodal-btn:hover { background: #f5ca6a; transform: translateY(-1px); }
+    .lmodal-error {
+      color: #e8889a; font-size: .82rem;
+      margin-top: .65rem; min-height: 1.1em;
+      display: none;
+    }
+    nav.desktop-nav a.members-nav-link { color: var(--gold); }
+    nav.desktop-nav a.members-nav-link:hover { color: #fff; background: rgba(232,184,75,.15); }
   </style>
 </head>
 <body>
@@ -1174,6 +1244,7 @@
           <a href="#media"   data-en="Media"              data-fa="رسانه">Media</a>
           <a href="#contact" data-en="Contact"            data-fa="تماس">Contact</a>
           <a href="#" onclick="openGalleryModal(); return false;" data-en="Gallery" data-fa="گالری">Gallery</a>
+          <a href="https://media-dashboard-3qq.pages.dev" class="members-nav-link" data-en="Members" data-fa="اعضا" target="_blank" rel="noopener">&#128275; Members</a>
           <a href="#" class="join-us-nav-tab" onclick="openJoinModal(); return false;" data-en="Join Us" data-fa="به ما بپیوندید">Join Us</a>
         </nav>
         <div class="nav-right">
@@ -1194,6 +1265,7 @@
         <a href="#media"   onclick="closeMobile()" data-en="Media"              data-fa="رسانه">Media</a>
         <a href="#contact" onclick="closeMobile()" data-en="Contact"            data-fa="تماس">Contact</a>
         <a href="#" onclick="closeMobile(); openGalleryModal(); return false;" data-en="Gallery" data-fa="گالری">Gallery</a>
+        <a href="https://media-dashboard-3qq.pages.dev" onclick="closeMobile()" data-en="Members" data-fa="اعضا" target="_blank" rel="noopener">&#128275; Members</a>
         <button onclick="toggleLanguage(); closeMobile();" id="langToggleMobile">فارسی</button>
       </div>
     </header>
@@ -2098,6 +2170,22 @@
     </div>
   </div>
 
+  <!-- ===== MEMBERS LOGIN MODAL ===== -->
+  <div id="login-modal" class="lmodal-overlay" role="dialog" aria-modal="true" aria-labelledby="lmodal-title">
+    <div class="lmodal-card">
+      <button class="lmodal-close-x" onclick="closeLoginModal()" aria-label="Close">&times;</button>
+      <div class="lmodal-icon">&#128275;</div>
+      <p class="lmodal-eyebrow">IDDNI Members</p>
+      <h2 class="lmodal-title" id="lmodal-title">Member Login</h2>
+      <input type="email" id="lm-email" class="lmodal-input"
+        placeholder="Email address" autocomplete="username" aria-label="Email address" />
+      <input type="password" id="lm-pass" class="lmodal-input"
+        placeholder="Password" autocomplete="current-password" aria-label="Password" />
+      <button class="lmodal-btn" onclick="handleLoginSubmit()">Sign in &nbsp;&rarr;</button>
+      <p class="lmodal-error" id="lm-error"></p>
+    </div>
+  </div>
+
   <!-- ===== GALLERY OVERLAY ===== -->
   <div id="gallery-overlay" class="gallery-overlay" role="dialog" aria-modal="true" aria-label="Photo Gallery">
     <div class="gallery-overlay-header">
@@ -2241,10 +2329,21 @@
         });
       }
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') { closeLightbox(); closeGalleryModal(); closeJoinModal(); }
+        if (e.key === 'Escape') { closeLightbox(); closeGalleryModal(); closeJoinModal(); closeLoginModal(); }
         if (e.key === 'ArrowLeft' && document.getElementById('gallery-lightbox').classList.contains('active')) lightboxNav(-1);
         if (e.key === 'ArrowRight' && document.getElementById('gallery-lightbox').classList.contains('active')) lightboxNav(1);
       });
+      /* ---- LOGIN MODAL EVENTS ---- */
+      var lmodalEl = document.getElementById('login-modal');
+      if (lmodalEl) {
+        lmodalEl.addEventListener('click', function (e) { if (e.target === this) closeLoginModal(); });
+      }
+      var lmEmail = document.getElementById('lm-email');
+      var lmPass  = document.getElementById('lm-pass');
+      if (lmEmail) lmEmail.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); lmPass.focus(); } });
+      if (lmPass)  lmPass.addEventListener('keydown',  function (e) { if (e.key === 'Enter') handleLoginSubmit(); });
+      /* Open login modal via URL hash */
+      if (window.location.hash === '#members') openLoginModal();
       var galleryLightboxEl = document.getElementById('gallery-lightbox');
       if (galleryLightboxEl) {
         galleryLightboxEl.addEventListener('click', function (e) {
@@ -2478,6 +2577,46 @@
         btn.innerHTML = 'Submit &nbsp;&rarr;';
         err.textContent = 'Unable to send. Please email us directly at info@iddni.com';
         err.style.display = 'block';
+      });
+    }
+
+    /* ===== MEMBER LOGIN ===== */
+    var _USERS = ['bca8946b94271cf9f3534021225f0fc29562f274c47a2e06e0d3ccda3390ce6e'];
+    function _h256(s) {
+      return crypto.subtle.digest('SHA-256', new TextEncoder().encode(s))
+        .then(function(b) {
+          return Array.from(new Uint8Array(b)).map(function(x){ return x.toString(16).padStart(2,'0'); }).join('');
+        });
+    }
+    function openLoginModal() {
+      var m = document.getElementById('login-modal');
+      m.classList.add('active');
+      document.getElementById('lm-email').value = '';
+      document.getElementById('lm-pass').value  = '';
+      document.getElementById('lm-error').style.display = 'none';
+      setTimeout(function(){ document.getElementById('lm-email').focus(); }, 110);
+    }
+    function closeLoginModal() {
+      document.getElementById('login-modal').classList.remove('active');
+    }
+    function handleLoginSubmit() {
+      var email = (document.getElementById('lm-email').value || '').trim().toLowerCase();
+      var pass  = document.getElementById('lm-pass').value;
+      var err   = document.getElementById('lm-error');
+      if (!email || !pass) {
+        err.textContent = 'Please enter your email and password.';
+        err.style.display = 'block'; return;
+      }
+      _h256(email + ':' + pass).then(function(hash) {
+        if (_USERS.indexOf(hash) !== -1) {
+          sessionStorage.setItem('iddni_auth', '1');
+          window.location.href = 'https://media-dashboard-3qq.pages.dev';
+        } else {
+          err.textContent = 'Incorrect email or password.';
+          err.style.display = 'block';
+          document.getElementById('lm-pass').value = '';
+          document.getElementById('lm-pass').focus();
+        }
       });
     }
   </script>
