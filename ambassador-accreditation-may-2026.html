@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDDNI Condemns Accreditation of Iranian Ambassador &mdash; 25 May 2026</title>
+  <meta name="description" content="IDDNI strongly condemns the Irish Government's decision to proceed with the accreditation of the Ambassador of the Islamic Republic of Iran on 21 May 2026.">
+  <link rel="icon" href="Untitled%20project%20(2).png" type="image/png">
+  <link rel="canonical" href="https://iddni.com/ambassador-accreditation-may-2026.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy:       #05051a;
+      --navy-mid:   #0b0b28;
+      --gold:       #e8b84b;
+      --gold-dim:   #b08830;
+      --rose:       #d45f7a;
+      --text:       #eaeaf8;
+      --text-muted: #8888aa;
+      --glass-b:    rgba(255,255,255,0.09);
+      --radius:     14px;
+      --radius-lg:  22px;
+      --tr:         0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--navy);
+      color: var(--text);
+      font-family: 'Outfit', 'Vazirmatn', sans-serif;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ---- BG ---- */
+    .bg-canvas {
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none; overflow: hidden;
+    }
+    .bg-canvas::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(232,184,75,.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(212,95,122,.05) 0%, transparent 55%);
+      animation: bgPulse 14s ease-in-out infinite alternate;
+    }
+    @keyframes bgPulse {
+      0%   { opacity: .5; transform: scale(1); }
+      100% { opacity: 1;  transform: scale(1.04); }
+    }
+    .content-wrap { position: relative; z-index: 1; }
+
+    /* ---- HEADER ---- */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(5,5,26,.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-b);
+    }
+    .header-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: .75rem 1.5rem;
+    }
+    .logo-link {
+      display: flex; align-items: center; gap: .6rem;
+      text-decoration: none; color: var(--text);
+    }
+    .logo-img { height: 34px; width: 34px; object-fit: contain; }
+    .logo-text {
+      font-size: 1.05rem; font-weight: 800;
+      letter-spacing: -.3px; color: #fff;
+    }
+    .logo-text span { color: var(--gold); }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .82rem; font-weight: 600; color: var(--text-muted);
+      text-decoration: none; padding: .4rem .85rem;
+      border: 1px solid var(--glass-b); border-radius: 8px;
+      transition: all var(--tr);
+    }
+    .back-btn:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* ---- ARTICLE ---- */
+    .article-wrap {
+      max-width: 780px; margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+    .article-tag {
+      display: inline-block;
+      font-size: .72rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(232,184,75,.3);
+      border-radius: 6px; padding: .25rem .65rem;
+      margin-bottom: 1.5rem;
+    }
+    .article-title {
+      font-size: clamp(1.55rem, 3.5vw, 2.2rem);
+      font-weight: 900; line-height: 1.25;
+      color: #fff; margin-bottom: 1.25rem;
+      letter-spacing: -.5px;
+    }
+    .article-meta {
+      display: flex; align-items: center; gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .82rem; color: var(--text-muted);
+      margin-bottom: 2.5rem; padding-bottom: 2rem;
+      border-bottom: 1px solid var(--glass-b);
+    }
+    .meta-org { color: var(--gold); font-weight: 600; }
+    .meta-dot { opacity: .35; }
+
+    .article-body { font-size: 1.05rem; line-height: 1.95; }
+    .article-body p { margin-bottom: 1.2rem; color: var(--text); }
+    .article-body p.question {
+      font-weight: 700; font-size: 1.1rem; color: #fff;
+    }
+    .article-body h3 {
+      font-size: 1rem; font-weight: 700; color: var(--gold);
+      text-transform: uppercase; letter-spacing: 1.5px;
+      margin: 2.5rem 0 .75rem;
+    }
+    .article-divider {
+      border: none; border-top: 1px solid var(--glass-b);
+      margin: 2.5rem 0;
+    }
+    .article-footer {
+      margin-top: .5rem;
+      font-size: .9rem; color: var(--text-muted); line-height: 1.7;
+    }
+    .article-footer a { color: var(--gold); text-decoration: none; }
+    .article-footer a:hover { text-decoration: underline; }
+
+    /* Share bar */
+    .share-bar {
+      margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid var(--glass-b);
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .share-label {
+      font-size: .78rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    .share-link {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .82rem; font-weight: 600; color: var(--text-muted);
+      text-decoration: none; padding: .4rem .85rem;
+      border: 1px solid var(--glass-b); border-radius: 8px;
+      transition: all var(--tr);
+    }
+    .share-link:hover { color: var(--gold); border-color: var(--gold); }
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .82rem; font-weight: 600; color: var(--text-muted);
+      background: none; cursor: pointer;
+      padding: .4rem .85rem;
+      border: 1px solid var(--glass-b); border-radius: 8px;
+      font-family: inherit; transition: all var(--tr);
+    }
+    .copy-btn:hover { color: var(--gold); border-color: var(--gold); }
+    .copy-btn.copied { color: #4ecf96; border-color: rgba(78,207,150,.4); }
+
+    /* FA toggle */
+    .lang-bar {
+      display: flex; gap: .5rem; margin-bottom: 2rem;
+    }
+    .lang-btn {
+      font-size: .75rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: .3rem .7rem;
+      border: 1px solid var(--glass-b); border-radius: 6px;
+      background: none; cursor: pointer; color: var(--text-muted);
+      font-family: inherit; transition: all var(--tr);
+    }
+    .lang-btn.active { color: var(--gold); border-color: var(--gold); }
+    .lang-btn:hover { color: var(--gold); }
+
+    .fa-text { display: none; }
+    body.fa-mode .en-text { display: none; }
+    body.fa-mode .fa-text { display: block; }
+    body.fa-mode { direction: rtl; text-align: right; font-family: 'Vazirmatn', 'Outfit', sans-serif; }
+    body.fa-mode .back-btn { flex-direction: row-reverse; }
+
+    @media (max-width: 640px) {
+      .article-wrap { padding: 2.5rem 1.1rem 4rem; }
+      .article-title { font-size: 1.45rem; }
+      .article-body { font-size: .97rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-canvas"></div>
+  <div class="content-wrap">
+
+    <header>
+      <div class="header-inner">
+        <a class="logo-link" href="https://iddni.com/">
+          <img class="logo-img" src="Untitled%20project%20(2).png"
+               onerror="this.style.display='none'" alt="IDDNI logo">
+          <span class="logo-text">IDDN<span>I</span></span>
+        </a>
+        <a class="back-btn" href="https://iddni.com/#news">&#8592; News &amp; Press</a>
+      </div>
+    </header>
+
+    <main class="article-wrap">
+
+      <div class="lang-bar">
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="btn-fa" onclick="setLang('fa')">FA &nbsp;&#xFA;</button>
+      </div>
+
+      <span class="article-tag">Press Release</span>
+
+      <!-- ENGLISH -->
+      <div class="en-text">
+        <h1 class="article-title">
+          Back to Business as Usual Despite Iran&rsquo;s Worsening Human Rights Crisis:
+          IDDNI Condemns the Accreditation of the Ambassador of the Islamic Republic of Iran
+        </h1>
+        <div class="article-meta">
+          <span class="meta-org">Iranian Democratic Diaspora Network in Ireland (IDDNI)</span>
+          <span class="meta-dot">|</span>
+          <span>25 May 2026</span>
+        </div>
+        <div class="article-body">
+          <p>The Iranian Democratic Diaspora Network in Ireland (IDDNI) strongly condemns the Irish Government&rsquo;s decision to proceed with the accreditation of the Ambassador of the Islamic Republic of Iran on 21 May 2026.</p>
+          <p>Earlier this year, on 13 January 2026, the Department of Foreign Affairs postponed the same ceremony because of the &ldquo;very significant number of Iranians killed or injured and a communications blackout&rdquo; following the regime&rsquo;s brutal crackdown on protests in Iran. At the time, many Iranians in Ireland welcomed this decision as a recognition that normal diplomatic symbolism could not continue amid mass repression.</p>
+          <p class="question">The question now is: what has changed?</p>
+          <p>Since January, the human rights situation in Iran has not improved; it has deteriorated further. Executions continue at an alarming rate, including against political prisoners and protesters. Human rights organizations and international bodies, including Amnesty International and the United Nations, have repeatedly warned about arbitrary executions, torture, and systematic repression in Iran.</p>
+          <p>During the nationwide uprising of 8 and 9 January 2026 alone, according to numerous reports, security forces killed tens of thousands of Iranians and arrested tens of thousands more. Across multiple uprisings in recent years, Iranians have repeatedly risked and lost their lives to make clear that they no longer want this regime.</p>
+          <p>At the same time, the Islamic Republic has continued to act as a destabilizing force internationally. In recent months, the regime and the Islamic Revolutionary Guard Corps have further expanded tensions and insecurity in the region, including around the Strait of Hormuz, threatening international maritime security and global stability. Given both the domestic repression and the regime&rsquo;s broader regional conduct, it is difficult to understand why Western governments are once again moving toward appeasement and normalization.</p>
+          <p>Against this backdrop, the accreditation ceremony sends a deeply troubling symbolic message to Iranians both inside Iran and across the diaspora, especially in Ireland. Diplomatic engagement may at times be presented as a necessity of international relations, but celebratory public symbolism is not.</p>
+          <p>IDDNI was particularly disturbed by the image of President Catherine Connolly smiling warmly alongside the representative of a regime responsible for severe and ongoing human rights abuses. At a moment when many Iranians are mourning executions, repression, and imprisonment of loved ones, such imagery was painful and unnecessary. This is especially contradictory given President Connolly&rsquo;s strong and vocal public positioning on international human rights issues.</p>
+          <p>We are concerned that this reflects a broader international pattern. From renewed diplomatic engagement to discussions of political and economic deals, Western governments once again appear willing to normalize relations with a regime that lacks legitimacy among its own people. This same strategy of accommodation and appeasement has failed for decades.</p>
+          <p>IDDNI calls on Irish political representatives, civil society organizations, media, and the broader public to take a clear stance on human rights and democratic values in relation to Iran. In democratic countries, public opinion matters. If there is a moment for Irish allies to stand with the Iranian people, it is now.</p>
+          <p>We invite members of the public to join our peaceful protest outside the D&aacute;il on Thursday at 2:00 p.m. We also encourage people to contact their elected representatives and express their opposition to the normalization of relations with a regime that continues to violently repress its own population.</p>
+
+          <hr class="article-divider">
+          <h3>About IDDNI</h3>
+          <div class="article-footer">
+            <p>The Iranian Democratic Diaspora Network in Ireland (IDDNI) is a multi-ethnic, non-partisan, female-led network of Iranians based primarily in Galway and Limerick, with members in Dublin and Cork.</p>
+            <p><a href="https://iddni.com/" target="_blank" rel="noopener">https://iddni.com/</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSIAN -->
+      <div class="fa-text" dir="rtl" lang="fa">
+        <h1 class="article-title">
+          بازگشت به روال عادی علی‌رغم بدتر شدن بحران حقوق بشر در ایران:
+          IDDNI اعتبارنامه سفیر جمهوری اسلامی ایران را محکوم می‌کند
+        </h1>
+        <div class="article-meta">
+          <span class="meta-org">شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI)</span>
+          <span class="meta-dot">|</span>
+          <span>۲۵ مه ۲۰۲۶</span>
+        </div>
+        <div class="article-body">
+          <p>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) تصمیم دولت ایرلند برای پیش‌برد مراسم اعتبارنامه سفیر جمهوری اسلامی ایران در ۲۱ مه ۲۰۲۶ را به شدت محکوم می‌کند.</p>
+          <p>در اوایل امسال، در ۱۳ ژانویه ۲۰۲۶، وزارت امور خارجه همین مراسم را به دلیل «تعداد بسیار زیاد ایرانیان کشته یا زخمی‌شده و قطع ارتباطات» به تعویق انداخت. در آن زمان بسیاری از ایرانیان مقیم ایرلند این تصمیم را به عنوان به رسمیت شناختن این واقعیت که نمادپردازی دیپلماتیک عادی نمی‌تواند در میان سرکوب گسترده ادامه یابد، استقبال کردند.</p>
+          <p class="question">اکنون سؤال این است: چه چیزی تغییر کرده است؟</p>
+          <p>از ژانویه تاکنون، وضعیت حقوق بشر در ایران بهبود نیافته، بلکه بدتر شده است. اعدام‌ها با نرخ هشداردهنده‌ای ادامه دارند، از جمله علیه زندانیان سیاسی و معترضان. سازمان‌های حقوق بشری و نهادهای بین‌المللی، از جمله عفو بین‌الملل و سازمان ملل، بارها نسبت به اعدام‌های خودسرانه، شکنجه و سرکوب سیستماتیک در ایران هشدار داده‌اند.</p>
+          <p>تنها در جریان خیزش سراسری ۸ و ۹ ژانویه ۲۰۲۶، بر اساس گزارش‌های متعدد، نیروهای امنیتی ده‌ها هزار ایرانی را کشتند و ده‌ها هزار نفر دیگر را بازداشت کردند. در چندین خیزش اخیر، ایرانیان بارها جان خود را به خطر انداخته و از دست داده‌اند تا نشان دهند که این رژیم را نمی‌خواهند.</p>
+          <p>در عین حال، جمهوری اسلامی به عنوان یک نیروی بی‌ثبات‌کننده در سطح بین‌المللی به فعالیت ادامه داده است. در ماه‌های اخیر، رژیم و سپاه پاسداران انقلاب اسلامی تنش‌ها و ناامنی را در منطقه، از جمله در تنگه هرمز، گسترش داده‌اند و امنیت دریایی بین‌المللی و ثبات جهانی را تهدید کرده‌اند.</p>
+          <p>در این چارچوب، مراسم اعتبارنامه پیامی نمادین و عمیقاً نگران‌کننده به ایرانیان در داخل ایران و در سراسر دیاسپورا، به‌ویژه در ایرلند، می‌فرستد. تعامل دیپلماتیک گاهی ممکن است ضرورت روابط بین‌الملل قلمداد شود، اما نمادپردازی عمومی جشن‌وار چنین نیست.</p>
+          <p>IDDNI به‌ویژه از تصویر رئیس جمهور کاترین کانولی که با لبخند گرم در کنار نماینده رژیمی که مسئول نقض شدید و مستمر حقوق بشر است ایستاده، متأثر و نگران شد. در لحظه‌ای که بسیاری از ایرانیان در عزای اعدام‌ها، سرکوب و زندانی بودن عزیزانشان هستند، چنین تصویری دردناک و غیرضروری بود.</p>
+          <p>نگران هستیم که این بازتاب الگوی گسترده‌تری در سطح بین‌المللی باشد. دولت‌های غربی بار دیگر آماده به نظر می‌رسند روابط خود را با رژیمی که در میان مردم خود مشروعیت ندارد عادی‌سازی کنند. همین استراتژی سازش و تسکین‌دهی دهه‌هاست که شکست خورده است.</p>
+          <p>IDDNI از نمایندگان سیاسی، سازمان‌های جامعه مدنی، رسانه‌ها و مردم ایرلند می‌خواهد که موضع روشنی در قبال حقوق بشر و ارزش‌های دموکراتیک در رابطه با ایران اتخاذ کنند. در کشورهای دموکراتیک، افکار عمومی اهمیت دارد. اگر لحظه‌ای برای ایستادن در کنار مردم ایران وجود دارد، همین لحظه است.</p>
+          <p>از عموم مردم دعوت می‌کنیم تا در اعتراض مسالمت‌آمیز ما در خارج از مجلس ملی (Dáil) روز پنجشنبه ساعت ۱۴:۰۰ شرکت کنند. همچنین از مردم می‌خواهیم با نمایندگان منتخب خود تماس بگیرند و مخالفت خود را با عادی‌سازی روابط با رژیمی که همچنان جمعیت خود را به‌طور خشونت‌آمیز سرکوب می‌کند، ابراز دارند.</p>
+
+          <hr class="article-divider">
+          <h3>درباره IDDNI</h3>
+          <div class="article-footer">
+            <p>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) یک شبکه چندقومیتی، غیرحزبی و زن‌محور از ایرانیان مقیم ایرلند است که عمدتاً در گالوی و لیمریک مستقر بوده و اعضایی در دوبلین و کورک دارد.</p>
+            <p><a href="https://iddni.com/" target="_blank" rel="noopener">https://iddni.com/</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Share bar -->
+      <div class="share-bar">
+        <span class="share-label">Share</span>
+        <a class="share-link" id="share-twitter"
+           href="https://twitter.com/intent/tweet?text=IDDNI+Condemns+Accreditation+of+Iranian+Ambassador&url=https%3A%2F%2Fiddni.com%2Fambassador-accreditation-may-2026.html"
+           target="_blank" rel="noopener">&#120143; / Twitter</a>
+        <a class="share-link"
+           href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fiddni.com%2Fambassador-accreditation-may-2026.html"
+           target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" onclick="copyLink(this)">&#128279; Copy link</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      if (lang === 'fa') {
+        document.body.classList.add('fa-mode');
+        document.documentElement.setAttribute('lang', 'fa');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.getElementById('btn-fa').classList.add('active');
+        document.getElementById('btn-en').classList.remove('active');
+      } else {
+        document.body.classList.remove('fa-mode');
+        document.documentElement.setAttribute('lang', 'en');
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.getElementById('btn-en').classList.add('active');
+        document.getElementById('btn-fa').classList.remove('active');
+      }
+    }
+
+    function copyLink(btn) {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(function() {
+          btn.innerHTML = '&#128279; Copy link';
+          btn.classList.remove('copied');
+        }, 2200);
+      });
+    }
+  </script>
+</body>
+</html>
