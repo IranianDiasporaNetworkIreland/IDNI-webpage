@@ -1026,6 +1026,71 @@
       .jmodal-form-row { grid-template-columns: 1fr; }
     }
 
+    /* ---- PRESS RELEASE MODAL ---- */
+    .pr-modal-overlay {
+      position: fixed; inset: 0; z-index: 9998;
+      background: rgba(5,5,26,.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      display: flex; align-items: flex-start; justify-content: center;
+      padding: 2rem 1.25rem 3rem;
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transition: opacity .28s ease;
+    }
+    .pr-modal-overlay.active { opacity: 1; pointer-events: all; }
+    .pr-modal-panel {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,.12);
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 3rem;
+      width: 100%; max-width: 780px;
+      position: relative; margin: auto;
+      transform: translateY(28px) scale(.97);
+      transition: transform .3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .pr-modal-overlay.active .pr-modal-panel { transform: translateY(0) scale(1); }
+    .pr-modal-close {
+      position: absolute; top: 1.1rem; right: 1.1rem;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      color: var(--text-muted); width: 36px; height: 36px;
+      border-radius: 8px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.3rem; line-height: 1; transition: all var(--tr); font-family: inherit;
+    }
+    .pr-modal-close:hover { color: #fff; background: rgba(255,255,255,.16); }
+    body.fa-mode .pr-modal-close { right: auto; left: 1.1rem; }
+    .pr-modal-eyebrow {
+      font-size: .72rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+      margin: 0 0 .6rem; display: block;
+    }
+    .pr-modal-panel h2 {
+      font-size: 1.4rem; font-weight: 800; line-height: 1.35;
+      color: #fff; margin: 0 0 1.25rem; padding-right: 2.5rem;
+    }
+    body.fa-mode .pr-modal-panel h2 { padding-right: 0; padding-left: 2.5rem; }
+    .pr-modal-divider {
+      border: none; border-top: 1px solid rgba(255,255,255,.1); margin: 0 0 1.5rem;
+    }
+    .pr-modal-body { line-height: 1.9; color: var(--text); }
+    .pr-modal-body .byline {
+      font-size: .82rem; color: var(--text-muted); margin-bottom: 1.4rem; font-style: italic;
+    }
+    .pr-modal-body p { margin-bottom: 1rem; }
+    .pr-modal-body h4 {
+      font-size: .88rem; font-weight: 700; color: var(--gold);
+      margin: 1.5rem 0 .5rem; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .pr-modal-body hr { border: none; border-top: 1px solid rgba(255,255,255,.1); margin: 1.5rem 0; }
+    .pr-modal-body a { color: var(--gold); text-decoration: none; }
+    .pr-modal-body a:hover { text-decoration: underline; }
+    @media (max-width: 640px) {
+      .pr-modal-panel { padding: 1.75rem 1.35rem 2rem; }
+      .pr-modal-panel h2 { font-size: 1.15rem; }
+    }
+
     /* ---- GALLERY OVERLAY ---- */
     .gallery-overlay {
       position: fixed; inset: 0; z-index: 8000;
@@ -1428,7 +1493,7 @@
           </h3>
           <p class="news-excerpt lang-en-block">IDDNI strongly condemns the Irish Government&rsquo;s decision to proceed with the accreditation of the Ambassador of the Islamic Republic of Iran on 21 May 2026, at a time when executions, repression, and mass detention continue to escalate inside Iran.</p>
           <p class="news-excerpt lang-fa-block" dir="rtl" lang="fa">IDDNI تصمیم دولت ایرلند برای پیش‌برد اعتبارنامه سفیر جمهوری اسلامی ایران در ۲۱ مه ۲۰۲۶ را در شرایطی که اعدام‌ها، سرکوب و بازداشت‌های گسترده در ایران همچنان ادامه دارد، به شدت محکوم می‌کند.</p>
-          <button class="news-toggle-btn" id="pressRelease2Btn" onclick="toggleNewsCard('pressRelease2','pressRelease2Btn')">
+          <button class="news-toggle-btn" id="pressRelease2Btn" onclick="openPRModal('pressRelease2')">
             <span class="btn-label" data-en="Read Full Statement" data-fa="متن کامل را بخوانید">Read Full Statement</span>
             <span class="arrow">&#9660;</span>
           </button>
@@ -1500,7 +1565,7 @@
           </h3>
           <p class="news-excerpt lang-en-block">As ceasefire talks and diplomatic negotiations involving Iran might continue behind closed doors, one fundamental truth remains: the Iranian people are absent from the table where their future is being decided. IDDNI warns that international diplomacy is once again repeating a familiar and dangerous pattern.</p>
           <p class="news-excerpt lang-fa-block" dir="rtl" lang="fa">در حالی که مذاکرات آتش‌بس با ایران پشت درهای بسته ادامه دارد، مردم ایران از میزی که آینده‌شان در آن تعیین می‌شود غایب‌اند.</p>
-          <button class="news-toggle-btn" id="pressRelease1Btn" onclick="toggleNewsCard('pressRelease1','pressRelease1Btn')">
+          <button class="news-toggle-btn" id="pressRelease1Btn" onclick="openPRModal('pressRelease1')">
             <span class="btn-label" data-en="Read Full Statement" data-fa="متن کامل را بخوانید">Read Full Statement</span>
             <span class="arrow">&#9660;</span>
           </button>
@@ -2163,6 +2228,17 @@
 
   </div><!-- .content-wrap -->
 
+  <!-- ===== PRESS RELEASE MODAL ===== -->
+  <div id="pr-modal" class="pr-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pr-modal-title" onclick="handlePROverlayClick(event)">
+    <div class="pr-modal-panel">
+      <button class="pr-modal-close" onclick="closePRModal()" aria-label="Close">&times;</button>
+      <span class="pr-modal-eyebrow">Press Release &mdash; IDDNI</span>
+      <h2 id="pr-modal-title"></h2>
+      <hr class="pr-modal-divider">
+      <div class="pr-modal-body" id="pr-modal-body"></div>
+    </div>
+  </div>
+
   <!-- ===== JOIN MODAL ===== -->
   <div id="join-modal" class="jmodal-overlay" role="dialog" aria-modal="true" aria-labelledby="jmodal-title">
     <div class="jmodal-panel">
@@ -2333,6 +2409,34 @@
         arrow.innerHTML = '&#9660;';
       }
     }
+
+    /* ---- PRESS RELEASE MODAL ---- */
+    function openPRModal(contentId) {
+      var src   = document.getElementById(contentId);
+      var card  = src.closest('.news-card');
+      var title = card.querySelector('h3').getAttribute(currentLang === 'fa' ? 'data-fa' : 'data-en');
+      var inner = src.querySelector(currentLang === 'fa' ? '.lang-fa-block' : '.lang-en-block');
+      document.getElementById('pr-modal-title').textContent = title;
+      document.getElementById('pr-modal-body').innerHTML = inner.innerHTML;
+      var overlay = document.getElementById('pr-modal');
+      overlay.classList.add('active');
+      if (currentLang === 'fa') {
+        overlay.setAttribute('dir', 'rtl');
+      } else {
+        overlay.removeAttribute('dir');
+      }
+      document.body.style.overflow = 'hidden';
+    }
+    function closePRModal() {
+      document.getElementById('pr-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function handlePROverlayClick(e) {
+      if (e.target === document.getElementById('pr-modal')) closePRModal();
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePRModal();
+    });
 
     /* ---- TEAM CARDS ---- */
     document.addEventListener('DOMContentLoaded', function () {
