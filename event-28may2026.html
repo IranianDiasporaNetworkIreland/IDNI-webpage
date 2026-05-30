@@ -1,33 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Event: Protest at Leinster House – 28 May 2026</title>
+  <meta name="description" content="On May 28, 2026, IDDNI and supporters gathered at Leinster House to oppose the accreditation of the Iranian ambassador. Event photos and summary." />
+  <link rel="icon" href="Untitled%20project%20(2).png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; color: #222; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; padding: 2rem; }
-    h1 { font-size: 2rem; margin-bottom: 1rem; }
-    .event-date { color: #888; font-size: 1rem; margin-bottom: 1.5rem; }
-    .event-description { font-size: 1.1rem; margin-bottom: 2rem; }
-    .gallery { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-    .gallery img { max-width: 100%; max-height: 320px; border-radius: 8px; box-shadow: 0 1px 6px #0002; }
-    @media (max-width: 600px) { .container { padding: 1rem; } }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy:       #05051a;
+      --navy-mid:   #0b0b28;
+      --gold:       #e8b84b;
+      --gold-dim:   #b08830;
+      --rose:       #d45f7a;
+      --text:       #eaeaf8;
+      --text-muted: #8888aa;
+      --glass-b:    rgba(255,255,255,0.09);
+      --radius:     14px;
+      --radius-lg:  22px;
+      --tr:         0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--navy);
+      color: var(--text);
+      font-family: 'Outfit', 'Vazirmatn', sans-serif;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+    .bg-canvas {
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none; overflow: hidden;
+    }
+    .bg-canvas::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(232,184,75,.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(212,95,122,.05) 0%, transparent 55%);
+      animation: bgPulse 14s ease-in-out infinite alternate;
+    }
+    @keyframes bgPulse {
+      0%   { opacity: .5; transform: scale(1); }
+      100% { opacity: 1;  transform: scale(1.04); }
+    }
+    .content-wrap { position: relative; z-index: 1; }
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(5,5,26,.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-b);
+    }
+    .header-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: .75rem 1.5rem;
+    }
+    .logo-link {
+      display: flex; align-items: center; gap: .6rem;
+      text-decoration: none; color: var(--text);
+    }
+    .logo-img { height: 34px; width: 34px; object-fit: contain; }
+    .logo-text {
+      font-size: 1.05rem; font-weight: 800;
+      letter-spacing: -.3px; color: #fff;
+    }
+    .logo-text span { color: var(--gold); }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .82rem; font-weight: 600; color: var(--text-muted);
+      text-decoration: none; padding: .4rem .85rem;
+      border: 1px solid var(--glass-b); border-radius: 8px;
+      transition: all var(--tr);
+    }
+    .back-btn:hover { color: var(--gold); border-color: var(--gold); }
+    .article-wrap {
+      max-width: 780px; margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+    .article-tag {
+      display: inline-block;
+      font-size: .72rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(232,184,75,.3);
+      border-radius: 6px; padding: .25rem .65rem;
+      margin-bottom: 1.5rem;
+    }
+    .article-title {
+      font-size: clamp(1.55rem, 3.5vw, 2.2rem);
+      font-weight: 900; line-height: 1.25;
+      color: #fff; margin-bottom: 1.25rem;
+      letter-spacing: -.5px;
+    }
+    .article-meta {
+      display: flex; align-items: center; gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .82rem; color: var(--text-muted);
+      margin-bottom: 2.5rem; padding-bottom: 2rem;
+      border-bottom: 1px solid var(--glass-b);
+    }
+    .meta-org { color: var(--gold); font-weight: 600; }
+    .meta-dot { opacity: .35; }
+    .article-body { font-size: 1.05rem; line-height: 1.95; }
+    .article-body p { margin-bottom: 1.2rem; color: var(--text); }
+    .gallery {
+      display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;
+      margin: 2.5rem 0 2.5rem 0;
+    }
+    .gallery img {
+      max-width: 100%; max-height: 340px; border-radius: 10px; box-shadow: 0 1px 8px #0003;
+      background: #222; object-fit: cover;
+    }
+    .article-divider {
+      border: none; border-top: 1px solid var(--glass-b);
+      margin: 2.5rem 0;
+    }
+    .share-bar {
+      margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid var(--glass-b);
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .share-label {
+      font-size: .78rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    .share-link {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .82rem; font-weight: 600; color: var(--text-muted);
+      text-decoration: none; padding: .4rem .85rem;
+      border: 1px solid var(--glass-b); border-radius: 8px;
+      transition: all var(--tr);
+    }
+    .share-link:hover { color: var(--gold); border-color: var(--gold); }
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .82rem; font-weight: 600; color: var(--text-muted);
+      background: none; cursor: pointer;
+      padding: .4rem .85rem;
+      border: 1px solid var(--glass-b); border-radius: 8px;
+      font-family: inherit; transition: all var(--tr);
+    }
+    .copy-btn:hover { color: var(--gold); border-color: var(--gold); }
+    .copy-btn.copied { color: #4ecf96; border-color: rgba(78,207,150,.4); }
+    @media (max-width: 640px) {
+      .article-wrap { padding: 2.5rem 1.1rem 4rem; }
+      .article-title { font-size: 1.45rem; }
+      .article-body { font-size: .97rem; }
+      .gallery img { max-height: 200px; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Event: Protest at Leinster House</h1>
-    <div class="event-date">28 May, 2026 &mdash; Leinster House, Dublin</div>
-    <div class="event-description">
-      On May 28, we gathered in front of Leinster House to oppose the Irish Government's decision to accredit the ambassador of the Islamic Republic of Iran.<br><br>
-      A sincere thank you to everyone who joined us, shared our message, or supported us in any way. These are the moments when the support of our Irish friends and allies matters most.<br><br>
-      We remain deeply concerned by this decision and hope that Irish policymakers will engage with the Iranian diaspora and democratic voices, and place human rights and the Iranian people's demands for freedom and dignity at the centre of any engagement with the Islamic Republic.
-    </div>
-    <div class="gallery">
-      <img src="event-28may2026-1.jpg" alt="Protesters in front of Leinster House, 28 May 2026">
-      <img src="event-28may2026-2.jpg" alt="Protesters holding banners, 28 May 2026">
-    </div>
+  <div class="bg-canvas"></div>
+  <div class="content-wrap">
+    <header>
+      <div class="header-inner">
+        <a class="logo-link" href="https://iddni.com/">
+          <img class="logo-img" src="Untitled%20project%20(2).png" onerror="this.style.display='none'" alt="IDDNI logo">
+          <span class="logo-text">IDDN<span>I</span></span>
+        </a>
+        <a class="back-btn" href="https://iddni.com/#news">&#8592; News &amp; Press</a>
+      </div>
+    </header>
+    <main class="article-wrap">
+      <span class="article-tag">Event</span>
+      <h1 class="article-title">Protest at Leinster House: Opposing Accreditation of Iranian Ambassador</h1>
+      <div class="article-meta">
+        <span class="meta-org">Iranian Democratic Diaspora Network in Ireland (IDDNI)</span>
+        <span class="meta-dot">|</span>
+        <span>28 May 2026</span>
+      </div>
+      <div class="article-body">
+        <p>On May 28, we gathered in front of Leinster House to oppose the Irish Government's decision to accredit the ambassador of the Islamic Republic of Iran.</p>
+        <p>A sincere thank you to everyone who joined us, shared our message, or supported us in any way. These are the moments when the support of our Irish friends and allies matters most.</p>
+        <p>We remain deeply concerned by this decision and hope that Irish policymakers will engage with the Iranian diaspora and democratic voices, and place human rights and the Iranian people's demands for freedom and dignity at the centre of any engagement with the Islamic Republic.</p>
+        <div class="gallery">
+          <img src="event-28may2026-1.jpg" alt="Protesters in front of Leinster House, 28 May 2026">
+          <img src="event-28may2026-2.jpg" alt="Protesters holding banners, 28 May 2026">
+        </div>
+      </div>
+      <hr class="article-divider">
+      <div class="share-bar">
+        <span class="share-label">Share</span>
+        <a class="share-link" href="https://twitter.com/intent/tweet?text=Event%3A+Protest+at+Leinster+House+28+May+2026&url=https%3A%2F%2Fiddni.com%2Fevent-28may2026.html" target="_blank" rel="noopener">&#120143; / Twitter</a>
+        <a class="share-link" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fiddni.com%2Fevent-28may2026.html" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="copy-btn" onclick="copyLink(this)">&#128279; Copy link</button>
+      </div>
+    </main>
   </div>
+  <script>
+    function copyLink(btn) {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(function() {
+          btn.textContent = '🔗 Copy link';
+          btn.classList.remove('copied');
+        }, 1800);
+      });
+    }
+  </script>
 </body>
 </html>
