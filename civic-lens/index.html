@@ -263,7 +263,9 @@
     }
     .hero-pill {
       display: inline-flex;
+      flex-direction: column;
       align-items: flex-start;
+      justify-content: flex-start;
       gap: .6rem;
       padding: .75rem .95rem;
       border-radius: 18px;
@@ -294,7 +296,6 @@
       transform: translateY(-4px);
       border-color: rgba(255,255,255,.2);
       box-shadow: 0 18px 34px rgba(5,5,26,.22);
-      padding-bottom: 3.7rem;
     }
     .hero-pill:hover::before,
     .hero-pill:focus-visible::before {
@@ -304,23 +305,29 @@
       display: block;
       line-height: 1.2;
       transition: opacity var(--tr);
+      position: relative;
+      z-index: 1;
     }
     .hero-pill-tip {
-      position: absolute;
-      left: .95rem;
-      right: .95rem;
-      bottom: .8rem;
+      position: relative;
       font-size: .68rem;
       line-height: 1.5;
       color: rgba(255,255,255,.88);
+      max-height: 0;
+      overflow: hidden;
+      margin-top: 0;
       opacity: 0;
-      transform: translateY(12px);
-      transition: opacity var(--tr), transform var(--tr);
+      transform: translateY(6px);
+      transition: max-height var(--tr), margin-top var(--tr), opacity var(--tr), transform var(--tr);
       pointer-events: none;
       font-weight: 500;
+      position: relative;
+      z-index: 1;
     }
     .hero-pill:hover .hero-pill-tip,
     .hero-pill:focus-visible .hero-pill-tip {
+      max-height: 120px;
+      margin-top: .1rem;
       opacity: 1;
       transform: translateY(0);
     }
