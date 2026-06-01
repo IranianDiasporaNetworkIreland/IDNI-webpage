@@ -263,7 +263,7 @@
     }
     .hero-pill {
       display: inline-flex;
-      align-items: center;
+      align-items: flex-start;
       gap: .6rem;
       padding: .75rem .95rem;
       border-radius: 18px;
@@ -278,6 +278,7 @@
       cursor: help;
       transition: transform var(--tr), border-color var(--tr), box-shadow var(--tr), background var(--tr);
       max-width: min(100%, 220px);
+      min-height: 58px;
     }
     .hero-pill::before {
       content: '';
@@ -293,6 +294,7 @@
       transform: translateY(-4px);
       border-color: rgba(255,255,255,.2);
       box-shadow: 0 18px 34px rgba(5,5,26,.22);
+      padding-bottom: 3.7rem;
     }
     .hero-pill:hover::before,
     .hero-pill:focus-visible::before {
@@ -301,19 +303,21 @@
     .hero-pill-label {
       display: block;
       line-height: 1.2;
+      transition: opacity var(--tr);
     }
     .hero-pill-tip {
       position: absolute;
-      left: 1rem;
-      right: 1rem;
-      bottom: .75rem;
+      left: .95rem;
+      right: .95rem;
+      bottom: .8rem;
       font-size: .68rem;
       line-height: 1.5;
       color: rgba(255,255,255,.88);
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(12px);
       transition: opacity var(--tr), transform var(--tr);
       pointer-events: none;
+      font-weight: 500;
     }
     .hero-pill:hover .hero-pill-tip,
     .hero-pill:focus-visible .hero-pill-tip {
@@ -322,7 +326,7 @@
     }
     .hero-pill:hover .hero-pill-label,
     .hero-pill:focus-visible .hero-pill-label {
-      opacity: .18;
+      opacity: .32;
     }
     .hero-pill-voices { background: linear-gradient(135deg, rgba(52,211,153,.22) 0%, rgba(15,118,110,.14) 100%); }
     .hero-pill-ground { background: linear-gradient(135deg, rgba(96,165,250,.2) 0%, rgba(37,99,235,.14) 100%); }
