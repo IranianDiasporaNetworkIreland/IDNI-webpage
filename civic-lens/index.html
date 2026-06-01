@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
@@ -375,31 +375,46 @@ const SAMPLE_ARTICLES = [
   { headline: "EPA Warns Ireland will Miss Climate Targets by Half, Iranian Human Rights Group Accuses Government of Normalising Relations with Regime", url: "https://news.google.com/rss/articles/CBMi2wJBVV95cUxONGc4dFhmXzYzckR0MFBJX3Fwc1lHMjFSOEJHN3BFT2Nvd21DRzZiVWVHV3p4dGEyMW4tdmliTU5RZm9JWXZHZ0FITmJWMWNrb0w3LW01R2l5MXJsdVEwcW1Cck13cmF6NjNVNlB5T1IzTjUxNGtnSG0zSWdRTC1TZUo0TzN6dGlaR2d6N1RlU1R2Yk1zNHhyc2tqU3A0QXhhNWk3QnhGRXo0Tm9wMmI1UE0zWDNwZmI4MkJhSkM4TFpsdmktR3FWQXpkb2JkZVFMbXNfWjV3b1o2d0xRMk5ZYVRBdzZLZFA2REFyeEhHaDRHcmE1WEtaQ19oSktoWnR5N2FQLWJqNFVfcXFFT3FzelgtSzFEXzVTRGlSWFlUcE5aa1ZKTFNRRlVkWndReDVfWG9RV3dlS1cwSFRrbXFhYXdMUzNGRWdLZldtN3ZhajhwV0VNT2ZxakJ1Yw?oc=5", outlet: "Galway Bay FM", date: "2026-05-27", topic: "hr", excerpt: "Iranian human rights group criticises Irish government relations with Iran; calls out normalization", experienced: 65, groundNews: 80, regimeNarrative: 70, trustScore: 78 },
   { headline: "US sought to deport Iranian woman to Ireland, even though she had no ties with this country", url: "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPMUotUzFQMlMwSUk0WHpwT0xXc3BvZjVGMVRUc19ibm5XeEphSE5pNXpOMU9JaWlfQWtGLWpnYTdHWGVMVjVvX24zTjhfcDVwakpwakR3dTd4b01DaUJGQkpTUzRKQ2wwVDBHSkNxTmJFYkJ6ejRtcXFtbUJZXzlxSGhnOV9NTm9SNUdpVW45a25GTnNSR25QZm00UzhIZ1haeDlhUGJFcEIybWY4amdiQ0FmckdwV0lTYl9WZGt4R1JmUG50aGFpWml0RFZwclRjcS1ZblhPS3JjX2lOc0VqZlNIbEloSlE?oc=5", outlet: "The Irish Independent", date: "2026-05-27", topic: "hr", excerpt: "US government tried to deport Iranian woman to Ireland; human rights and asylum angle", experienced: 93, groundNews: 88, regimeNarrative: 30, trustScore: 87 },
   { headline: "Tehran Applauds Irish Ban on Israeli Settlement Goods", url: "https://news.google.com/rss/articles/CBMifkFVX3lxTE5PYnZOUVlvdjhvM25XQlZBZ19yNVZRSmFzWHJxOXZDc2FlRlMzRERzQ00yNDJiS2JFbk1WbkZfUWgtZ3Buc0h6T0FydkN1U2FvVVIzOHQ5N0diaUdWX0lqdFZUYlhiRGFMdjd3SlpMLTJOY0VQd3pzMktxUl90Zw?oc=5", outlet: "WANA News Agency", date: "2026-05-27", topic: "diplomacy", excerpt: "No Irish angle in the content; regime messaging", experienced: 30, groundNews: 40, regimeNarrative: 95, trustScore: 25 },
-  { headline: "US government tried to deport an Iranian woman to Ireland even though she had no ties with the country", url: "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOMm0tZTV6Z3Q4T01hckFQNmVmby1Pb3VsbzExVkt3Mkd0WFgyeWYzdWQtT1g3MkR5bVJmeTV4VC1sVEJhWnJmN0VKU0t3dzRCOF9DeDVYZVp1MkVpcDlERk85dDlER2pycVVYcGc3VjF6U2o1Qk1paExZNVdoRHg5YUozLTVjOXRnNFU1SVdoMWtJWHZSYzl6LVRycDBBR2xBYS15UkRaUmNvcHdXekJhd0kySjU3LXhqVHBUS3Z0VVBtQnJseEtFUWRhRE5SZjFXUURsWjR6ZWF0VHdJR2ZVZzNoVHpFMXFT?oc=5", outlet: "The Irish Independent", date: "2026-05-27", topic: "hr", excerpt: "US government immigration policy; human rights and asylum angle", experienced: 93, groundNews: 87, regimeNarrative: 30, trustScore: 87 }
+  { headline: "US government tried to deport an Iranian woman to Ireland even though she had no ties with the country", url: "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOMm0tZTV6Z3Q4T01hckFQNmVmby1Pb3VsbzExVkt3Mkd0WFgyeWYzdWQtT1g3MkR5bVJmeTV4VC1sVEJhWnJmN0VKU0t3dzRCOF9DeDVYZVp1MkVpcDlERk85dDlER2pycVVYcGc3VjF6U2o1Qk1paExZNVdoRHg5YUozLTVjOXRnNFU1SVdoMWtJWHZSYzl6LVRycDBBR2xBYS15UkRaUmNvcHdXekJhd0kySjU3LXhqVHBUS3Z0VVBtQnJseEtFUWRhRE5SZjFXUURsWjR6ZWF0VHdJR2ZVZzNoVHpFMXFT?oc=5", outlet: "The Irish Independent", date: "2026-05-27", topic: "hr", excerpt: "US government immigration policy; human rights and asylum angle", experienced: 93, groundNews: 87, regimeNarrative: 30, trustScore: 87 },
 ];
 
 function loadArticles() {
   try {
     const s = localStorage.getItem(STORAGE_KEY);
     const articles = s ? JSON.parse(s) : JSON.parse(JSON.stringify(SAMPLE_ARTICLES));
-    return syncSampleArticleUrls(articles);
+    return syncSampleArticles(articles);
   }
   catch(e) { return JSON.parse(JSON.stringify(SAMPLE_ARTICLES)); }
 }
 function saveArticles(a) { localStorage.setItem(STORAGE_KEY, JSON.stringify(a)); }
-function syncSampleArticleUrls(articles) {
-  const sampleUrlsByHeadline = new Map(SAMPLE_ARTICLES.map((article) => [article.headline, article.url]));
+function syncSampleArticles(articles) {
+  const sampleArticlesByHeadline = new Map(SAMPLE_ARTICLES.map((article) => [article.headline, article]));
+  const presentHeadlines = new Set(articles.map((article) => article.headline));
   let changed = false;
   const normalizedArticles = articles.map((article) => {
-    const canonicalUrl = sampleUrlsByHeadline.get(article.headline);
-    if (!canonicalUrl || article.url === canonicalUrl) return article;
+    const sampleArticle = sampleArticlesByHeadline.get(article.headline);
+    if (!sampleArticle) return article;
+    if (article.url === sampleArticle.url) return article;
     changed = true;
-    return { ...article, url: canonicalUrl };
+    return { ...article, url: sampleArticle.url };
   });
-  if (changed) saveArticles(normalizedArticles);
-  return normalizedArticles;
+  const missingSampleArticles = SAMPLE_ARTICLES.filter((article) => !presentHeadlines.has(article.headline));
+  if (!changed && !missingSampleArticles.length) return normalizedArticles;
+  const mergedArticles = [...missingSampleArticles, ...normalizedArticles];
+  saveArticles(mergedArticles);
+  return mergedArticles;
 }
 function calcOverall(a) { return Math.round((a.experienced + a.groundNews + a.regimeNarrative + a.trustScore) / 4); }
+function sortArticlesByRecency(items) {
+  return [...items].sort((left, right) => {
+    const leftDate = Date.parse(left.date || '');
+    const rightDate = Date.parse(right.date || '');
+    const safeLeftDate = Number.isNaN(leftDate) ? 0 : leftDate;
+    const safeRightDate = Number.isNaN(rightDate) ? 0 : rightDate;
+    if (safeRightDate !== safeLeftDate) return safeRightDate - safeLeftDate;
+    return calcOverall(right) - calcOverall(left);
+  });
+}
 function scoreClass(v) { return v>=80?'score-high':v>=60?'score-mid':'score-low'; }
 function topicLabel(t) { return {hr:'Human Rights',diplomacy:'Diplomacy',protest:'Protest',sanctions:'Sanctions',diaspora:'Diaspora',other:'Other'}[t]||t; }
 function topicClass(t)  { return {hr:'topic-hr',diplomacy:'topic-diplomacy',protest:'topic-protest',sanctions:'topic-sanctions',diaspora:'topic-diaspora',other:'topic-other'}[t]||'topic-other'; }
@@ -414,7 +429,7 @@ function renderStats() {
 function renderGrid(filter) {
   const grid = document.getElementById('scorecard-grid');
   const filtered = filter==='all' ? articles : articles.filter(a=>a.topic===filter);
-  const sorted = [...filtered].sort((a,b)=>calcOverall(b)-calcOverall(a)).slice(0,10);
+  const sorted = sortArticlesByRecency(filtered).slice(0,10);
   if (!sorted.length) {
     grid.innerHTML='<div class="empty-state"><p>No articles match this filter yet.</p></div>';
     return;
@@ -489,7 +504,7 @@ function openAdmin() {
 
 function openEditModal(idx) {
   const filtered = currentFilter==='all' ? articles : articles.filter(a=>a.topic===currentFilter);
-  const sorted = [...filtered].sort((a,b)=>calcOverall(b)-calcOverall(a)).slice(0,10);
+  const sorted = sortArticlesByRecency(filtered).slice(0,10);
   const a = sorted[idx]; const ri = articles.indexOf(a);
   document.getElementById('edit-index').value = ri;
   document.getElementById('f-headline').value = a.headline||'';

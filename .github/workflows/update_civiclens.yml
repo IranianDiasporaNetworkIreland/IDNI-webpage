@@ -1,0 +1,48 @@
+name: Update CivicLens Content
+
+on:
+  workflow_dispatch:
+    inputs:
+      article_limit:
+        description: Maximum number of new CivicLens articles to add
+        required: false
+        default: "10"
+
+permissions:
+  contents: write
+
+jobs:
+  update-civiclens:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run CivicLens updater
+        env:
+          MEDIA_DASHBOARD_SOURCE_URL: https://raw.githubusercontent.com/IranianDiasporaNetworkIreland/media-dashboard/main/index.html
+          CIVICLENS_NEW_ARTICLE_LIMIT: ${{ github.event.inputs.article_limit || '10' }}
+          CIVICLENS_LLM_PROVIDER: ${{ vars.CIVICLENS_LLM_PROVIDER || 'groq' }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CIVICLENS_GROQ_MODEL: ${{ vars.CIVICLENS_GROQ_MODEL || 'llama-3.1-8b-instant' }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CIVICLENS_OPENROUTER_MODEL: ${{ vars.CIVICLENS_OPENROUTER_MODEL || 'meta-llama/llama-3.1-8b-instruct' }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          CIVICLENS_OPENAI_MODEL: ${{ vars.CIVICLENS_OPENAI_MODEL || 'gpt-4o-mini' }}
+        run: python scripts/update_civiclens.py
+
+      - name: Commit and push if content changed
+        run: |
+          git config user.name "IDDNI CivicLens Bot"
+          git config user.email "bot@iddni.com"
+          git diff --quiet && echo "No CivicLens updates found." || (
+            git add index.html civic-lens/index.html scripts/update_civiclens.py .github/workflows/update_civiclens.yml
+            git commit -m "Update CivicLens content"
+            git push
+          )
