@@ -1286,37 +1286,296 @@
 
     /* ---- CIVIC LENS PREVIEW ---- */
     #civic-lens { position: relative; }
-    .cl-header { margin-bottom: 2.2rem; }
-    .cl-hero { background: linear-gradient(135deg, rgba(232,184,75,.08) 0%, rgba(22,155,98,.06) 100%); border: 1px solid var(--glass-b); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 1.8rem; }
-    .cl-hero h3 { font-size: 1.28rem; font-weight: 700; line-height: 1.3; margin-bottom: .75rem; }
-    .cl-hero p { font-size: .95rem; color: var(--text-muted); line-height: 1.8; }
-    .cl-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--glass-b); border: 1px solid var(--glass-b); border-radius: var(--radius); margin-bottom: 2rem; overflow: hidden; }
-    .cl-stat { background: var(--navy); padding: 1.3rem 1rem; text-align: center; position: relative; overflow: hidden; }
-    .cl-stat::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(232,184,75,.08) 0%, transparent 100%); opacity: 0; transition: opacity .4s ease; }
-    .cl-stat:hover::before { opacity: 1; }
-    .cl-stat-val { font-size: 2rem; font-weight: 900; color: var(--gold); font-variant-numeric: tabular-nums; position: relative; z-index: 1; }
-    .cl-stat-label { font-size: .72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .8px; margin-top: .5rem; font-weight: 600; position: relative; z-index: 1; }
-    .cl-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-bottom: 2.2rem; }
-    .cl-article-card { background: var(--glass); border: 1px solid var(--glass-b); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; gap: .75rem; transition: all var(--tr); cursor: pointer; }
-    .cl-article-card:hover { background: rgba(255,255,255,.07); border-color: var(--gold); transform: translateY(-4px); }
-    .cl-score-badge { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; font-weight: 900; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
-    .cl-score-high { background: rgba(22,155,98,.15); color: var(--green); }
-    .cl-score-mid { background: rgba(232,184,75,.15); color: var(--gold); }
-    .cl-article-title { font-size: .92rem; font-weight: 700; color: #fff; line-height: 1.35; margin-bottom: .3rem; }
-    .cl-article-outlet { font-size: .7rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: .5px; font-weight: 600; }
-    .cl-article-excerpt { font-size: .78rem; color: var(--text-muted); line-height: 1.6; margin: .5rem 0; flex-grow: 1; }
-    .cl-mini-bars { display: flex; gap: .4rem; margin-top: .6rem; }
-    .cl-mini-bar { flex: 1; height: 4px; background: var(--glass); border-radius: 2px; overflow: hidden; }
-    .cl-mini-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--green)); animation: barFill 1.2s ease-out forwards; }
-    @keyframes barFill { from { width: 0; } to { width: var(--fill-width); } }
-    .cl-cta-section { text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(232,184,75,.06) 0%, rgba(22,155,98,.06) 100%); border: 1px solid var(--glass-b); border-radius: var(--radius-lg); margin-bottom: 0; }
-    .cl-cta-pre { font-size: .8rem; text-transform: uppercase; color: var(--gold); letter-spacing: 1.5px; font-weight: 700; margin-bottom: .5rem; }
-    .cl-cta-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3; }
-    .cl-cta-desc { font-size: .92rem; color: var(--text-muted); margin-bottom: 1.5rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.8; }
-    .cl-explore-btn { display: inline-flex; align-items: center; gap: .5rem; background: linear-gradient(135deg, var(--gold) 0%, #c89230 100%); color: #05051a; text-decoration: none; font-weight: 800; padding: .72rem 2rem; border-radius: 10px; transition: all var(--tr); font-size: .9rem; letter-spacing: .3px; border: none; cursor: pointer; font-family: inherit; }
+    .cl-command-center {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(10,13,37,.98) 0%, rgba(14,22,48,.96) 52%, rgba(8,32,38,.94) 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: 0 24px 60px rgba(0,0,0,.28);
+      isolation: isolate;
+    }
+    .cl-command-center::before,
+    .cl-command-center::after {
+      content: '';
+      position: absolute;
+      border-radius: 999px;
+      z-index: -1;
+      opacity: .8;
+      animation: clFloat 12s ease-in-out infinite;
+    }
+    .cl-command-center::before {
+      width: 300px; height: 300px;
+      top: -110px; right: -90px;
+      background: radial-gradient(circle, rgba(232,184,75,.18) 0%, rgba(232,184,75,0) 72%);
+    }
+    .cl-command-center::after {
+      width: 240px; height: 240px;
+      bottom: -120px; left: -70px;
+      background: radial-gradient(circle, rgba(22,155,98,.18) 0%, rgba(22,155,98,0) 72%);
+      animation-delay: -5s;
+    }
+    @keyframes clFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(18px) scale(1.06); }
+    }
+    .cl-command-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(260px, .9fr);
+      gap: 1.5rem;
+      align-items: end;
+    }
+    .cl-command-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .35rem .8rem;
+      border-radius: 999px;
+      background: rgba(232,184,75,.12);
+      border: 1px solid rgba(232,184,75,.22);
+      color: var(--gold);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: .85rem;
+    }
+    .cl-command-title { margin-bottom: .85rem; max-width: 14ch; }
+    .cl-command-desc {
+      font-size: .96rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      max-width: 58ch;
+    }
+    .cl-command-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: stretch;
+    }
+    .cl-command-brief {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+      color: var(--text-muted);
+      font-size: .86rem;
+      line-height: 1.7;
+    }
+    .cl-command-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+    .cl-command-metric {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+    }
+    .cl-command-metric::after {
+      content: '';
+      position: absolute;
+      left: 1.1rem; right: 1.1rem; bottom: .85rem;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(232,184,75,.12) 0%, rgba(22,155,98,.48) 50%, rgba(96,165,250,.12) 100%);
+    }
+    .cl-command-metric-label {
+      font-size: .72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      margin-bottom: .45rem;
+    }
+    .cl-command-metric-value {
+      font-size: 1.45rem;
+      color: #fff;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    .cl-command-metric-note {
+      margin-top: .35rem;
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    .cl-preview-shell {
+      margin-top: 1.5rem;
+      padding: 1.3rem;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(4,10,26,.34);
+      backdrop-filter: blur(12px);
+    }
+    .cl-preview-shell-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .cl-preview-eyebrow {
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .35rem;
+    }
+    .cl-preview-intro {
+      font-size: .86rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.75;
+    }
+    .cl-preview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .cl-preview-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      padding: 1.2rem;
+      border-radius: 20px;
+      background: linear-gradient(160deg, var(--card-start) 0%, var(--card-end) 100%);
+      border: 1px solid var(--card-border);
+      text-decoration: none;
+      transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+      min-height: 320px;
+    }
+    .cl-preview-card::before {
+      content: '';
+      position: absolute;
+      inset: auto -20% -40% 35%;
+      height: 150px;
+      background: radial-gradient(circle, var(--card-shadow) 0%, transparent 74%);
+      opacity: .7;
+      transition: transform .45s ease;
+      pointer-events: none;
+    }
+    .cl-preview-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 36px rgba(0,0,0,.26);
+      border-color: var(--card-hover);
+    }
+    .cl-preview-card:hover::before { transform: translateY(-10px); }
+    .cl-preview-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .75rem;
+    }
+    .cl-preview-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 1.2rem;
+    }
+    .cl-preview-score {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: rgba(251,191,36,.14);
+      color: #f59e0b;
+      font-size: 1.05rem;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      box-shadow: inset 0 0 0 1px rgba(251,191,36,.16);
+    }
+    .cl-preview-meta {
+      font-size: .72rem;
+      color: #e8b84b;
+      font-weight: 700;
+      letter-spacing: .35px;
+      text-transform: uppercase;
+    }
+    .cl-preview-title {
+      font-size: 1.02rem;
+      line-height: 1.45;
+      color: #fff;
+      font-weight: 700;
+    }
+    .cl-preview-excerpt {
+      font-size: .83rem;
+      color: #b7bfd4;
+      line-height: 1.7;
+      min-height: 4.8em;
+    }
+    .cl-preview-bars {
+      margin-top: auto;
+      display: grid;
+      gap: .45rem;
+    }
+    .cl-preview-bar-row {
+      display: grid;
+      grid-template-columns: 56px 1fr 28px;
+      gap: .45rem;
+      align-items: center;
+    }
+    .cl-preview-bar-label {
+      font-size: .64rem;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .cl-preview-bar-value {
+      font-size: .7rem;
+      color: var(--text-2);
+      font-weight: 800;
+      text-align: right;
+    }
+    .cl-preview-track {
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+    .cl-preview-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      position: relative;
+      overflow: hidden;
+      animation: clPreviewGrow 1.2s cubic-bezier(.22,1,.36,1) forwards;
+      animation-delay: var(--delay, 0ms);
+    }
+    .cl-preview-fill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.45) 45%, transparent 100%);
+      transform: translateX(-100%);
+      animation: clPreviewShimmer 2.1s ease-in-out infinite;
+      animation-delay: var(--delay, 0ms);
+    }
+    .cl-preview-fill.voices { background: linear-gradient(90deg, var(--green) 0%, #0f9f78 100%); }
+    .cl-preview-fill.ground { background: linear-gradient(90deg, var(--blue) 0%, #2d67d5 100%); }
+    .cl-preview-fill.trust { background: linear-gradient(90deg, var(--gold) 0%, #d97706 100%); }
+    @keyframes clPreviewGrow { from { width: 0; } to { width: var(--fill-width); } }
+    @keyframes clPreviewShimmer {
+      0% { transform: translateX(-100%); }
+      55%, 100% { transform: translateX(120%); }
+    }
+    .cl-explore-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; background: linear-gradient(135deg, var(--gold) 0%, #c89230 100%); color: #05051a; text-decoration: none; font-weight: 800; padding: .82rem 1.5rem; border-radius: 12px; transition: all var(--tr); font-size: .9rem; letter-spacing: .3px; border: none; cursor: pointer; font-family: inherit; }
     .cl-explore-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(232,184,75,.35); }
     @media (max-width: 768px) {
-      .cl-stats { grid-template-columns: repeat(2, 1fr); }
+      .cl-command-top { grid-template-columns: 1fr; }
+      .cl-command-metrics { grid-template-columns: 1fr; }
       .cl-preview-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -1695,62 +1954,95 @@
 
     <!-- ===== CIVIC LENS MEDIA INTEGRITY ===== -->
     <section id="civic-lens">
-      <div class="fade-up cl-header">
-        <h2 class="section-title" data-en="CivicLens: Media <em>Integrity</em>" data-fa="سیویک لنز: <em>صحت</em> رسانه">CivicLens: Media <em>Integrity</em></h2>
-      </div>
-
-      <div class="fade-up cl-hero">
-        <h3 data-en="Fact-Checked Coverage of Iran" data-fa="پوشش حقیقت‌آزمایی‌شده ایران">Fact-Checked Coverage of Iran</h3>
-        <p data-en="Each article about Iran is evaluated against four core measures: how it portrays the lived experience of Iranians, adherence to ground truth, exposure to regime narratives, and overall trustworthiness." data-fa="هر مقاله درباره ایران بر اساس چهار معیار اصلی ارزیابی می‌شود: چگونه تجربه زندگی ایرانیان را به تصویر می‌کشد، پایبندی به واقعیت زمینی، در معرض روایات رژیم اسلامی، و قابلیت اعتماد کلی.">Each article is evaluated against four core measures: how it portrays the lived experience of Iranians, adherence to ground truth, exposure to regime narratives, and overall trustworthiness.</p>
-      </div>
-
-
-
-      <!-- CIVICLENS_PREVIEW_START -->
-      <div class="cl-preview-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin: 2.5rem 0;">
-        <!-- Article 1: Donald Trump poised to agree to deal with Iran -->
-        <a class="fade-up" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQZU5jM1l2a0tudnRXeXJnUXk5RTdHRmZTVkRpQWJhd2g3bnhnbHB0ZWZOYWQzbTNOd3o2RWpXME9kam9tRVd6WXdGNTI5TC14VjBHSTc4ZmRBRWF2YWJPWTg1d2lXX18yeFJwYmYyQmRWcFdRRWQ1Z3FUSDgzMHJ4M2g3MzJfWE1WLVBpakM1VThyNzd5MHZtbXRZOTUxUFE2bFFN?oc=5" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, rgba(59,130,246,.08) 0%, rgba(59,130,246,.02) 100%); border: 1px solid rgba(59,130,246,.2); border-radius: 12px; padding: 1.5rem; animation-delay: 100ms; display: flex; flex-direction: column; gap: 1rem; transition: all 0.3s ease; text-decoration: none;" onmouseenter="this.style.borderColor='rgba(59,130,246,.5)'; this.style.boxShadow='0 8px 24px rgba(59,130,246,.1)'" onmouseleave="this.style.borderColor='rgba(59,130,246,.2)'; this.style.boxShadow='none'">
-          <div style="display: flex; align-items: flex-start; justify-content: space-between;">
-            <div style="font-size: 2.5rem; flex-shrink: 0;">&#127760;</div>
-            <div style="background: rgba(251,191,36,.15); color: #f59e0b; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem;">66</div>
-          </div>
+      <div class="fade-up cl-command-center">
+        <div class="cl-command-top">
           <div>
-            <div style="font-weight: 700; font-size: 1.05rem; line-height: 1.4; color: #fff; margin-bottom: 0.5rem;">Donald Trump poised to agree to deal with Iran</div>
-            <div style="font-size: 0.8rem; color: #e8b84b; font-weight: 600; margin-bottom: 0.5rem;">The Irish Independent • May 30</div>
-            <div style="font-size: 0.85rem; color: #9ca3af; line-height: 1.5;">Global Iran war/nuclear story published in The Irish Independent</div>
+            <div class="cl-command-chip">CivicLens</div>
+            <h2 class="section-title cl-command-title" data-en="CivicLens: Media <em>Integrity</em>" data-fa="سیویک لنز: <em>صحت</em> رسانه">CivicLens: Media <em>Integrity</em></h2>
+            <p class="cl-command-desc" data-en="This section helps readers make sense of recent coverage of Iran by showing simple scores for trust, real-life perspective, and possible regime framing." data-fa="این بخش به خوانندگان کمک می‌کند پوشش‌های اخیر درباره ایران را بهتر درک کنند، با امتیازهای ساده برای اعتمادپذیری، توجه به تجربه واقعی مردم، و میزان تأثیر روایت‌های حکومتی.">This section helps readers make sense of recent coverage of Iran by showing simple scores for trust, real-life perspective, and possible regime framing.</p>
           </div>
-        </a>
-        <!-- Article 2: Man set for court appearance following death of Iranian woman in Clifden, Co Galway -->
-        <a class="fade-up" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNZllaMUpzdFVWd3NkdnhRU1pkam1NMEVjOGZCdkxid0s2Z0FOc014dVR3TlM0V2hESjdPcVhxWHBtTnZ2eHZ4RGlwNUF2N2YwVk5qRE4waWZZU2Z0QTI0VnRmdVE5bXhMUk81Ty05UHhNSkZHOHpEa3hEM053dEhjWU9LUkg5QXZUY0pacFJEb9IBlAFBVV95cUxPaVdrQmc5Q29PLXZSTUs4LWhNNHY1Z1V3OGdocjBiUm00b1ItMFExSTd5ekJMcmpIM0hvZTVjcWROQ1ZSLWRDTnRSVURjeWhCSTNWbkpsZUpsd2NQa3BuVU8wVXdlWk9faUVwZnBLNHJ2dGQ3V3V1aVJzaFk0MG9VR2luWjBiRmljbUlEZ2RyeUgyZ3Yw?oc=5" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, rgba(232,184,75,.08) 0%, rgba(232,184,75,.02) 100%); border: 1px solid rgba(232,184,75,.2); border-radius: 12px; padding: 1.5rem; animation-delay: 150ms; display: flex; flex-direction: column; gap: 1rem; transition: all 0.3s ease; text-decoration: none;" onmouseenter="this.style.borderColor='rgba(232,184,75,.5)'; this.style.boxShadow='0 8px 24px rgba(232,184,75,.1)'" onmouseleave="this.style.borderColor='rgba(232,184,75,.2)'; this.style.boxShadow='none'">
-          <div style="display: flex; align-items: flex-start; justify-content: space-between;">
-            <div style="font-size: 2.5rem; flex-shrink: 0;">&#9878;</div>
-            <div style="background: rgba(251,191,36,.15); color: #f59e0b; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem;">64</div>
+          <div class="cl-command-actions">
+            <div class="cl-command-brief">You can scan the latest reviewed articles here, watch the score bars fill in, and open the full dashboard for more detail.</div>
+            <a href="https://iddni.com/civic-lens/" class="fade-up cl-explore-btn" style="animation-delay: 280ms;">Open Full Dashboard →</a>
           </div>
-          <div>
-            <div style="font-weight: 700; font-size: 1.05rem; line-height: 1.4; color: #fff; margin-bottom: 0.5rem;">Man set for court appearance following death of Iranian woman in Clifden, Co Galway</div>
-            <div style="font-size: 0.8rem; color: #e8b84b; font-weight: 600; margin-bottom: 0.5rem;">Irish Mirror • May 30</div>
-            <div style="font-size: 0.85rem; color: #9ca3af; line-height: 1.5;">Man set for court appearance in Co Galway related to Iranian woman&#x27;s death; human tragedy</div>
-          </div>
-        </a>
-        <!-- Article 3: Iranian mum found dead in Galway had come to Ireland hoping for a better life -->
-        <a class="fade-up" href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPb244UjJUeGpMZ25hVFdXSFRyNk00bWg3YWdxSEVlcWdBM3dVRlVyVUx0QTljaEgzQl9nQ2Y3X3N0bGJ3U1pZN1VVUFkzQ2ZtSEs1UXRJYkZUUmlfWVZKTEtHNmxOcjNkNGItSlZLNUo3bDhkcExDbGdCam5DRkNrc1o4WDR5dTFI?oc=5" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, rgba(232,184,75,.08) 0%, rgba(232,184,75,.02) 100%); border: 1px solid rgba(232,184,75,.2); border-radius: 12px; padding: 1.5rem; animation-delay: 200ms; display: flex; flex-direction: column; gap: 1rem; transition: all 0.3s ease; text-decoration: none;" onmouseenter="this.style.borderColor='rgba(232,184,75,.5)'; this.style.boxShadow='0 8px 24px rgba(232,184,75,.1)'" onmouseleave="this.style.borderColor='rgba(232,184,75,.2)'; this.style.boxShadow='none'">
-          <div style="display: flex; align-items: flex-start; justify-content: space-between;">
-            <div style="font-size: 2.5rem; flex-shrink: 0;">&#9878;</div>
-            <div style="background: rgba(251,191,36,.15); color: #f59e0b; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem;">71</div>
-          </div>
-          <div>
-            <div style="font-weight: 700; font-size: 1.05rem; line-height: 1.4; color: #fff; margin-bottom: 0.5rem;">Iranian mum found dead in Galway had come to Ireland hoping for a better life</div>
-            <div style="font-size: 0.8rem; color: #e8b84b; font-weight: 600; margin-bottom: 0.5rem;">Irish Mirror • May 29</div>
-            <div style="font-size: 0.85rem; color: #9ca3af; line-height: 1.5;">Irish minister criticises Iran execution of protesters; human tragedy in Co Galway</div>
-          </div>
-        </a>
-      </div>
-      <!-- CIVICLENS_PREVIEW_END -->
+        </div>
 
-      <div class="fade-up cl-cta-section">
-        <h3 class="cl-cta-title">See Recent Articles Fact-Checked</h3>
-        <p class="cl-cta-desc">Browse fact-checked coverage with scores for each measure.</p>
-        <a href="https://iddni.com/civic-lens/" class="fade-up cl-explore-btn" style="animation-delay: 300ms;">View Fact-Check Dashboard →</a>
+        <div class="cl-command-metrics">
+          <div class="cl-command-metric">
+            <div class="cl-command-metric-label">How It Works</div>
+            <div class="cl-command-metric-value">4 Simple Scores</div>
+            <div class="cl-command-metric-note">People's voices, grounded facts, regime framing, and trust</div>
+          </div>
+          <div class="cl-command-metric">
+            <div class="cl-command-metric-label">What You See</div>
+            <div class="cl-command-metric-value">Latest Reviews</div>
+            <div class="cl-command-metric-note">A quick look at recently checked articles</div>
+          </div>
+          <div class="cl-command-metric">
+            <div class="cl-command-metric-label">Why It Helps</div>
+            <div class="cl-command-metric-value">Easier To Compare</div>
+            <div class="cl-command-metric-note">The layout makes it easier to spot stronger and weaker coverage</div>
+          </div>
+        </div>
+
+        <div class="cl-preview-shell">
+          <div class="cl-preview-shell-head">
+            <div>
+              <div class="cl-preview-eyebrow">Latest Reviewed Articles</div>
+              <p class="cl-preview-intro">These cards show some of the newest checked articles, with simple animated bars to help you compare them quickly.</p>
+            </div>
+          </div>
+
+          <!-- CIVICLENS_PREVIEW_START -->
+          <div class="cl-preview-grid">
+            <!-- Article 1: Donald Trump poised to agree to deal with Iran -->
+            <a class="fade-up cl-preview-card" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQZU5jM1l2a0tudnRXeXJnUXk5RTdHRmZTVkRpQWJhd2g3bnhnbHB0ZWZOYWQzbTNOd3o2RWpXME9kam9tRVd6WXdGNTI5TC14VjBHSTc4ZmRBRWF2YWJPWTg1d2lXX18yeFJwYmYyQmRWcFdRRWQ1Z3FUSDgzMHJ4M2g3MzJfWE1WLVBpakM1VThyNzd5MHZtbXRZOTUxUFE2bFFN?oc=5" target="_blank" rel="noopener noreferrer" style="--card-start: rgba(59,130,246,.12); --card-end: rgba(59,130,246,.03); --card-border: rgba(59,130,246,.24); --card-hover: rgba(59,130,246,.5); --card-shadow: rgba(59,130,246,.16); animation-delay: 100ms;">
+              <div class="cl-preview-card-top">
+                <div class="cl-preview-icon">&#127760;</div>
+                <div class="cl-preview-score">66</div>
+              </div>
+              <div class="cl-preview-meta">The Irish Independent • May 30</div>
+              <div class="cl-preview-title">Donald Trump poised to agree to deal with Iran</div>
+              <div class="cl-preview-excerpt">A recent article from an Irish outlet about Iran, shown here so readers can compare how it was scored.</div>
+              <div class="cl-preview-bars">
+                <div class="cl-preview-bar-row"><div class="cl-preview-bar-label">Voices</div><div class="cl-preview-track"><div class="cl-preview-fill voices" style="--fill-width:45%;--delay:180ms;"></div></div><div class="cl-preview-bar-value">45</div></div>
+                <div class="cl-preview-bar-row"><div class="cl-preview-bar-label">Ground</div><div class="cl-preview-track"><div class="cl-preview-fill ground" style="--fill-width:70%;--delay:240ms;"></div></div><div class="cl-preview-bar-value">70</div></div>
+                <div class="cl-preview-bar-row"><div class="cl-preview-bar-label">Trust</div><div class="cl-preview-track"><div class="cl-preview-fill trust" style="--fill-width:88%;--delay:300ms;"></div></div><div class="cl-preview-bar-value">88</div></div>
+              </div>
+            </a>
+            <!-- Article 2: Man set for court appearance following death of Iranian woman in Clifden, Co Galway -->
+            <a class="fade-up cl-preview-card" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNZllaMUpzdFVWd3NkdnhRU1pkam1NMEVjOGZCdkxid0s2Z0FOc014dVR3TlM0V2hESjdPcVhxWHBtTnZ2eHZ4RGlwNUF2N2YwVk5qRE4waWZZU2Z0QTI0VnRmdVE5bXhMUk81Ty05UHhNSkZHOHpEa3hEM053dEhjWU9LUkg5QXZUY0pacFJEb9IBlAFBVV95cUxPaVdrQmc5Q29PLXZSTUs4LWhNNHY1Z1V3OGdocjBiUm00b1ItMFExSTd5ekJMcmpIM0hvZTVjcWROQ1ZSLWRDTnRSVURjeWhCSTNWbkpsZUpsd2NQa3BuVU8wVXdlWk9faUVwZnBLNHJ2dGQ3V3V1aVJzaFk0MG9VR2luWjBiRmljbUlEZ2RyeUgyZ3Yw?oc=5" target="_blank" rel="noopener noreferrer" style="--card-start: rgba(232,184,75,.12); --card-end: rgba(232,184,75,.03); --card-border: rgba(232,184,75,.24); --card-hover: rgba(232,184,75,.5); --card-shadow: rgba(232,184,75,.18); animation-delay: 160ms;">
+              <div class="cl-preview-card-top">
+                <div class="cl-preview-icon">&#9878;</div>
+                <div class="cl-preview-score">64</div>
+              </div>
+              <div class="cl-preview-meta">Irish Mirror • May 30</div>
+              <div class="cl-preview-title">Man set for court appearance following death of Iranian woman in Clifden, Co Galway</div>
+              <div class="cl-preview-excerpt">This article connects events in Ireland with the story of an Iranian woman, making it especially important for readers who want human impact to stay visible.</div>
+              <div class="cl-preview-bars">
+                <div class="cl-preview-bar-row"><div class="cl-preview-bar-label">Voices</div><div class="cl-preview-track"><div class="cl-preview-fill voices" style="--fill-width:80%;--delay:220ms;"></div></div><div class="cl-preview-bar-value">80</div></div>
+                <div class="cl-preview-bar-row"><div class="cl-preview-bar-label">Ground</div><div class="cl-preview-track"><div class="cl-preview-fill ground" style="--fill-width:82%;--delay:280ms;"></div></div><div class="cl-preview-bar-value">82</div></div>
+                <div class="cl-preview-bar-row"><div class="cl-preview-bar-label">Trust</div><div class="cl-preview-track"><div class="cl-preview-fill trust" style="--fill-width:70%;--delay:340ms;"></div></div><div class="cl-preview-bar-value">70</div></div>
+              </div>
+            </a>
+            <!-- Article 3: Iranian mum found dead in Galway had come to Ireland hoping for a better life -->
+            <a class="fade-up cl-preview-card" href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPb244UjJUeGpMZ25hVFdXSFRyNk00bWg3YWdxSEVlcWdBM3dVRlVyVUx0QTljaEgzQl9nQ2Y3X3N0bGJ3U1pZN1VVUFkzQ2ZtSEs1UXRJYkZUUmlfWVZKTEtHNmxOcjNkNGItSlZLNUo3bDhkcExDbGdCam5DRkNrc1o4WDR5dTFI?oc=5" target="_blank" rel="noopener noreferrer" style="--card-start: rgba(232,184,75,.12); --card-end: rgba(232,184,75,.03); --card-border: rgba(232,184,75,.24); --card-hover: rgba(232,184,75,.5); --card-shadow: rgba(232,184,75,.18); animation-delay: 220ms;">
+              <div class="cl-preview-card-top">
+                <div class="cl-preview-icon">&#9878;</div>
+                <div class="cl-preview-score">71</div>
+              </div>
+              <div class="cl-preview-meta">Irish Mirror • May 29</div>
+              <div class="cl-preview-title">Iranian mum found dead in Galway had come to Ireland hoping for a better life</div>
+              <div class="cl-preview-excerpt">Another Ireland-linked story that gives more space to the human side of the issue and is easy to compare with the other reviewed articles.</div>
+              <div class="cl-preview-bars">
+                <div class="cl-preview-bar-row"><div class="cl-preview-bar-label">Voices</div><div class="cl-preview-track"><div class="cl-preview-fill voices" style="--fill-width:92%;--delay:260ms;"></div></div><div class="cl-preview-bar-value">92</div></div>
+                <div class="cl-preview-bar-row"><div class="cl-preview-bar-label">Ground</div><div class="cl-preview-track"><div class="cl-preview-fill ground" style="--fill-width:85%;--delay:320ms;"></div></div><div class="cl-preview-bar-value">85</div></div>
+                <div class="cl-preview-bar-row"><div class="cl-preview-bar-label">Trust</div><div class="cl-preview-track"><div class="cl-preview-fill trust" style="--fill-width:72%;--delay:380ms;"></div></div><div class="cl-preview-bar-value">72</div></div>
+              </div>
+            </a>
+          </div>
+          <!-- CIVICLENS_PREVIEW_END -->
+        </div>
       </div>
     </section>
 

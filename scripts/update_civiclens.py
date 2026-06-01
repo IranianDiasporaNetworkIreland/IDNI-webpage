@@ -407,27 +407,33 @@ def render_preview_grid(articles: list[dict]) -> str:
         meta = html.escape(f"{article['outlet']} • {format_preview_date(article['date'])}")
         excerpt = html.escape(article["excerpt"])
         url = html.escape(article["url"], quote=True)
+        experienced = int(article["experienced"])
+        ground_news = int(article["groundNews"])
+        trust_score = int(article["trustScore"])
         cards.extend(
             [
                 f"        <!-- Article {index}: {headline} -->",
-                f"        <a class=\"fade-up\" href=\"{url}\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"background: linear-gradient(135deg, {theme['bg']} 0%, {theme['bg2']} 100%); border: 1px solid {theme['border']}; border-radius: 12px; padding: 1.5rem; animation-delay: {delay}ms; display: flex; flex-direction: column; gap: 1rem; transition: all 0.3s ease; text-decoration: none;\" onmouseenter=\"this.style.borderColor='{theme['hover']}'; this.style.boxShadow='0 8px 24px {theme['shadow']}'\" onmouseleave=\"this.style.borderColor='{theme['border']}'; this.style.boxShadow='none'\">",
-                "          <div style=\"display: flex; align-items: flex-start; justify-content: space-between;\">",
-                f"            <div style=\"font-size: 2.5rem; flex-shrink: 0;\">{theme['icon']}</div>",
-                f"            <div style=\"background: rgba(251,191,36,.15); color: #f59e0b; padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem;\">{overall}</div>",
-                "          </div>",
-                "          <div>",
-                f"            <div style=\"font-weight: 700; font-size: 1.05rem; line-height: 1.4; color: #fff; margin-bottom: 0.5rem;\">{headline}</div>",
-                f"            <div style=\"font-size: 0.8rem; color: #e8b84b; font-weight: 600; margin-bottom: 0.5rem;\">{meta}</div>",
-                f"            <div style=\"font-size: 0.85rem; color: #9ca3af; line-height: 1.5;\">{excerpt}</div>",
-                "          </div>",
-                "        </a>",
+                f"            <a class=\"fade-up cl-preview-card\" href=\"{url}\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"--card-start: {theme['bg']}; --card-end: {theme['bg2']}; --card-border: {theme['border']}; --card-hover: {theme['hover']}; --card-shadow: {theme['shadow']}; animation-delay: {delay}ms;\">",
+                "              <div class=\"cl-preview-card-top\">",
+                f"                <div class=\"cl-preview-icon\">{theme['icon']}</div>",
+                f"                <div class=\"cl-preview-score\">{overall}</div>",
+                "              </div>",
+                f"              <div class=\"cl-preview-meta\">{meta}</div>",
+                f"              <div class=\"cl-preview-title\">{headline}</div>",
+                f"              <div class=\"cl-preview-excerpt\">{excerpt}</div>",
+                "              <div class=\"cl-preview-bars\">",
+                f"                <div class=\"cl-preview-bar-row\"><div class=\"cl-preview-bar-label\">Voices</div><div class=\"cl-preview-track\"><div class=\"cl-preview-fill voices\" style=\"--fill-width:{experienced}%;--delay:{delay + 80}ms;\"></div></div><div class=\"cl-preview-bar-value\">{experienced}</div></div>",
+                f"                <div class=\"cl-preview-bar-row\"><div class=\"cl-preview-bar-label\">Ground</div><div class=\"cl-preview-track\"><div class=\"cl-preview-fill ground\" style=\"--fill-width:{ground_news}%;--delay:{delay + 140}ms;\"></div></div><div class=\"cl-preview-bar-value\">{ground_news}</div></div>",
+                f"                <div class=\"cl-preview-bar-row\"><div class=\"cl-preview-bar-label\">Trust</div><div class=\"cl-preview-track\"><div class=\"cl-preview-fill trust\" style=\"--fill-width:{trust_score}%;--delay:{delay + 200}ms;\"></div></div><div class=\"cl-preview-bar-value\">{trust_score}</div></div>",
+                "              </div>",
+                "            </a>",
             ]
         )
     inner_html = "\n".join(cards)
     return (
-        "      <div class=\"cl-preview-grid\" style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin: 2.5rem 0;\">\n"
+        "          <div class=\"cl-preview-grid\">\n"
         f"{inner_html}\n"
-        "      </div>"
+        "          </div>"
     )
 
 
