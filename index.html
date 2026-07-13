@@ -1779,7 +1779,7 @@
           IDDNI <em>Updates</em>
         </h2>
       </div>
-       <div class="news-grid">
+      <div class="news-grid">
   <div class="news-card fade-up">
     <span class="news-tag" data-en="Event" data-fa="رویداد">Event</span>
     <p class="news-date" data-en="9 July, 2026 &mdash; Dublin" data-fa="۹ ژوئیه ۲۰۲۶ &mdash; دوبلین">9 July, 2026 &mdash; Dublin</p>
@@ -1790,8 +1790,13 @@
     <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-top:.5rem;">
       <img src="DFA Meeting.jpeg" alt="Meeting with DFA" style="width:100%; max-width:320px; border-radius:8px; margin-top:.5rem;">
     </div>
-    <button class="read-more-btn" onclick="toggleExpand('DFAMeeting')" data-en="Read more" data-fa="بیشتر بخوانید" style="margin-top:.75rem;">Read more</button>
-    <div class="news-card-expanded" id="DFAMeeting" style="margin-top:1rem;">
+    <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-top:.5rem;">
+      <button class="news-toggle-btn" id="DFAMeetingBtn" onclick="toggleNewsCard('DFAMeeting','DFAMeetingBtn')" style="margin-top:0;">
+        <span class="btn-label" data-en="Read Full Statement" data-fa="ادامه مطلب">Read Full Statement</span>
+        <span class="arrow">&#9660;</span>
+      </button>
+    </div>
+    <div class="news-card-expanded" id="DFAMeeting">
       <div class="news-expanded-inner">
         <div class="lang-en-block">
           <p>We emphasised the importance of ensuring that the perspectives and aspirations of the Iranian people are heard and represented on the international stage. We hope this engagement marks the beginning of a constructive and sustained dialogue with the department, ultimately aimed at empowering Iran's civil society and democratic forces. We sincerely appreciate the opportunity to exchange views and look forward to continued engagement.</p>
@@ -1810,8 +1815,13 @@
     <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-top:.5rem;">
       <img src="MEP Meeting.jpg" alt="Meeting with MEP Barry Andrews" style="width:100%; max-width:320px; border-radius:8px; margin-top:.5rem;">
     </div>
-    <button class="read-more-btn" onclick="toggleExpand('mepMeeting')" data-en="Read more" data-fa="بیشتر بخوانید" style="margin-top:.75rem;">Read more</button>
-    <div class="news-card-expanded" id="mepMeeting" style="margin-top:1rem;">
+    <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-top:.5rem;">
+      <button class="news-toggle-btn" id="mepMeetingBtn" onclick="toggleNewsCard('mepMeeting','mepMeetingBtn')" style="margin-top:0;">
+        <span class="btn-label" data-en="Read Full Statement" data-fa="ادامه مطلب">Read Full Statement</span>
+        <span class="arrow">&#9660;</span>
+      </button>
+    </div>
+    <div class="news-card-expanded" id="mepMeeting">
       <div class="news-expanded-inner">
         <div class="lang-en-block">
           <p>During the meeting, we spoke about the ongoing catastrophic human rights situation in Iran, our experiences with transnational repression here in Ireland, and ways in which the EU can realistically support the democratic aspirations of the Iranian people.</p>
