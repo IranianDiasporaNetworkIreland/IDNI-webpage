@@ -404,53 +404,56 @@
     }
 
     /* ---- NEWS ---- */
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(340px,100%),1fr));
-      gap: 1.5rem;
-    }
-    .news-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-b);
-      border-top: 3px solid var(--gold);
-      border-radius: var(--radius); padding: 1.9rem;
-      transition: all var(--tr);
-    }
-    .news-card:hover {
-      border-top-color: var(--green);
-      background: rgba(22,155,98,.03);
-      transform: translateY(-4px);
-      box-shadow: 0 14px 44px rgba(0,0,0,.38);
-    }
-    .news-tag {
-      display: inline-block;
-      background: rgba(212,95,122,.12);
-      border: 1px solid rgba(212,95,122,.28);
-      color: #e8889a; font-size: .7rem; font-weight: 700;
-      letter-spacing: 1.2px; text-transform: uppercase;
-      padding: .22rem .75rem; border-radius: 100px;
-      margin-bottom: .9rem;
-    }
-    .news-date { font-size: .78rem; color: var(--text-muted); margin-bottom: .45rem; }
-    .news-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: .75rem; line-height: 1.42; }
-    .news-excerpt { font-size: .9rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.1rem; }
-    .news-toggle-btn {
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-family: inherit; font-size: .84rem; font-weight: 600;
-      color: var(--gold); background: none; border: none;
-      cursor: pointer; padding: 0; transition: color var(--tr);
-    }
-    .news-toggle-btn:hover { color: #fff; }
-    .news-toggle-btn .arrow { display: inline-block; transition: transform .3s ease; font-size: .72rem; }
-    .news-toggle-btn.open .arrow { transform: rotate(180deg); }
-    .news-card-expanded { max-height: 0; overflow: hidden; transition: max-height .6s ease, opacity .4s ease; opacity: 0; }
-    .news-card-expanded.open { max-height: 9000px; opacity: 1; }
-    .news-expanded-inner { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid var(--glass-b); }
-    .news-expanded-inner .byline { font-size: .8rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.1rem; }
-    .news-expanded-inner p { font-size: .91rem; color: var(--text-muted); line-height: 1.88; margin-bottom: .9rem; }
-    .news-expanded-inner h4 { font-size: 1rem; color: #fff; font-weight: 700; margin: 1.4rem 0 .5rem; }
-    .news-expanded-inner hr { border: none; border-top: 1px solid var(--glass-b); margin: 1.4rem 0; }
-
+   .news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(340px,100%),1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+.news-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-b);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius); padding: 1.9rem;
+  transition: all var(--tr);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.news-card:hover {
+  border-top-color: var(--green);
+  background: rgba(22,155,98,.03);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 44px rgba(0,0,0,.38);
+}
+.news-tag {
+  display: inline-block;
+  background: rgba(212,95,122,.12);
+  border: 1px solid rgba(212,95,122,.28);
+  color: #e8889a; font-size: .7rem; font-weight: 700;
+  letter-spacing: 1.2px; text-transform: uppercase;
+  padding: .22rem .75rem; border-radius: 100px;
+  margin-bottom: .9rem;
+}
+.news-date { font-size: .78rem; color: var(--text-muted); margin-bottom: .45rem; }
+.news-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: .75rem; line-height: 1.42; }
+.news-excerpt { font-size: .9rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.1rem; flex-grow: 1; }
+.news-toggle-btn {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: inherit; font-size: .84rem; font-weight: 600;
+  color: var(--gold); background: none; border: none;
+  cursor: pointer; padding: 0; transition: color var(--tr);
+}
+.news-toggle-btn:hover { color: #fff; }
+.news-toggle-btn .arrow { display: inline-block; transition: transform .3s ease; font-size: .72rem; }
+.news-toggle-btn.open .arrow { transform: rotate(180deg); }
+.news-card-expanded { max-height: 0; overflow: hidden; transition: max-height .6s ease, opacity .4s ease; opacity: 0; }
+.news-card-expanded.open { max-height: 9000px; opacity: 1; }
+.news-expanded-inner { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid var(--glass-b); }
+.news-expanded-inner .byline { font-size: .8rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.1rem; }
+.news-expanded-inner p { font-size: .91rem; color: var(--text-muted); line-height: 1.88; margin-bottom: .9rem; }
+.news-expanded-inner h4 { font-size: 1rem; color: #fff; font-weight: 700; margin: 1.4rem 0 .5rem; }
+.news-expanded-inner hr { border: none; border-top: 1px solid var(--glass-b); margin: 1.4rem 0; }
     /* ---- TEAM ---- */
     #team { background: rgba(255,255,255,.015); max-width: 100%; padding: 5.5rem 0; }
     #team .section-inner { max-width: 1320px; margin: 0 auto; padding: 0 2rem; }
@@ -1782,7 +1785,9 @@
       <div class="news-grid">
   <div class="news-grid">
 
-  <!-- CARD 1: DFA Meeting -->
+ <div class="news-grid">
+
+  <!-- DFA Meeting -->
   <div class="news-card fade-up">
     <span class="news-tag" data-en="Event" data-fa="رویداد">Event</span>
     <p class="news-date" data-en="9 July, 2026 &mdash; Dublin" data-fa="۹ ژوئیه ۲۰۲۶ &mdash; دوبلین">9 July, 2026 &mdash; Dublin</p>
@@ -1808,7 +1813,7 @@
     </div>
   </div>
 
-  <!-- CARD 2: MEP Barry Andrews -->
+  <!-- MEP Barry Andrews -->
   <div class="news-card fade-up">
     <span class="news-tag" data-en="Event" data-fa="رویداد">Event</span>
     <p class="news-date" data-en="19 June, 2026 &mdash; Dublin" data-fa="۱۹ ژوئن ۲۰۲۶ &mdash; دوبلین">19 June, 2026 &mdash; Dublin</p>
@@ -1835,7 +1840,7 @@
     </div>
   </div>
 
-  <!-- CARD 3: Protest at Leinster House (no expanded content — permalink only) -->
+  <!-- Protest at Leinster House -->
   <div class="news-card fade-up">
     <span class="news-tag" data-en="Event" data-fa="رویداد">Event</span>
     <p class="news-date" data-en="28 May, 2026 &mdash; Leinster House, Dublin" data-fa="۲۸ مه ۲۰۲۶ &mdash; دوبلین">28 May, 2026 &mdash; Leinster House, Dublin</p>
@@ -1853,7 +1858,7 @@
     </div>
   </div>
 
-  <!-- CARD 4: Press Release - Ambassador Accreditation -->
+  <!-- Press Release -->
   <div class="news-card fade-up">
     <span class="news-tag" data-en="Statement" data-fa="بیانیه">Statement</span>
     <p class="news-date" data-en="25 May, 2026 &mdash; IDDNI" data-fa="۲۵ مه ۲۰۲۶ &mdash; IDDNI">25 May, 2026 &mdash; IDDNI</p>
@@ -1862,27 +1867,28 @@
       Back to Business as Usual Despite Iran&rsquo;s Worsening Human Rights Crisis: IDDNI Condemns the Accreditation of the Ambassador of the Islamic Republic of Iran
     </h3>
     <p class="news-excerpt lang-en-block">IDDNI strongly condemns the Irish Government&rsquo;s decision to proceed with the accreditation of the Ambassador of the Islamic Republic of Iran on 21 May 2026, at a time when executions, repression, and mass detention continue to escalate inside Iran.</p>
+    <p class="news-excerpt lang-fa-block" dir="rtl" lang="fa">IDDNI تصمیم دولت ایرلند برای پیش‌برد اعتبارنامه سفیر جمهوری اسلامی ایران در ۲۱ مه ۲۰۲۶ را در شرایطی که اعدام‌ها، سرکوب و بازداشت‌های گسترده در ایران همچنان ادامه دارد، به شدت محکوم می‌کند.</p>
     <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-top:.5rem;">
-      <button class="news-toggle-btn" id="pressRelease2Btn" onclick="toggleNewsCard('pressRelease2','pressRelease2Btn')" style="margin-top:0;">
-        <span class="btn-label" data-en="Read More" data-fa="ادامه مطلب">Read More</span>
+      <button class="news-toggle-btn" id="pressRelease2Btn" onclick="openPRModal('pressRelease2')" style="margin-top:0;">
+        <span class="btn-label" data-en="Read Full Statement" data-fa="متن کامل را بخوانید">Read Full Statement</span>
         <span class="arrow">&#9660;</span>
       </button>
+      <a href="ambassador-accreditation-may-2026.html"
+         style="font-size:.78rem;font-weight:600;color:var(--text-muted);text-decoration:none;border:1px solid var(--glass-b);border-radius:8px;padding:.38rem .75rem;transition:all var(--tr);"
+         onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold)'"
+         onmouseout="this.style.color='var(--text-muted)';this.style.borderColor='var(--glass-b)'"
+         data-en="&#128279; Permalink" data-fa="&#128279; لینک مستقل">&#128279; Permalink</a>
     </div>
     <div class="news-card-expanded" id="pressRelease2">
       <div class="news-expanded-inner">
         <div class="lang-en-block">
           <p class="byline">By the Iranian Democratic Diaspora Network in Ireland (IDDNI) &mdash; 25 May, 2026</p>
           <p>The Iranian Democratic Diaspora Network in Ireland (IDDNI) strongly condemns the Irish Government&rsquo;s decision to proceed with the accreditation of the Ambassador of the Islamic Republic of Iran on 21 May 2026.</p>
-          <p>Earlier this year, on 13 January 2026, the Department of Foreign Affairs postponed the same ceremony because of the &ldquo;very significant number of Iranians killed or injured and a communications blackout&rdquo; following the regime&rsquo;s brutal crackdown on protests in Iran. At the time, many Iranians in Ireland welcomed this decision as a recognition that normal diplomatic symbolism could not continue amid mass repression.</p>
+          <p>Earlier this year, on 13 January 2026, the Department of Foreign Affairs postponed the same ceremony because of the &ldquo;very significant number of Iranians killed or injured and a communications blackout&rdquo; following the regime&rsquo;s brutal crackdown on protests in Iran.</p>
           <p>The question now is: what has changed?</p>
-          <p>Since January, the human rights situation in Iran has not improved; it has deteriorated further. Executions continue at an alarming rate, including against political prisoners and protesters. Human rights organizations and international bodies, including Amnesty International, and the United Nations, have repeatedly warned about arbitrary executions, torture, and systematic repression in Iran.</p>
-          <p>During the nationwide uprising of 8 and 9 January 2026 alone, according to numerous reports, security forces killed tens of thousands of Iranians and arrested tens of thousands more. Across multiple uprisings in recent years, Iranians have repeatedly risked and lost their lives to make clear that they no longer want this regime.</p>
-          <p>At the same time, the Islamic Republic has continued to act as a destabilizing force internationally. In recent months, the regime and the Islamic Revolutionary Guard Corps have further expanded tensions and insecurity in the region, including around the Strait of Hormuz, threatening international maritime security and global stability. Given both the domestic repression and the regime&rsquo;s broader regional conduct, it is difficult to understand why Western governments are once again moving toward appeasement and normalization.</p>
-          <p>Against this backdrop, the accreditation ceremony sends a deeply troubling symbolic message to Iranians both inside Iran and across the diaspora especially in Ireland. Diplomatic engagement may at times be presented as a necessity of international relations, but celebratory public symbolism is not.</p>
-          <p>IDDNI was particularly disturbed by the image of President Catherine Connolly smiling warmly alongside the representative of a regime responsible for severe and ongoing human rights abuses. At a moment when many Iranians are mourning executions, repression, and imprisonment of loved ones, such imagery was painful and unnecessary. This is especially contradictory given President Connolly&rsquo;s strong and vocal public positioning on international human rights issues.</p>
-          <p>We are concerned that this reflects a broader international pattern. From renewed diplomatic engagement to discussions of political and economic deals, Western governments once again appear willing to normalize relations with a regime that lacks legitimacy among its own people. This same strategy of accommodation and appeasement has failed for decades.</p>
-          <p>IDDNI calls on Irish political representatives, civil society organizations, media, and the broader public to take a clear stance on human rights and democratic values in relation to Iran. In democratic countries, public opinion matters. If there is a moment for Irish allies to stand with the Iranian people, it is now.</p>
-          <p>We invite members of the public to join our peaceful protest outside the D&aacute;il on Thursday at 2:00 p.m. We also encourage people to contact their elected representatives and express their opposition to the normalization of relations with a regime that continues to violently repress its own population.</p>
+          <p>Since January, the human rights situation in Iran has not improved; it has deteriorated further. Executions continue at an alarming rate. Human rights organizations, including Amnesty International and the United Nations, have repeatedly warned about arbitrary executions, torture, and systematic repression.</p>
+          <p>IDDNI calls on Irish political representatives, civil society organizations, media, and the broader public to take a clear stance on human rights and democratic values in relation to Iran.</p>
+          <p>We invite members of the public to join our peaceful protest outside the D&aacute;il on Thursday at 2:00 p.m.</p>
           <hr>
           <h4>About IDDNI</h4>
           <p>The Iranian Democratic Diaspora Network in Ireland (IDDNI) is a multi-ethnic, non-partisan, female-led network of Iranians based primarily in Galway and Limerick, with members in Dublin and Cork. <a href="https://iddni.com/" target="_blank" rel="noopener">https://iddni.com/</a></p>
@@ -1890,11 +1896,6 @@
         <div class="lang-fa-block" dir="rtl" lang="fa">
           <p class="byline">توسط شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) &mdash; ۲۵ مه ۲۰۲۶</p>
           <p>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) تصمیم دولت ایرلند برای پیش‌برد مراسم اعتبارنامه سفیر جمهوری اسلامی ایران در ۲۱ مه ۲۰۲۶ را به شدت محکوم می‌کند.</p>
-          <p>در اوایل امسال، در ۱۳ ژانویه ۲۰۲۶، وزارت امور خارجه همین مراسم را به دلیل «تعداد بسیار زیاد ایرانیان کشته یا زخمی‌شده و قطع ارتباطات» به تعویق انداخت.</p>
-          <p>اکنون سؤال این است: چه چیزی تغییر کرده است؟</p>
-          <p>از ژانویه تاکنون، وضعیت حقوق بشر در ایران بهبود نیافته، بلکه بدتر شده است.</p>
-          <p>IDDNI از نمایندگان سیاسی، سازمان‌های جامعه مدنی، رسانه‌ها و مردم ایرلند می‌خواهد که موضع روشنی در قبال حقوق بشر و ارزش‌های دموکراتیک در رابطه با ایران اتخاذ کنند.</p>
-          <p>از عموم مردم دعوت می‌کنیم تا در اعتراض مسالمت‌آمیز ما در خارج از مجلس ملی (Dáil) روز پنجشنبه ساعت ۱۴:۰۰ شرکت کنند.</p>
           <hr>
           <h4>درباره IDDNI</h4>
           <p>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) یک شبکه چندقومیتی، غیرحزبی و زن‌محور از ایرانیان مقیم ایرلند است. <a href="https://iddni.com/" target="_blank" rel="noopener">https://iddni.com/</a></p>
@@ -1903,7 +1904,7 @@
     </div>
   </div>
 
-  <!-- CARD 5: Press Release - Europe Cannot Stay Silent -->
+  <!-- Press Release-->
   <div class="news-card fade-up">
     <span class="news-tag" data-en="Press Release" data-fa="بیانیه مطبوعاتی">Press Release</span>
     <p class="news-date" data-en="13 April, 2026 &mdash; IDDNI" data-fa="۱۳ آوریل ۲۰۲۶ &mdash; IDDNI">13 April, 2026 &mdash; IDDNI</p>
@@ -1912,9 +1913,10 @@
       Iran's People Are Being Erased from Their Own Future &mdash; Europe Cannot Stay Silent
     </h3>
     <p class="news-excerpt lang-en-block">As ceasefire talks and diplomatic negotiations involving Iran might continue behind closed doors, one fundamental truth remains: the Iranian people are absent from the table where their future is being decided. IDDNI warns that international diplomacy is once again repeating a familiar and dangerous pattern.</p>
+    <p class="news-excerpt lang-fa-block" dir="rtl" lang="fa">در حالی که مذاکرات آتش‌بس با ایران پشت درهای بسته ادامه دارد، مردم ایران از میزی که آینده‌شان در آن تعیین می‌شود غایب‌اند.</p>
     <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-top:.5rem;">
-      <button class="news-toggle-btn" id="pressRelease1Btn" onclick="toggleNewsCard('pressRelease1','pressRelease1Btn')" style="margin-top:0;">
-        <span class="btn-label" data-en="Read More" data-fa="ادامه مطلب">Read More</span>
+      <button class="news-toggle-btn" id="pressRelease1Btn" onclick="openPRModal('pressRelease1')" style="margin-top:0;">
+        <span class="btn-label" data-en="Read Full Statement" data-fa="متن کامل را بخوانید">Read Full Statement</span>
         <span class="arrow">&#9660;</span>
       </button>
     </div>
@@ -1922,89 +1924,24 @@
       <div class="news-expanded-inner">
         <div class="lang-en-block">
           <p class="byline">By the Iranian Democratic Diaspora Network in Ireland (IDDNI) &mdash; 13 April, 2026</p>
-          <p>As ceasefire talks and diplomatic negotiations involving Iran might continue behind closed doors, one fundamental truth remains: the Iranian people are absent from the table where their future is being decided. This is not a technical oversight. It is a political failure with profound human consequences.</p>
-          <p>A newly formed Iranian diaspora network in Ireland &mdash; the Iranian Democratic Diaspora Network in Ireland (IDDNI), a female-led, non-partisan and multi-ethnic initiative based in Galway, Limerick, Dublin, and Cork &mdash; is warning that international diplomacy is once again repeating a familiar and dangerous pattern: engagement with power while excluding the people it governs.</p>
-          <p>For over four decades, Iranians have lived under a political system that severely restricts fundamental freedoms and suppresses any form of political opposition through intimidation, imprisonment, and execution. Women, in particular, face systematic discrimination and control over their bodies and lives &mdash; a reality described by activists and human rights organisations as gender apartheid. Ethnic and religious minorities are also subject to persistent discrimination and disproportionate repression. The scale of state violence is stark: Iran executed at least 1,639 people in 2025 &mdash; an average of more than four executions per day &mdash; according to a joint annual report by Norway-based Iran Human Rights and Paris-based Together Against the Death Penalty.</p>
-          <p>Through repeated cycles of protest, and especially in the most recent nationwide uprising, Iranians have risked their lives to demand freedom, dignity, and an end to the current regime. Each wave has been met with violent crackdowns, including mass arrests, executions, and lethal force against civilians.</p>
-          <p>The United Nations Fact Finding Mission has found that the Islamic Republic committed crimes against humanity during the 2022 Woman, Life, Freedom protests. Just three months ago, large-scale killings of protesters once again underscored the scale of state violence with tens of thousands of people killed, injured, or detained. Several human rights organisations, including Amnesty International, have described the January crackdown as a massacre of civilians, marking one of the most severe episodes of state violence against protesters in recent history. At the same time, repression continues to escalate. At least 14 political prisoners have been executed since the beginning of the war, and thousands more remain detained following recent protests and conflict.</p>
-          <p>Despite this, the points currently proposed in ceasefire discussions and negotiations make no meaningful reference to human rights, the protection of Iranian lives, or their democratic aspirations. Nor do current diplomatic frameworks include mechanisms to ensure that civilian protection or human rights are meaningfully embedded in the negotiation process.</p>
-          <p>This absence is not neutral &mdash; it is consequential. When international negotiations focus exclusively on state actors while excluding civil society, they risk reinforcing the very structures that produced instability in the first place. The result is not peace, but the managed containment of conflict at the expense of those living under repression. The network warns that many Iranians now fear being abandoned to a weakened but vengeful regime &mdash; one that may once again turn its violence inward.</p>
-          <p>European responses to the regime&rsquo;s longstanding pattern of human rights violations have remained largely rhetorical &mdash; often limited to statements of concern and modest sanctions. This restraint has carried grave consequences. By prioritising geopolitical stability over accountability, Europe has effectively signalled that the regime can act with impunity.</p>
-          <p>Europe, including Ireland, cannot afford to treat Iran purely as a geopolitical file managed through security and energy concerns. It is also a human rights issue &mdash; one that directly concerns the legitimacy of any future settlement.</p>
-          <p>IDDNI is therefore calling on Irish and European policymakers to adopt a simple but essential principle: no sustainable diplomatic engagement with Iran can exclude the Iranian people themselves. This means embedding human rights monitoring, civil society consultation, and diaspora representation into any framework of engagement. It also means recognising that legitimacy in Iran is not defined solely by state power, but by a population that has repeatedly demonstrated its desire for democratic change &mdash; at immense personal cost.</p>
-          <p>Silence, in this context, is not neutrality. It is a political choice &mdash; one that determines whose voices count, and whose are erased. If Europe is serious about long-term stability in the region, it must begin by ensuring that the Iranian people are no longer invisible in the negotiations that shape their future.</p>
+          <p>As ceasefire talks and diplomatic negotiations involving Iran might continue behind closed doors, one fundamental truth remains: the Iranian people are absent from the table where their future is being decided.</p>
+          <p>A newly formed Iranian diaspora network in Ireland &mdash; IDDNI, a female-led, non-partisan and multi-ethnic initiative based in Galway, Limerick, Dublin, and Cork &mdash; is warning that international diplomacy is once again repeating a familiar and dangerous pattern.</p>
+          <p>IDDNI is calling on Irish and European policymakers to adopt a simple but essential principle: no sustainable diplomatic engagement with Iran can exclude the Iranian people themselves.</p>
           <hr>
           <h4>About IDDNI</h4>
           <p>The Iranian Democratic Diaspora Network in Ireland (IDDNI) is a multi-ethnic, non-partisan, female-led network of Iranians based primarily in Galway and Limerick, with members in Dublin and Cork.</p>
-          <p>The network was established to fill a critical gap in meaningful, informed engagement on Iran in Ireland and across Europe, ensuring that the voices, lived experiences, and democratic aspirations of the Iranian people are reflected in policymaking, public discourse, and media coverage. IDDNI works to provide evidence-based insights and to support constructive engagement by Irish and European actors in line with the pursuit of a secular democratic future for Iran.</p>
+        </div>
+        <div class="lang-fa-block" dir="rtl" lang="fa">
+          <p class="byline">توسط شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) &mdash; ۱۳ آوریل ۲۰۲۶</p>
+          <p>در حالی که مذاکرات آتش‌بس مربوط به ایران پشت درهای بسته ادامه دارد، یک حقیقت اساسی باقی می‌ماند: مردم ایران در میزی که آینده‌شان در آن تعیین می‌شود، حضور ندارند.</p>
+          <hr>
+          <h4>درباره IDDNI</h4>
+          <p>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) یک شبکه چندقومیتی، غیرحزبی و زن‌محور از ایرانیان مقیم ایرلند است.</p>
         </div>
       </div>
     </div>
   </div>
 
-</div>
-              <div class="lang-fa-block" dir="rtl" lang="fa">
-                <p class="byline">توسط شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) &mdash; ۲۵ مه ۲۰۲۶</p>
-                <p>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) تصمیم دولت ایرلند برای پیش‌برد مراسم اعتبارنامه سفیر جمهوری اسلامی ایران در ۲۱ مه ۲۰۲۶ را به شدت محکوم می‌کند.</p>
-                <p>در اوایل امسال، در ۱۳ ژانویه ۲۰۲۶، وزارت امور خارجه همین مراسم را به دلیل «تعداد بسیار زیاد ایرانیان کشته یا زخمی‌شده و قطع ارتباطات» به تعویق انداخت. در آن زمان بسیاری از ایرانیان مقیم ایرلند این تصمیم را به عنوان به رسمیت شناختن این واقعیت که نمادپردازی دیپلماتیک عادی نمی‌تواند در میان سرکوب گسترده ادامه یابد، استقبال کردند.</p>
-                <p>اکنون سؤال این است: چه چیزی تغییر کرده است؟</p>
-                <p>از ژانویه تاکنون، وضعیت حقوق بشر در ایران بهبود نیافته، بلکه بدتر شده است. اعدام‌ها با نرخ هشداردهنده‌ای ادامه دارند. سازمان‌های حقوق بشری و نهادهای بین‌المللی، از جمله عفو بین‌الملل و سازمان ملل، بارها نسبت به اعدام‌های خودسرانه، شکنجه و سرکوب سیستماتیک در ایران هشدار داده‌اند.</p>
-                <p>IDDNI از نمایندگان سیاسی، سازمان‌های جامعه مدنی، رسانه‌ها و مردم ایرلند می‌خواهد که موضع روشنی در قبال حقوق بشر و ارزش‌های دموکراتیک در رابطه با ایران اتخاذ کنند. اگر لحظه‌ای برای ایستادن در کنار مردم ایران وجود دارد، همین لحظه است.</p>
-                <p>از عموم مردم دعوت می‌کنیم تا در اعتراض مسالمت‌آمیز ما در خارج از مجلس ملی (Dáil) روز پنجشنبه ساعت ۱۴:۰۰ شرکت کنند.</p>
-                <hr>
-                <h4>درباره IDDNI</h4>
-                <p>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) یک شبکه چندقومیتی، غیرحزبی و زن‌محور از ایرانیان مقیم ایرلند است. <a href="https://iddni.com/" target="_blank" rel="noopener">https://iddni.com/</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-       <div class="news-card fade-up">
-  <span class="news-tag" data-en="Press Release" data-fa="بیانیه مطبوعاتی">Press Release</span>
-  <p class="news-date" data-en="13 April, 2026 &mdash; IDDNI" data-fa="۱۳ آوریل ۲۰۲۶ &mdash; IDDNI">13 April, 2026 &mdash; IDDNI</p>
-  <h3 data-en="Iran's People Are Being Erased from Their Own Future &mdash; Europe Cannot Stay Silent"
-      data-fa="مردم ایران از آینده خود محو می‌شوند &mdash; اروپا نمی‌تواند ساکت بماند">
-    Iran's People Are Being Erased from Their Own Future &mdash; Europe Cannot Stay Silent
-  </h3>
-  <p class="news-excerpt lang-en-block">As ceasefire talks and diplomatic negotiations involving Iran might continue behind closed doors, one fundamental truth remains: the Iranian people are absent from the table where their future is being decided. IDDNI warns that international diplomacy is once again repeating a familiar and dangerous pattern.</p>
-  <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-top:.5rem;">
-    <button class="news-toggle-btn" id="pressRelease1Btn" onclick="toggleNewsCard('pressRelease1','pressRelease1Btn')" style="margin-top:0;">
-      <span class="btn-label" data-en="Read More" data-fa="ادامه مطلب">Read More</span>
-      <span class="arrow">&#9660;</span>
-    </button>
-  </div>
-  <div class="news-card-expanded" id="pressRelease1">
-    <div class="news-expanded-inner">
-      <div class="lang-en-block">
-        <p class="byline">By the Iranian Democratic Diaspora Network in Ireland (IDDNI) &mdash; 13 April, 2026</p>
-        <p>As ceasefire talks and diplomatic negotiations involving Iran might continue behind closed doors, one fundamental truth remains: the Iranian people are absent from the table where their future is being decided. This is not a technical oversight. It is a political failure with profound human consequences.</p>
-        <p>A newly formed Iranian diaspora network in Ireland &mdash; the Iranian Democratic Diaspora Network in Ireland (IDDNI), a female-led, non-partisan and multi-ethnic initiative based in Galway, Limerick, Dublin, and Cork &mdash; is warning that international diplomacy is once again repeating a familiar and dangerous pattern: engagement with power while excluding the people it governs.</p>
-        <p>For over four decades, Iranians have lived under a political system that severely restricts fundamental freedoms and suppresses any form of political opposition through intimidation, imprisonment, and execution. Women, in particular, face systematic discrimination and control over their bodies and lives &mdash; a reality described by activists and human rights organisations as gender apartheid. Ethnic and religious minorities are also subject to persistent discrimination and disproportionate repression. The scale of state violence is stark: Iran executed at least 1,639 people in 2025 &mdash; an average of more than four executions per day &mdash; according to a joint annual report by Norway-based Iran Human Rights and Paris-based Together Against the Death Penalty.</p>
-        <p>Through repeated cycles of protest, and especially in the most recent nationwide uprising, Iranians have risked their lives to demand freedom, dignity, and an end to the current regime. Each wave has been met with violent crackdowns, including mass arrests, executions, and lethal force against civilians.</p>
-        <p>The United Nations Fact Finding Mission has found that the Islamic Republic committed crimes against humanity during the 2022 Woman, Life, Freedom protests. Just three months ago, large-scale killings of protesters once again underscored the scale of state violence with tens of thousands of people killed, injured, or detained. Several human rights organisations, including Amnesty International, have described the January crackdown as a massacre of civilians, marking one of the most severe episodes of state violence against protesters in recent history. At the same time, repression continues to escalate. At least 14 political prisoners have been executed since the beginning of the war, and thousands more remain detained following recent protests and conflict.</p>
-        <p>Despite this, the points currently proposed in ceasefire discussions and negotiations make no meaningful reference to human rights, the protection of Iranian lives, or their democratic aspirations. Nor do current diplomatic frameworks include mechanisms to ensure that civilian protection or human rights are meaningfully embedded in the negotiation process.</p>
-        <p>This absence is not neutral &mdash; it is consequential. When international negotiations focus exclusively on state actors while excluding civil society, they risk reinforcing the very structures that produced instability in the first place. The result is not peace, but the managed containment of conflict at the expense of those living under repression. The network warns that many Iranians now fear being abandoned to a weakened but vengeful regime &mdash; one that may once again turn its violence inward.</p>
-        <p>European responses to the regime&rsquo;s longstanding pattern of human rights violations have remained largely rhetorical &mdash; often limited to statements of concern and modest sanctions. This restraint has carried grave consequences. By prioritising geopolitical stability over accountability, Europe has effectively signalled that the regime can act with impunity.</p>
-        <p>Europe, including Ireland, cannot afford to treat Iran purely as a geopolitical file managed through security and energy concerns. It is also a human rights issue &mdash; one that directly concerns the legitimacy of any future settlement.</p>
-        <p>IDDNI is therefore calling on Irish and European policymakers to adopt a simple but essential principle: no sustainable diplomatic engagement with Iran can exclude the Iranian people themselves. This means embedding human rights monitoring, civil society consultation, and diaspora representation into any framework of engagement. It also means recognising that legitimacy in Iran is not defined solely by state power, but by a population that has repeatedly demonstrated its desire for democratic change &mdash; at immense personal cost.</p>
-        <p>Silence, in this context, is not neutrality. It is a political choice &mdash; one that determines whose voices count, and whose are erased. If Europe is serious about long-term stability in the region, it must begin by ensuring that the Iranian people are no longer invisible in the negotiations that shape their future.</p>
-        <hr>
-        <h4>About IDDNI</h4>
-        <p>The Iranian Democratic Diaspora Network in Ireland (IDDNI) is a multi-ethnic, non-partisan, female-led network of Iranians based primarily in Galway and Limerick, with members in Dublin and Cork.</p>
-        <p>The network was established to fill a critical gap in meaningful, informed engagement on Iran in Ireland and across Europe, ensuring that the voices, lived experiences, and democratic aspirations of the Iranian people are reflected in policymaking, public discourse, and media coverage. IDDNI works to provide evidence-based insights and to support constructive engagement by Irish and European actors in line with the pursuit of a secular democratic future for Iran.</p>
-      </div>
-      <div class="lang-fa-block" dir="rtl" lang="fa">
-        <p class="byline">توسط شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) &mdash; ۱۳ آوریل ۲۰۲۶</p>
-        <p>در حالی که مذاکرات آتش‌بس مربوط به ایران پشت درهای بسته ادامه دارد، یک حقیقت اساسی باقی می‌ماند: مردم ایران در میزی که آینده‌شان در آن تعیین می‌شود، حضور ندارند. این یک خطای فنی نیست؛ بلکه یک شکست سیاسی با پیامدهای عمیق انسانی است.</p>
-        <p>IDDNI هشدار می‌دهد که دیپلماسی بین‌المللی بار دیگر در حال تکرار الگویی آشنا و خطرناک است: تعامل با قدرت در حالی که مردمی که بر آنها حکومت می‌شود، کنار گذاشته می‌شوند.</p>
-        <p>بیش از چهار دهه است که ایرانیان تحت نظامی زندگی می‌کنند که آزادی‌های بنیادین را به شدت محدود می‌کند. زنان با «آپارتاید جنسیتی» مواجه‌اند. اقلیت‌های قومی و مذهبی نیز تحت تبعیض مستمر قرار دارند. ایران در سال ۲۰۲۵ حداقل ۱۶۳۹ نفر را اعدام کرد.</p>
-        <p>از آغاز جنگ دست‌کم ۱۴ زندانی سیاسی اعدام شده‌اند و هزاران نفر دیگر همچنان در بازداشت به سر می‌برند. پیشنهادهای فعلی آتش‌بس هیچ اشاره معناداری به حقوق بشر، حمایت از جان ایرانیان، یا آرمان‌های دموکراتیک آنها ندارد.</p>
-        <p>IDDNI از سیاستگذاران ایرلندی و اروپایی می‌خواهد اصلی ساده اما ضروری را بپذیرند: هیچ تعامل دیپلماتیک پایداری با ایران نمی‌تواند مردم ایران را نادیده بگیرد. سکوت یک انتخاب سیاسی است &mdash; انتخابی که تعیین می‌کند صدای چه کسانی شنیده می‌شود و صدای چه کسانی محو می‌گردد.</p>
-        <hr>
-        <h4>درباره IDDNI</h4>
-        <p>شبکه دیاسپورای دموکراتیک ایرانیان در ایرلند (IDDNI) یک شبکه چندقومیتی، غیرحزبی و زن‌محور از ایرانیان مقیم ایرلند است که برای پر کردن شکاف موجود در تعامل آگاهانه و معنادار با موضوع ایران در ایرلند و اروپا تأسیس شده است.</p>
-      </div>
-    </div>
-  </div>
 </div>
 
       </div>
