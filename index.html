@@ -1779,7 +1779,30 @@
           IDDNI <em>Updates</em>
         </h2>
       </div>
-      <div class="news-grid">
+ <div class="news-grid">
+  <div class="news-card fade-up">
+    <span class="news-tag" data-en="Event" data-fa="رویداد">Event</span>
+    <p class="news-date" data-en="9 July, 2026 &mdash; Dublin" data-fa="۹ ژوئیه ۲۰۲۶ &mdash; دوبلین">9 July, 2026 &mdash; Dublin</p>
+    <h3 data-en="Meeting with the officials of the Department of Foreign Affairs" data-fa="دیدار با مقامات وزارت امور خارجه ایرلند">
+      Meeting with the officials of the Department of Foreign Affairs
+    </h3>
+    <p class="news-excerpt lang-en-block">We are grateful to the officials of the Department of Foreign Affairs for meeting with us on July 9th. During the meeting, we introduced the Iranian Democratic Diaspora Network in Ireland (IDDNI) and outlined our mission to support and amplify the voices of the Iranian people and their democratic aspirations. We discussed the ongoing and deeply concerning human rights situation in Iran, which has been overshadowed by the war and geopolitics. We also shared our experiences regarding transnational repression in Ireland and reflected on Ireland and Europe’s priorities during Ireland’s EU presidency.</p>
+    <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin-top:.5rem;">
+      <img src="DFA Meeting.jpeg" alt="Meeting with DFA" style="width:100%; max-width:320px; border-radius:8px; margin-top:.5rem;">
+    </div>
+    <button class="news-toggle-btn" id="DFAMeetingBtn" onclick="toggleNewsCard('DFAMeeting','DFAMeetingBtn')">
+      <span class="btn-label" data-en="Read More" data-fa="ادامه مطلب">Read More</span>
+      <span class="arrow">&#9660;</span>
+    </button>
+    <div class="news-card-expanded" id="DFAMeeting" style="margin-top:1rem;">
+      <div class="news-expanded-inner">
+        <div class="lang-en-block">
+          <p>We emphasised the importance of ensuring that the perspectives and aspirations of the Iranian people are heard and represented on the international stage. We hope this engagement marks the beginning of a constructive and sustained dialogue with the department, ultimately aimed at empowering Iran's civil society and  democratic forces. We sincerely appreciate the opportunity to exchange views and look forward to continued engagement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+     
         <div class="news-card fade-up">
           <span class="news-tag" data-en="Event" data-fa="رویداد">Event</span>
           <p class="news-date" data-en="19 June, 2026 &mdash; Dublin" data-fa="۱۹ ژوئن ۲۰۲۶ &mdash; دوبلین">19 June, 2026 &mdash; Dublin</p>
@@ -2031,6 +2054,30 @@
       </div>
 
       <div class="appearances-grid">
+
+          <div class="appearance-card fade-up">
+  <div class="appearance-outlet">
+    <div class="outlet-icon">📰</div>
+    <div>
+      <div class="outlet-name">The New York Times</div>
+      <div class="outlet-format">Press Coverage</div>
+    </div>
+  </div>
+
+  <div class="appearance-date">July 28, 2026</div>
+  <div class="appearance-title">Iran Publicly Hangs 2 Protesters, Rights Groups Say</div>
+   <div class="appearance-desc">Iran’s escalating executions in 2026, including today’s public hangings, confirm the grave warnings long raised by Iranian activists and human rights organisations.</div>
+  <details class="appearance-details">
+    <summary>Read more</summary>
+    <div class="appearance-desc">
+     As the UN and major rights groups have reported, Iran’s crackdown has intensified amid conflict and geopolitical attention, but the human rights crisis inside the country remains central and urgent. These killings are not only punishments; they are acts of state terror meant to instill fear and demonstrate control. The international community must stop treating Iran only as a geopolitical issue and instead respond to the ongoing struggle of the Iranian people for dignity, accountability, and basic rights. Thank you to The New York Times for covering this important concern, including IDDNI’s perspective on the matter, and for helping to amplify the voices of human rights activists who have long warned about this worsening situation.
+    </div>
+  </details>
+
+  <a class="appearance-link" href="https://www.nytimes.com/2026/07/28/world/middleeast/iran-hanging-protesters.html?eafs_enabled=false" target="_blank" rel="noopener noreferrer">
+    Read &#8599;
+  </a>
+</div>
 
         <a class="appearance-card fade-up" href="https://www.thejournal.ie/post-mortem-to-be-carried-out-masuma-sohrabi-clifden-galway-7055333-May2026/" target="_blank" rel="noopener">
           <div class="appearance-outlet">
@@ -2658,9 +2705,9 @@
         label.textContent = currentLang === 'fa' ? 'بستن' : 'Read Less';
         arrow.innerHTML = '&#9650;';
       } else {
-        label.setAttribute('data-en', 'Read Full Statement');
+        label.setAttribute('data-en', 'Read More');
         label.setAttribute('data-fa', 'متن کامل را بخوانید');
-        label.textContent = currentLang === 'fa' ? 'متن کامل را بخوانید' : 'Read Full Statement';
+        label.textContent = currentLang === 'fa' ? 'متن کامل را بخوانید' : 'Read More';
         arrow.innerHTML = '&#9660;';
       }
     }
